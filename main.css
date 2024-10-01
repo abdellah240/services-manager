@@ -1,0 +1,125 @@
+@font-face {
+    src: url(fonts/Roboto-Light.ttf);
+    font-family: RobotoLight;
+}
+
+@font-face {
+    src: url(fonts/Montserrat-Light.ttf);
+    font-family: Monsterrat;
+}
+
+body {
+    margin: 0px auto;
+    padding: 5px;
+}
+
+main {
+    margin-right: 20px;
+    margin-left: 20px;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+header {
+    padding-top: 1vw;
+    background-color: gray;
+    font-family: Monsterrat, Arial, sans-serif;
+}
+
+footer {
+    margin: 1vw;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: Monsterrat, Arial, sans-serif;
+    font-size: 4vw;
+}
+
+h2 {
+    font-size: 3vw;
+    font-family: Monsterrat, Arial, sans-serif;
+    margin-bottom: 12.5px;
+    padding: 10px;
+}
+
+h3 {
+    font-size: 2vw;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+#chooseAcctType{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0vw 8vw;
+    justify-content:space-between;
+}
+
+
+nav {
+    display: flex;
+    margin: 0px;
+}
+
+nav button {
+    display: block;
+    float: left;
+    height: 3vw;
+    background-color: rgb(53, 53, 53);
+    border-radius: 1vw;
+    overflow: hidden;
+}
+
+nav button:hover {
+    box-shadow: 1vw 1vw black;
+    transform: scale(1.05);
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 15px;
+    font-family: Monsterrat, Arial, sans-serif;
+}
+
+form {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 255px;
+}
+
+form label {
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+form textarea {
+    width: 700px;
+    min-width: 255px;
+}
+
+.submit {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 150px;
+    background-color: rgb(53, 53, 53);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: RobotoLight, Arial, sans-serif;
+
+}
+
+.submit:hover {
+    box-shadow: 3px 3px black;
+}
+
+input {
+    padding: 5px;
+}
