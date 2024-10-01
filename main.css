@@ -59,17 +59,25 @@ h3 {
 
 
 nav {
-    display: flex;
+    float:left;
     margin: 0px;
+}
+nav ul{
+    position:sticky;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-flex;
 }
 
 nav button {
-    display: block;
-    float: left;
-    height: 3vw;
     background-color: rgb(53, 53, 53);
+    width: 10vw;
+    height:3vw;
     border-radius: 1vw;
-    overflow: hidden;
 }
 
 nav button:hover {
