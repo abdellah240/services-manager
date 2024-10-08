@@ -96,8 +96,7 @@ form {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    width: 255px;
-    
+    width: 255px;   
 }
 
 form label {
@@ -110,7 +109,7 @@ form textarea {
     min-width: 255px;
 }
 
-.submit {
+.submit, .submit-button {
     display: block;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -121,13 +120,20 @@ form textarea {
     border-radius: 5px;
     cursor: pointer;
     font-family: RobotoLight, Arial, sans-serif;
-
 }
 
-.submit:hover {
+.submit:hover, .submit-button:hover {
     box-shadow: 3px 3px black;
 }
 
 input {
     padding: 5px;
+}
+
+.service{
+    display:flex;
+    align-items: center;
+    border: 0.2vw black solid;
+    background-color: rgb(190, 190, 190);
+    font-family: RobotoLight, Arial, sans-serif;
 }
