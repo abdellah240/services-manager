@@ -1,0 +1,139 @@
+@font-face {
+    src: url(fonts/Roboto-Light.ttf);
+    font-family: RobotoLight;
+}
+
+@font-face {
+    src: url(fonts/Montserrat-Light.ttf);
+    font-family: Monsterrat;
+}
+
+/*
+USING: 
+    > rem for font sizing
+    > vw or % for other elements sizing
+
+*/
+
+*{
+    margin:0;
+    padding:0;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+header {
+    background-color: gray;
+    font-family: Monsterrat, Arial, sans-serif;
+}
+
+main {
+    background-color: bisque;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+footer {
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: Monsterrat, Arial, sans-serif;
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+    font-family: Monsterrat, Arial, sans-serif;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+#chooseAcctType{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0vw 8vw;
+    justify-content:space-between;
+}
+
+nav { 
+    margin: 0;
+}
+nav ul{
+    position:sticky;
+    display:flex;
+    list-style-type:none;
+    justify-content:center;
+    margin: 0;
+    padding: 0;
+}
+nav li{
+    border:0.2vw black solid;  
+    padding: 1vw 5vw;
+    background-color: rgb(53, 53, 53);
+}
+nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: Monsterrat, Arial, sans-serif;
+    color: white;
+    
+}
+nav li:hover {
+    box-shadow: 0.3vw 0.3vw black;
+    transform: scale(1.05);
+}
+
+form {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 255px;   
+}
+
+form label {
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+form textarea {
+    width: 700px;
+    min-width: 255px;
+}
+
+.submit, .submit-button {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 150px;
+    background-color: rgb(53, 53, 53);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+.submit:hover, .submit-button:hover {
+    box-shadow: 3px 3px black;
+}
+
+input {
+    padding: 5px;
+}
+
+.service{
+    display:flex;
+    align-items: center;
+    border: 0.2vw black solid;
+    background-color: rgb(190, 190, 190);
+    font-family: RobotoLight, Arial, sans-serif;
+}
