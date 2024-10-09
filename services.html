@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Services Manager - Services(Admin)</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    
+
 </head>
+
 <body>
     <header>
-    <nav> 
-        <ul>
-          <li><a href="index.html">Home</a></li> 
-          <li><a href="services.html">Services</a></li> 
-          <li><a href=".">Bills</a></li> 
-          <li><a href=".">Sign In</a></li>
-        </ul>
-    </nav>
-    <h1>Services Manager</h1><br>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href=".">Bills</a></li>
+                <li><a href=".">Sign In</a></li>
+            </ul>
+        </nav>
+        <h1>Services Manager</h1><br>
     </header>
-    
+
     <main>
-    
-    <form id = "service-form">
-    <label>Name</label>
-    <input type="text"id="name"></input>
-    <label>Description</label>
-    <input type="text" id="description"></input>
-    <label>Price</label>
-    <input type="text" id="price"></input>
-    <br>
-    <button type = "button" onclick="callConstructor()" class="submit-button">New Service</button>
-    </form>
-    <br>
-    
-    <center><h2>Services list</h2></center><br>
-    <div id="services-list"></div>
-    <script src='scripts/services.js'></script>
+        <br>
+        <div id="add-service-div">
+            <h3>Add New Service</h3><br>
+            <label>Title</label>
+            <input type="text" id="title" required></input>
+            <label>Description</label>
+            <input type="text" id="description" required></input>
+            <label>Price</label>
+            <input type="text" id="price" required></input><br>
+            <button type="submit" id="confirm-service-button">Confirm</button>
+        </div>
+
+        <h2 style="margin:2vw 25vw">Services list</h2>
+        <div id="services-list-div"></div>
+
+
+        <script src='scripts/services.js'></script>
     </main>
 </body>
+
 </html>
