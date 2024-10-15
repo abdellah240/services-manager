@@ -161,3 +161,7 @@ input {
 #add-service-div {
     margin: 0 25vw;
 }
+
+ion-icon {
+    font-size: 18px;
+  }
