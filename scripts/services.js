@@ -1,4 +1,4 @@
-// Declare array of services
+// Declare Array of services
 const servicesArray = [];
 
 // Wait for click, then execute anonymous function
