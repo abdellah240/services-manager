@@ -116,7 +116,7 @@ form textarea {
     min-width: 255px;
 }
 
-.submit,
+.submit, .delete-service,
 #confirm-service-button {
     display: block;
     padding-top: 10px;
@@ -130,7 +130,7 @@ form textarea {
     font-family: RobotoLight, Arial, sans-serif;
 }
 
-.submit:hover,
+.submit:hover, .delete-service:hover,
 #confirm-service-button:hover {
     box-shadow: 3px 3px black;
 }
@@ -148,7 +148,7 @@ input {
 }
 
 .service {
-    border: 0.2vw black solid;
+    border: 0.3vw black solid;
     background-color: rgb(190, 190, 190);
     font-family: RobotoLight, Arial, sans-serif;
 }
@@ -162,6 +162,6 @@ input {
     margin: 0 25vw;
 }
 
-ion-icon {
-    font-size: 18px;
+.service:not(:last-child) {
+    border-bottom: none; 
   }
