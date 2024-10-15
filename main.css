@@ -145,4 +145,12 @@ input {
     width: 300px; 
     background-color: #f9f9f9; 
     border-radius: 10px; 
+.service {
+    border: 0.2vw black solid;
+    background-color: rgb(190, 190, 190);
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+#services-list-div {
+}
 }
