@@ -15,9 +15,9 @@ USING:
 
 */
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -36,6 +36,8 @@ main {
 }
 
 footer {
+    
+    background-color: gray;
     font-family: RobotoLight, Arial, sans-serif;
 }
 
@@ -56,48 +58,52 @@ h3 {
     font-family: RobotoLight, Arial, sans-serif;
 }
 
-#chooseAcctType{
+#chooseAcctType {
     display: flex;
     flex-wrap: wrap;
     padding: 0vw 8vw;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-nav { 
+nav {
     margin: 0;
 }
-nav ul{
-    position:sticky;
-    display:flex;
-    list-style-type:none;
-    justify-content:center;
+
+nav ul {
+    position: sticky;
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
     margin: 0;
     padding: 0;
 }
-nav li{
-    border:0.2vw black solid;  
+
+nav li {
+    border: 0.2vw black solid;
     padding: 1vw 5vw;
     background-color: rgb(53, 53, 53);
 }
+
 nav a {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 300;
     font-family: Monsterrat, Arial, sans-serif;
     color: white;
-    
+
 }
+
 nav li:hover {
     box-shadow: 0.3vw 0.3vw black;
     transform: scale(1.05);
 }
 
-form {
+form,
+#add-service-div {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
     width: 255px;
-    
 }
 
 form label {
@@ -110,7 +116,8 @@ form textarea {
     min-width: 255px;
 }
 
-.submit {
+.submit,
+#confirm-service-button {
     display: block;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -121,13 +128,36 @@ form textarea {
     border-radius: 5px;
     cursor: pointer;
     font-family: RobotoLight, Arial, sans-serif;
-
 }
 
-.submit:hover {
+.submit:hover,
+#confirm-service-button:hover {
     box-shadow: 3px 3px black;
 }
 
 input {
     padding: 5px;
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+.service {
+    border: 0.2vw black solid;
+    background-color: rgb(190, 190, 190);
+    font-family: RobotoLight, Arial, sans-serif;
+}
+
+#services-list-div {
+    text-align: center;
+    margin: 0 25vw;
+}
+
+#add-service-div {
+    margin: 0 25vw;
+}
+.framed-text {
+    border: 2px solid black; 
+    padding: 20px;
+    width: 300px; 
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
 }
