@@ -36,6 +36,8 @@ main {
 }
 
 footer {
+    
+    background-color: gray;
     font-family: RobotoLight, Arial, sans-serif;
 }
 
@@ -135,20 +137,12 @@ form textarea {
 
 input {
     padding: 5px;
-    font-family: RobotoLight, Arial, sans-serif;
 }
 
-.service {
-    border: 0.2vw black solid;
-    background-color: rgb(190, 190, 190);
-    font-family: RobotoLight, Arial, sans-serif;
-}
-
-#services-list-div {
-    text-align: center;
-    margin: 0 25vw;
-}
-
-#add-service-div {
-    margin: 0 25vw;
+.framed-text {
+    border: 2px solid black; 
+    padding: 20px;
+    width: 300px; 
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
 }
