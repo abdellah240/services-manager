@@ -138,3 +138,11 @@ form textarea {
 input {
     padding: 5px;
 }
+
+.framed-text {
+    border: 2px solid black; 
+    padding: 20px;
+    width: 300px; 
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+}
