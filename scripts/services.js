@@ -17,14 +17,30 @@ document.getElementById("confirm-service-button").addEventListener("click", () =
     servicesArray.push(newService);
 
     // For each service, execute anonymous function
-    servicesArray.forEach(() =>
+    servicesArray.forEach((service, index) =>
     {
         // Formatting every service
         var serviceDiv = document.createElement("div");
+        var deleteServiceButton = document.createElement("button")
+        deleteServiceButton.innerHTML = 'Delete';
+
         serviceDiv.className = "service";
-        serviceDiv.innerHTML = `Title: ${newService.title} <br>
+        deleteServiceButton.className = "delete-service"
+
+        // Deletes service when clicked
+        deleteServiceButton.addEventListener('click', () =>
+        {
+            servicesArray.splice(index, 1);
+            document.getElementById("services-list-div").removeChild(serviceDiv);
+        })
+
+        serviceDiv.innerHTML =`Title: ${newService.title} <br>
                                 Description: ${newService.description} <br>
-                                Price ${newService.price}`;
+                                Price: ${newService.price}`;
+                                
+
+        // Adding delete button to every service
+        serviceDiv.appendChild(deleteServiceButton);
 
         // Adding every service to the updated list
         document.getElementById("services-list-div").appendChild(serviceDiv);
