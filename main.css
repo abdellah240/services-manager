@@ -165,3 +165,11 @@ input {
 .service:not(:last-child) {
     border-bottom: none; 
   }
+  .bigred {font-size: 10pt;
+    font-family: Ariel; color: red}
+    .logo{
+        float: right;
+        margin-right: 100px; /* To add space between text and image */
+    }
+
+    
