@@ -13,26 +13,36 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="bills.html">Bills</a></li>
-                <li id="authLink"><a href="index.html">Sign In</a></li>
-            </ul>
+            <ul class="nav-element">
+                <li class="nav-element__item">
+                  <a class="nav-element__link" href="home.html">Home</a>
+                </li>
+                <li class="nav-element__item">
+                  <a class="nav-element__link" href="#" onclick="checksign1()"
+                    >Services</a>
+                </li>
+                <li class="nav-element__item">
+                  <a class="nav-element__link" href="#" onclick="checksign2()"
+                    >Bills</a>
+                </li>
+                <li class="nav-element__item">
+                  <a class="nav-element__link" href="index.html">Sign In</a>
+                </li>
+              </ul>
         </nav>
-        <h1>Services Manager</h1><br>
+        <h1>Services Manager</h1>
     </header>
 
-    <main>
-        <br>
+    <main class="app">
+        <div class="app__container">
         <div id="add-service-div">
-            <h3>Add New Service</h3><br>
+            <h3>Add New Service</h3>
             <label>Title</label>
             <input type="text" id="title" required></input>
             <label>Description</label>
             <input type="text" id="description" required></input>
             <label>Price</label>
-            <input type="text" id="price" required></input><br>
+            <input type="text" id="price" required></input>
             <button type="submit" id="confirm-service-button">Confirm</button>
         </div>
 
@@ -42,6 +52,7 @@
 
         <script src='scripts/services.js'></script>
         <script src='scripts/main.js'></script>
+      </div>
     </main>
 </body>
 

@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Services Manager - Home</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src='scripts/main.js'></script>
-</head>
-<body>   
-  <header>
-    <nav> 
-      <ul>
-        <li><a href="home.html">Home</a></li> 
-        <li><a href="services.html">Services</a></li>
-        <li><a href="Bills.html">Bills</a></li>
-        <li id="authLink"><a href="index.html">Sign In</a></li>
-      </ul>
-    </nav>
-    <br>
-    <h1>Services Manager</h1><br>
-  </header>
-
-
-  <footer>
-    <h3>Quick Links</h3>
-    <a href="home.html">Home</a>
-    <a href="#">About Us</a>
-    <a href="services.html">Services</a>
-    <a href="#">Contact</a>
-    <textarea name = "aspirations" rows = "3" cols = "40">
-        Any insights?
-        </textarea>
-  </footer>
-  
-  
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Services Manager - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="scripts/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-element">
+          <li class="nav-element__item">
+            <a class="nav-element__link" href="home.html">Home</a>
+          </li>
+          <li class="nav-element__item">
+            <a class="nav-element__link" href="#" onclick="checksign1()"
+              >Services</a
+            >
+          </li>
+          <li class="nav-element__item">
+            <a class="nav-element__link" href="#" onclick="checksign2()">
+              Bills
+            </a>
+          </li>
+          <li class="nav-element__item">
+            <a class="nav-element__link" href="index.html">Sign In</a>
+          </li>
+        </ul>
+      </nav>
+      <h1>Services Manager</h1>
+    </header>
+    <footer class="footer">
+      <div class="footer__container">
+        <a class="footer__link" href="home.html">Home</a>
+        <a class="footer__link" href="#">About Us</a>
+        <a class="footer__link" href="services.html">Services</a>
+        <a class="footer__link" href="#">Contact</a>
+      </div>
+    </footer>
+  </body>
 </html>

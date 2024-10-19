@@ -1,6 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /** USING: 
     > rem for font sizing
@@ -9,7 +7,6 @@
 */
 
 a {
-
   text-decoration: none;
   color: inherit;
 }
@@ -30,56 +27,51 @@ body {
 }
 
 header {
-
   font-family: "Montserrat", sans-serif;
 }
 
 main {
-
   flex: 1;
   font-family: "Montserrat", sans-serif;
 }
 
+.page__title {
+  background-color: rgb(57, 64, 80);
+  color: white;
+  padding: 20px;
+  border: 2px solid rgb(7, 7, 98);
+}
+
 .app__container {
-
-  padding:60px;
-
+  padding: 60px;
 }
 
 .app__title {
-
-  margin-bottom:50px;
+  margin-bottom: 50px;
 }
 
 .app__subtitle {
-
   margin-bottom: 50px;
-
 }
 
-.app__login-types  {
-
+.app__login-types {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
 }
 
 .app__login-type {
-
-background-color: rgb(12, 12, 143);
-padding: 10px 20px;
-color: white;
-border: 1px solid rgb(7, 7, 98);
-border-radius: 10px;
-
+  background-color: rgb(12, 12, 143);
+  padding: 10px 20px;
+  color: white;
+  border: 1px solid rgb(7, 7, 98);
+  border-radius: 10px;
 }
 
-.app__login-type:hover{
-
-
+.app__login-type:hover {
+  color: rgb(12, 114, 154);
+  box-shadow: 3px 3px rgb(2, 51, 70);
 }
-
 
 .footer {
   background-color: rgb(45, 45, 45);
@@ -90,13 +82,12 @@ border-radius: 10px;
 .footer__container {
   padding: 20px;
   display: flex;
-  gap:40px;
+  gap: 40px;
 }
 
 .footer__link {
   text-decoration: none;
   color: white;
- 
 }
 
 h1 {
@@ -117,7 +108,9 @@ h3 {
   font-family: "Montserrat", sans-serif;
 }
 
-
+.welcome__message {
+  padding: 10px;
+}
 
 nav {
   margin: 0;
@@ -160,9 +153,13 @@ form textarea {
   min-width: 255px;
 }
 
-.submit, .delete-service, .edit-service,
+.submit,
+.delete-service,
+.edit-service,
 #confirm-service-button {
   margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -175,7 +172,9 @@ form textarea {
   font-family: "Montserrat", sans-serif;
 }
 
-.submit:hover, .delete-service:hover, .edit-service:hover,
+.submit:hover,
+.delete-service:hover,
+.edit-service:hover,
 #confirm-service-button:hover {
   box-shadow: 3px 3px black;
 }
@@ -190,31 +189,39 @@ input {
   width: 300px;
   background-color: #f9f9f9;
   border-radius: 10px;
+  margin: 0 auto;
 }
- 
+
+.announcement__message {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+.signup__link {
+  color: purple;
+}
+
 .service {
-    border: 0.3vw black solid;
-    background-color: rgb(190, 190, 190);
-    font-family: RobotoLight, Arial, sans-serif;
+  border: 0.3vw black solid;
+  background-color: #f9f9f9;
+  font-family: RobotoLight, Arial, sans-serif;
 }
 
 #services-list-div {
-    text-align: center;
-    margin: 0 25vw;
+  text-align: center;
+  margin: 0 25vw;
 }
 
 #add-service-div {
-    margin: 0 25vw;
+  margin: 0 25vw;
 }
 
-
-
-
-  .bigred {font-size: 10pt;
-    font-family: Ariel; color: red}
-    .logo{
-        float: right;
-        margin-right: 100px; /* To add space between text and image */
-    }
-
-    
+.bigred {
+  font-size: 10pt;
+  font-family: Ariel;
+  color: red;
+}
+.logo {
+  float: right;
+  margin-right: 100px; /* To add space between text and image */
+}
