@@ -1,148 +1,193 @@
-@font-face {
-    src: url(fonts/Roboto-Light.ttf);
-    font-family: RobotoLight;
-}
 
-@font-face {
-    src: url(fonts/Montserrat-Light.ttf);
-    font-family: Monsterrat;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/*
-USING: 
+
+/** USING: 
     > rem for font sizing
     > vw or % for other elements sizing
 
 */
 
+a {
+
+  text-decoration: none;
+  color: inherit;
+}
+
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
 }
 
 body {
-    margin: 0 auto;
-    max-width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-    background-color: gray;
-    font-family: Monsterrat, Arial, sans-serif;
+
+  font-family: "Montserrat", sans-serif;
 }
 
 main {
-    background-color: bisque;
-    font-family: RobotoLight, Arial, sans-serif;
+
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
 }
 
-footer {
-    
-    background-color: gray;
-    font-family: RobotoLight, Arial, sans-serif;
+.app__container {
+
+  padding:60px;
+
 }
 
+.app__title {
+
+  margin-bottom:50px;
+}
+
+.app__subtitle {
+
+  margin-bottom: 50px;
+
+}
+
+.app__login-types  {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.app__login-type {
+
+background-color: rgb(12, 12, 143);
+padding: 10px 20px;
+color: white;
+border: 1px solid rgb(7, 7, 98);
+border-radius: 10px;
+
+}
+
+.app__login-type:hover{
+
+
+}
+
+
+.footer {
+  background-color: rgb(45, 45, 45);
+  font-family: "Montserrat", sans-serif;
+  min-height: 70px;
+}
+
+.footer__container {
+  padding: 20px;
+  display: flex;
+  gap:40px;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: white;
+ 
+}
 
 h1 {
-    text-align: center;
-    font-family: Monsterrat, Arial, sans-serif;
-    font-size: 3rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
 }
 
 h2 {
-    font-size: 1.75rem;
-    font-family: Monsterrat, Arial, sans-serif;
+  text-align: center;
+  font-size: 1.75rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 h3 {
-    font-size: 1.5rem;
-    font-family: RobotoLight, Arial, sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
 }
 
-#chooseAcctType {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0vw 8vw;
-    justify-content: space-between;
-}
+
 
 nav {
-    margin: 0;
+  margin: 0;
 }
 
-nav ul {
-    position: sticky;
-    display: flex;
-    list-style-type: none;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
+.nav-element {
+  background-color: rgb(12, 12, 143);
+  display: flex;
 }
 
-nav li {
-    border: 0.2vw black solid;
-    padding: 1vw 5vw;
-    background-color: rgb(53, 53, 53);
+.nav-element__item {
+  list-style: none;
+  padding: 20px;
 }
 
-nav a {
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 300;
-    font-family: Monsterrat, Arial, sans-serif;
-    color: white;
-
+.nav-element__link {
+  text-decoration: none;
+  color: white;
 }
 
-nav li:hover {
-    box-shadow: 0.3vw 0.3vw black;
-    transform: scale(1.05);
+.nav-element__item:hover {
+  background-color: rgb(23, 23, 192);
 }
 
 form,
 #add-service-div {
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 255px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 255px;
 }
 
 form label {
-    font-size: 0.8em;
-    margin-bottom: 5px;
+  font-size: 0.8em;
+  margin-bottom: 5px;
 }
 
 form textarea {
-    width: 700px;
-    min-width: 255px;
+  width: 700px;
+  min-width: 255px;
 }
 
 .submit,
 #confirm-service-button {
-    display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 150px;
-    background-color: rgb(53, 53, 53);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: RobotoLight, Arial, sans-serif;
+  margin: 0 auto;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 150px;
+  background-color: rgb(53, 53, 53);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 
 .submit:hover,
 #confirm-service-button:hover {
-    box-shadow: 3px 3px black;
+  box-shadow: 3px 3px black;
 }
 
 input {
-    padding: 5px;
+  padding: 5px;
 }
 
 .framed-text {
-    border: 2px solid black; 
-    padding: 20px;
-    width: 300px; 
-    background-color: #f9f9f9; 
-    border-radius: 10px; 
+  border: 2px solid black;
+  padding: 20px;
+  width: 300px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
 }
