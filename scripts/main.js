@@ -40,9 +40,8 @@ function updateAuthLink() {
     var linkElement = authLink.getElementsByTagName('a')[0]; 
 
     if (isSigned === "true") {
-        linkElement.textContent = "Log Out";
-        linkElement.href = "#"; 
-        linkElement.onclick = function() { logout();}; 
+        linkElement.textContent = "your Account";
+        linkElement.href = "customer-mainpage.html"; 
     } else {
         linkElement.textContent = "Sign In";
         linkElement.href = "index.html";
