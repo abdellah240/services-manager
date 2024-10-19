@@ -1,6 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /** USING: 
     > rem for font sizing
@@ -9,9 +7,12 @@
 */
 
 a {
-
   text-decoration: none;
   color: inherit;
+}
+
+input {
+  outline: 0;
 }
 
 * {
@@ -20,6 +21,7 @@ a {
 }
 
 html {
+  font-family: "Montserrat", sans-serif;
   height: 100%;
 }
 
@@ -30,94 +32,112 @@ body {
 }
 
 header {
-
-  font-family: "Montserrat", sans-serif;
 }
 
-main {
-
+.app {
   flex: 1;
-  font-family: "Montserrat", sans-serif;
+  display: flex;
 }
 
 .app__container {
+  flex: 1;
+}
 
-  padding:60px;
+.app__logo-container {
+  position: absolute;
+  right: 0;
+}
 
+.page__title {
+  background-color: rgb(57, 64, 80);
+  color: white;
+  padding: 20px;
+  border: 2px solid rgb(7, 7, 98);
+}
+
+.app__container {
+  padding: 60px;
 }
 
 .app__title {
-
-  margin-bottom:50px;
+  margin-bottom: 50px;
 }
 
 .app__subtitle {
-
   margin-bottom: 50px;
-
 }
 
-.app__login-types  {
-
+.app__login-types {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
 }
 
 .app__login-type {
-
-background-color: rgb(12, 12, 143);
-padding: 10px 20px;
-color: white;
-border: 1px solid rgb(7, 7, 98);
-border-radius: 10px;
-
+  background-color: rgb(12, 12, 143);
+  color: white;
+  border: 1px solid rgb(7, 7, 98);
+  border-radius: 10px;
 }
 
-.app__login-type:hover{
-
-
+.app__login-link {
+  display: block;
+  padding: 10px 20px;
 }
 
+.app__login-type:hover {
+  background-color: rgb(23, 23, 192);
+}
 
 .footer {
   background-color: rgb(45, 45, 45);
-  font-family: "Montserrat", sans-serif;
   min-height: 70px;
 }
 
 .footer__container {
   padding: 20px;
   display: flex;
-  gap:40px;
+  gap: 40px;
 }
 
 .footer__link {
   text-decoration: none;
   color: white;
- 
+  position: relative;
+}
+
+.footer__link:hover.footer__link:after {
+  display: block;
+}
+
+.footer__link:after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: -7px;
+  display: none;
 }
 
 h1 {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
   font-size: 3rem;
 }
 
 h2 {
   text-align: center;
   font-size: 1.75rem;
-  font-family: "Montserrat", sans-serif;
 }
 
 h3 {
   text-align: center;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
 }
 
-
+.welcome__message {
+  padding: 10px;
+}
 
 nav {
   margin: 0;
@@ -142,14 +162,6 @@ nav {
   background-color: rgb(23, 23, 192);
 }
 
-form,
-#add-service-div {
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 255px;
-}
-
 form label {
   font-size: 0.8em;
   margin-bottom: 5px;
@@ -160,9 +172,13 @@ form textarea {
   min-width: 255px;
 }
 
-.submit, .delete-service, .edit-service,
+.submit,
+.delete-service,
+.edit-service,
 #confirm-service-button {
   margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -172,10 +188,11 @@ form textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
 }
 
-.submit:hover, .delete-service:hover, .edit-service:hover,
+.submit:hover,
+.delete-service:hover,
+.edit-service:hover,
 #confirm-service-button:hover {
   box-shadow: 3px 3px black;
 }
@@ -184,37 +201,126 @@ input {
   padding: 5px;
 }
 
-.framed-text {
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.welcome__title {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.welcome__text {
   border: 2px solid black;
   padding: 20px;
   width: 300px;
   background-color: #f9f9f9;
   border-radius: 10px;
+  margin: 0 auto;
 }
- 
+
+.announcment__container {
+  background-color: rgb(19, 19, 174);
+  color: #fff;
+  padding: 40px;
+}
+
+.announcement__title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.announcement__message {
+  margin-bottom: 20px;
+}
+
+.announcement__list-item {
+  margin-bottom: 10px;
+}
+
+.signup__link {
+  color: purple;
+}
+
 .service {
-    border: 0.3vw black solid;
-    background-color: rgb(190, 190, 190);
-    font-family: RobotoLight, Arial, sans-serif;
+  border: 0.3vw black solid;
+  background-color: #f9f9f9;
 }
 
 #services-list-div {
-    text-align: center;
-    margin: 0 25vw;
+  text-align: center;
+  margin: 0 25vw;
 }
 
-#add-service-div {
-    margin: 0 25vw;
+.announcement__flag {
+  font-size: 10px;
+  color: red;
 }
 
+.logo {
+  margin-right: 100px;
+}
 
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 
+.login__container {
+  padding: 20px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.2);
+}
 
-  .bigred {font-size: 10pt;
-    font-family: Ariel; color: red}
-    .logo{
-        float: right;
-        margin-right: 100px; /* To add space between text and image */
-    }
+.login__title {
+  font-size: 21px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    
+.login__button-container {
+  margin-bottom: 20px;
+}
+
+.login__input-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.login__input-label {
+  font-weight: bold;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(12, 12, 143);
+  color: #fff;
+  font-size: 14px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.login__message {
+  font-weight: normal;
+}
+
+.login__link {
+  color: rgb(12, 12, 143);
+  text-decoration: underline;
+}

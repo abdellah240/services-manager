@@ -6,7 +6,7 @@
     <title>Services Manager - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <script src="scripts/main.js"></script>
   </head>
   <body>
     <header>
@@ -21,12 +21,11 @@
             >
           </li>
           <li class="nav-element__item">
-            <a class="nav-element__link" href="#" onclick="checksign2()"
+            <a class="nav-element__link"  href="#" onclick="checksign2()"
               >Bills</a
             >
           </li>
-          <li class="nav-element__item">
-            <a class="nav-element__link" href="index.html">Sign In</a>
+          <li class="nav-element__item"  class="nav-element__link"  id = "authLink" ><a href="index.html">Sign In</a>
           </li>
         </ul>
       </nav>
@@ -36,8 +35,14 @@
         <h1 class="app__title">Services Manager</h1>
         <h2 class="app__subtitle">Please choose your account type.</h2>
         <div class="app__login-types" id="chooseAcctType">
-          <h2 class="app__login-type"><a class ="app__login-link" href="login-administrator.html">Administrator</a></h2>
-          <h2 class="app__login-type"><a class ="app__login-link" href="login-customer.html">Customer</a></h2>
+          <h2 class="app__login-type">
+            <a class="app__login-link" href="login-administrator.html"
+              >Administrator</a
+            >
+          </h2>
+          <h2 class="app__login-type">
+            <a class="app__login-link" href="login-customer.html">Customer</a>
+          </h2>
         </div>
       </div>
     </main>
@@ -46,7 +51,7 @@
       <div class="footer__container">
         <a class="footer__link" href="home.html">Home</a>
         <a class="footer__link" href="#">About Us</a>
-        <a class="footer__link" href="services.html">Services</a>
+        <a class="footer__link" href="#" onclick="checksign1()">Services</a>
         <a class="footer__link" href="#">Contact</a>
       </div>
     </footer>
