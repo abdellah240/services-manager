@@ -22,6 +22,7 @@ function checksign1(){
     if(isSigned){
         window.location.href = "services.html";}
     else {
+        alert("Sign in first");
     window.location.href = "index.html";}
 
 }
@@ -30,8 +31,9 @@ function checksign2(){
     var isSigned = localStorage.getItem("isSigned") === "true"   
     if(isSigned){
         window.location.href = "bills.html";}
-    else 
-    window.location.href = "index.html";
+    else {
+    alert("Sign in first");
+    window.location.href = "index.html";}
 }
 
 function updateAuthLink() {
