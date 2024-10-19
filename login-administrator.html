@@ -34,22 +34,40 @@
 
     <main class="app">
       <div class="app__container">
-        <h2>Sign in using an administrator account:</h2>
-
-        <form action="administrator.js" method="post" id="myform">
-          <label for="Email"><b>Email</b></label>
-          <input type="email" id="Email-administrator" name="Email" required />
-
-          <label for="Password"><b>Password</b></label>
-          <input
-            type="password"
-            id="Password-administrator"
-            name="Password"
-            required
-          />
-
-          <input type="submit" class="submit" onclick="checker()" />
-        </form>
+        <div class="login">
+          <div class="login__container">
+            <h2 class="login__title">Sign in using an administrator account</h2>
+            <form action="administrator.js" method="post" id="myform">
+              <div class="login__input-container">
+                <label class="login__input-label" for="Email">Email</label>
+                <input
+                  class="login__input"
+                  type="email"
+                  id="Email-administrator"
+                  name="Email"
+                  required
+                />
+              </div>
+              <div class="login__input-container">
+                <label class="login__input-label" for="Password"
+                  >Password</label
+                >
+                <input
+                  class="login__input"
+                  type="password"
+                  id="Password-administrator"
+                  name="Password"
+                  required
+                />
+              </div>
+              <div class="login__button-container">
+                <button type="submit" class="button" onclick="checker()">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="footer">
