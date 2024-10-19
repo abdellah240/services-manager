@@ -6,16 +6,16 @@
   <title>Services Manager - Home</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src='administrator.js'></script>
+  <script src='scripts/main.js'></script>
 </head>
 <body>   
   <header>
     <nav> 
       <ul>
-        <li><a href=".">Home</a></li> 
-        <li><a href="services.html">Services</a></li> 
-        <li><a href=".">Bills</a></li> 
-        <li><a href="index.html">Sign In</a></li>
+        <li><a href="home.html">Home</a></li> 
+        <li><a href="#" onclick="checksign1()">Services</a></li>
+        <li><a href="#" onclick="checksign2()">Bills</a></li>
+        <li id="authLink"><a href="index.html">Sign In</a></li>
       </ul>
     </nav>
     <br>
@@ -24,14 +24,24 @@
   <main>
     <br> 
     <div id = "content">
-      <h3><center> Welcome to Service Manager </center></h3>
-    </div><center>
+      <h3> Welcome to Service Manager</h3>
+    </div>
+    <div>
+    <img src = "Images/Gemini_Generated_Image_f3crpuf3crpuf3cr.jpeg" height="150" width="150" alt = "logo" 
+    class="logo"/></div>
     <div class="framed-text">
-      brief description
-  </div></center>
+      Requesting a service has never has never been easier, create an account 
+      and be served in no time!
+  </div>
 <br>
   <div id = announcement >
     <h2> Announcement!</h2>
+    <h4> The following services are now available:</h4>
+    <ul class = "Services">
+        <li> Regular interior cleaning  <span class = "bigred"> (new!)</span></li>
+        <li> Yard trimming<span class = "bigred">  (new!)</span></li>
+        <li> Car washing<span class = "bigred">  (new!)</span></li>
+    </ul>
   </div>
     
   </main>
@@ -43,6 +53,10 @@
     <a href="#">About Us</a>
     <a href="services.html">Services</a>
     <a href="#">Contact</a>
+
+    <textarea name = "aspirations" rows = "3" cols = "40">
+        Any insights?
+        </textarea>
   </footer>
   
   

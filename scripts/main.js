@@ -1,16 +1,69 @@
-let isSigned = false;
+
+let ID = "client1";
+let Password = "soen287";
+
+function signing(){
+var inputId = document.getElementById("Email-customer").value;
+var inputPass = document.getElementById("Password-customer").value;
+
+  if(inputId == ID && inputPass == Password){
+    localStorage.setItem("isSigned", "true");
+    window.location.href = "home.html";
+}
+  else {
+    isSigned =false;
+    alert("Incorrect");
+    window.location.href = "login-customer.html";
+    }
+     
+}
 function checksign1(){
+    var isSigned = localStorage.getItem("isSigned") === "true"    
     if(isSigned){
         window.location.href = "services.html";}
     else {
     window.location.href = "index.html";}
-window.onload = checksign1;
+
 }
 
 function checksign2(){
-    if(isSigned)
-        window.location.href = "bills.html";
+    var isSigned = localStorage.getItem("isSigned") === "true"   
+    if(isSigned){
+        window.location.href = "bills.html";}
     else 
     window.location.href = "index.html";
-    window.onload = checksign2;
+}
+
+function updateAuthLink() {
+    var isSigned = localStorage.getItem("isSigned");
+    var authLink = document.getElementById("authLink");
+    var linkElement = authLink.getElementsByTagName('a')[0]; 
+
+    if (isSigned === "true") {
+        linkElement.textContent = "Log Out";
+        linkElement.href = "#"; 
+        linkElement.onclick = function() { logout();}; 
+    } else {
+        linkElement.textContent = "Sign In";
+        linkElement.href = "index.html";
+    }
+}
+
+function logout() {
+    var confirmation = confirm("Are you sure you want to log out?");
+    
+    // Check if the user clicked "OK"
+    if (confirmation) {
+        // If confirmed, log the user out (clear sign-in status)
+        localStorage.setItem("isSigned", "false");
+        window.location.href = "home.html"; // Redirect to login page
+    } else {
+        // If canceled, do nothing (stay on the current page)
+        console.log("User canceled logout.");
+    }
+}
+
+
+window.onload = function() {
+    updateAuthLink();
 }
