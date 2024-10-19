@@ -30,14 +30,11 @@
           </li>
         </ul>
       </nav>
-      <h1 class = "page__title">Services Manager</h1>
+      <h1 class="page__title">Services Manager</h1>
     </header>
     <main class="app">
       <div class="app__container">
-        <div id="content">
-          <h3 class ="welcome__message">Welcome to Service Manager</h3>
-        </div>
-        <div>
+        <div class="app__logo-container">
           <img
             src="Images/Gemini_Generated_Image_f3crpuf3crpuf3cr.jpeg"
             height="150"
@@ -46,23 +43,37 @@
             class="logo"
           />
         </div>
-        <div class="framed-text">
-          Requesting a service has never has never been easier, create an
-          account and be served in no time!
-        </div>
-        <div id="announcement">
-          <h2 class ="announcement__message">Announcement!</h2>
-          <h4>The following services are now available:</h4>
-          <ul class="Services">
-            <li>
-              Regular interior cleaning <span class="bigred"> (new!)</span>
-            </li>
-            <li>Yard trimming<span class="bigred"> (new!)</span></li>
-            <li>Car washing<span class="bigred"> (new!)</span></li>
-          </ul>
+        <div class="welcome">
+          <div class="welcome__title">Welcome to Service Manager</div>
+          <div class="welcome__text">
+            Requesting a service has never has never been easier, create an
+            account and be served in no time!
+          </div>
         </div>
       </div>
     </main>
+    <div class="announcement">
+      <div class="announcment__container">
+        <h2 class="announcement__title">Announcement!</h2>
+        <div class="announcement__section">
+          <h4 class="announcement__message">
+            The following services are now available:
+          </h4>
+          <ul class="announcement__list">
+            <li class="announcement__list-item">
+              Regular interior cleaning
+              <span class="announcement__flag"> (new!)</span>
+            </li>
+            <li class="announcement__list-item">
+              Yard trimming<span class="announcement__flag"> (new!)</span>
+            </li>
+            <li class="announcement__list-item">
+              Car washing<span class="announcement__flag"> (new!)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <footer class="footer">
       <div class="footer__container">
         <a class="footer__link" href="home.html">Home</a>

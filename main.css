@@ -21,6 +21,7 @@ input {
 }
 
 html {
+  font-family: "Montserrat", sans-serif;
   height: 100%;
 }
 
@@ -31,17 +32,20 @@ body {
 }
 
 header {
-  font-family: "Montserrat", sans-serif;
 }
 
 .app {
   flex: 1;
   display: flex;
-  font-family: "Montserrat", sans-serif;
 }
 
 .app__container {
   flex: 1;
+}
+
+.app__logo-container {
+  position: absolute;
+  right: 0;
 }
 
 .page__title {
@@ -87,7 +91,6 @@ header {
 
 .footer {
   background-color: rgb(45, 45, 45);
-  font-family: "Montserrat", sans-serif;
   min-height: 70px;
 }
 
@@ -119,20 +122,17 @@ header {
 
 h1 {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
   font-size: 3rem;
 }
 
 h2 {
   text-align: center;
   font-size: 1.75rem;
-  font-family: "Montserrat", sans-serif;
 }
 
 h3 {
   text-align: center;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
 }
 
 .welcome__message {
@@ -188,7 +188,6 @@ form textarea {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
 }
 
 .submit:hover,
@@ -202,7 +201,20 @@ input {
   padding: 5px;
 }
 
-.framed-text {
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.welcome__title {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.welcome__text {
   border: 2px solid black;
   padding: 20px;
   width: 300px;
@@ -211,9 +223,23 @@ input {
   margin: 0 auto;
 }
 
+.announcment__container {
+  background-color: rgb(19, 19, 174);
+  color: #fff;
+  padding: 40px;
+}
+
+.announcement__title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
 .announcement__message {
-  margin-left: 240px;
-  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.announcement__list-item {
+  margin-bottom: 10px;
 }
 
 .signup__link {
@@ -223,7 +249,6 @@ input {
 .service {
   border: 0.3vw black solid;
   background-color: #f9f9f9;
-  font-family: RobotoLight, Arial, sans-serif;
 }
 
 #services-list-div {
@@ -231,14 +256,13 @@ input {
   margin: 0 25vw;
 }
 
-.bigred {
-  font-size: 10pt;
-  font-family: Ariel;
+.announcement__flag {
+  font-size: 10px;
   color: red;
 }
+
 .logo {
-  float: right;
-  margin-right: 100px; /* To add space between text and image */
+  margin-right: 100px;
 }
 
 .login {
