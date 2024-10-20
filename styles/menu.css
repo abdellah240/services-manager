@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu__link {
+  display: flex;
+  gap: 10px;
+}
+
+.menu__link:hover {
+  color: rgb(23, 23, 192);
+}
