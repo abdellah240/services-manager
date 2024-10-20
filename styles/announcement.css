@@ -1,0 +1,24 @@
+.announcement__container {
+  background-color: rgb(19, 19, 174);
+  color: #fff;
+  padding: 40px;
+}
+
+.announcement__title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.announcement__message {
+  margin-bottom: 20px;
+}
+
+.announcement__list-item {
+  margin-bottom: 10px;
+  list-style-position: inside;
+}
+
+.announcement__flag {
+  font-size: 10px;
+  color: red;
+}

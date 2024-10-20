@@ -1,50 +1,131 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Services Manager - Home</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src='administrator.js'></script>
-</head>
-<body>   
-  <header>
-    <nav> 
-      <ul>
-        <li><a href=".">Home</a></li> 
-        <li><a href="services.html">Services</a></li> 
-        <li><a href=".">Bills</a></li> 
-        <li><a href="index.html">Sign In</a></li>
-      </ul>
-    </nav>
-    <br>
-    <h1>Services Manager</h1><br>
-  </header>
-  <main>
-    <br> 
-    <div id = "content">
-      <h3><center> Welcome to Service Manager </center></h3>
-    </div><center>
-    <div class="framed-text">
-      brief description
-  </div></center>
-<br>
-  <div id = announcement >
-    <h2> Announcement!</h2>
-  </div>
-    
-  </main>
-
-
-  <footer>
-    <h3>Quick Links</h3>
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="services.html">Services</a>
-    <a href="#">Contact</a>
-  </footer>
-  
-  
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Services Manager - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/nav-element.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/footer.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/welcome.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/announcement.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/app.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/header.css"
+    />
+    <script src="scripts/main.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <div class="header__logo-item">Services Manager</div>
+      </div>
+      <nav class="header__nav">
+        <ul class="nav-element">
+          <div class="nav-element__section">
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="home.html">Home</a>
+            </li>
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="#" onclick="checksign1()"
+                >Services</a
+              >
+            </li>
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="#" onclick="checksign2()">
+                Bills
+              </a>
+            </li>
+          </div>
+          <div class="nav-element__section">
+            <li class="nav-element__item" id="authLink">
+              <a class="nav-element__link" href="index.html">Sign In</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <main class="app">
+      <div class="app__container">
+        <div class="app__logo-container">
+          <img
+            src="Images/Gemini_Generated_Image_f3crpuf3crpuf3cr.jpeg"
+            alt="logo"
+            class="app__logo"
+          />
+        </div>
+        <div class="welcome">
+          <div class="welcome__title">Welcome to Service Manager</div>
+          <div class="welcome__text">
+            Requesting a service has never has never been easier, create an
+            account and be served in no time!
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="announcement">
+      <div class="announcement__container">
+        <h2 class="announcement__title">Announcement!</h2>
+        <div class="announcement__section">
+          <h4 class="announcement__message">
+            The following services are now available:
+          </h4>
+          <ul class="announcement__list">
+            <li class="announcement__list-item">
+              Regular interior cleaning
+              <span class="announcement__flag"> (new!)</span>
+            </li>
+            <li class="announcement__list-item">
+              Yard trimming<span class="announcement__flag"> (new!)</span>
+            </li>
+            <li class="announcement__list-item">
+              Car washing<span class="announcement__flag"> (new!)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer__container">
+        <a class="footer__link" href="home.html">Home</a>
+        <a class="footer__link" href="#">About Us</a>
+        <a class="footer__link" href="#" onclick="checksign1()">Services</a>
+        <a class="footer__link" href="#">Contact</a>
+      </div>
+    </footer>
+  </body>
 </html>

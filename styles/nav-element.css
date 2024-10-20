@@ -1,0 +1,26 @@
+.nav-element {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-element__section {
+  display: flex;
+}
+
+.nav-element__item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-element__link {
+  text-decoration: none;
+  color: white;
+  padding: 20px;
+  display: block;
+}
+
+.nav-element__item:hover {
+  background-color: rgb(23, 23, 192);
+}

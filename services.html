@@ -1,48 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Services Manager - Services(Admin)</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/nav-element.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/form-item.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/app.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/services.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/button.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/header.css"
+    />
+  </head>
 
-</head>
-
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href=".">Bills</a></li>
-                <li><a href=".">Sign In</a></li>
-            </ul>
-        </nav>
-        <h1>Services Manager</h1><br>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <div class="header__logo-item">Services Manager</div>
+      </div>
+      <nav class="header__nav">
+        <ul class="nav-element">
+          <div class="nav-element__section">
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="home.html">Home</a>
+            </li>
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="#" onclick="checksign1()"
+                >Services</a
+              >
+            </li>
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="#" onclick="checksign2()">
+                Bills
+              </a>
+            </li>
+          </div>
+          <div class="nav-element__section">
+            <li class="nav-element__item" id="authLink">
+              <a class="nav-element__link" href="index.html">Sign In</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
     </header>
 
-    <main>
-        <br>
-        <div id="add-service-div">
-            <h3>Add New Service</h3><br>
-            <label>Title</label>
-            <input type="text" id="title" required></input>
-            <label>Description</label>
-            <input type="text" id="description" required></input>
-            <label>Price</label>
-            <input type="text" id="price" required></input><br>
-            <button type="submit" id="confirm-service-button">Confirm</button>
+    <main class="app">
+      <div class="app__container">
+        <div class="services" id="add-service-div">
+          <h3 class="services__title">Add New Service</h3>
+          <form action="" class="services__form">
+            <div class="services__form-item">
+              <div class="form-item">
+                <label class="form-item__label"> Title </label>
+                <input type="text" id="title" required />
+              </div>
+            </div>
+            <div class="services__form-item">
+              <div class="form-item">
+                <label class="form-item__label">Description</label>
+                <input type="text" id="description" required />
+              </div>
+            </div>
+            <div class="services__form-item">
+              <div class="form-item">
+                <label class="form-item__label">Price</label>
+                <input type="text" id="price" required />
+              </div>
+            </div>
+            <div class="services__button">
+              <button type="submit" id="confirm-service-button" class="button">
+                Confirm
+              </button>
+            </div>
+          </form>
         </div>
 
-        <h2 style="margin:2vw 25vw">Services list</h2>
-        <div id="services-list-div"></div>
+        <h2 class="services__title">Services list</h2>
+        <div class="services__service-container" id="services-list-div"></div>
 
-
-        <script src='scripts/services.js'></script>
+        <script src="scripts/services.js"></script>
+        <script src="scripts/main.js"></script>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>
