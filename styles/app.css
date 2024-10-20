@@ -5,17 +5,5 @@
 
 .app__container {
   flex: 1;
-}
-
-.app__logo-container {
-  position: absolute;
-  right: 70px;
-}
-
-.app__logo {
-  width: 150px;
-}
-
-.app__container {
-  padding: 60px;
+  padding: 60px 40px;
 }

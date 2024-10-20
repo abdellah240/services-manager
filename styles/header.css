@@ -2,7 +2,9 @@
   background-color: rgb(12, 12, 143);
   display: flex;
   gap: 20px;
-  height: 90px
+  height: 90px;
+  flex-shrink: 0;
+  
 }
 
 .header__nav {
