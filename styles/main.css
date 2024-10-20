@@ -10,6 +10,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 textarea,
 input {
   outline: 0;
@@ -39,19 +40,4 @@ h4,
 h5 {
   font-weight: inherit;
   font-size: inherit;
-}
-
-h1 {
-  text-align: center;
-  font-size: 3rem;
-}
-
-h2 {
-  text-align: center;
-  font-size: 1.75rem;
-}
-
-h3 {
-  text-align: center;
-  font-size: 1.5rem;
 }
