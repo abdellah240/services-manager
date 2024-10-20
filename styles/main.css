@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/** USING: 
+    > rem for font sizing
+    > vw or % for other elements sizing
+
+*/
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+textarea,
+input {
+  outline: 0;
+  padding: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: inherit;
+  font-size: inherit;
+}

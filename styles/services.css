@@ -1,0 +1,33 @@
+.services__title {
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 26px;
+}
+.services__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  margin-bottom: 40px;
+}
+
+.services__service {
+  box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.services__button-container {
+  display: flex;
+  gap: 20px;
+  width: 400px;
+}
+
+.services__service-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

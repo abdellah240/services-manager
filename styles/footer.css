@@ -1,0 +1,32 @@
+.footer {
+  background-color: rgb(45, 45, 45);
+  min-height: 70px;
+  display: flex;
+}
+
+.footer__container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: white;
+  position: relative;
+}
+
+.footer__link:hover.footer__link:after {
+  display: block;
+}
+
+.footer__link:after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: -7px;
+  display: none;
+}
