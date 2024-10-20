@@ -12,3 +12,13 @@
 .button:hover {
   background-color: rgb(23, 23, 192);
 }
+
+
+.button--secondary {
+  background-color: rgb(160, 160, 160);
+}
+
+
+.button--secondary:hover {
+  background-color: rgb(179, 179, 179);
+}
