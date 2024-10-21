@@ -93,9 +93,10 @@
             <h2 class="login__title">Sign in using an administrator account</h2>
             <form
               class="login__form"
-              action="administrator.js"
+              action="Manage-Business.html"
               method="post"
-              id="myform"
+              id = "myform"
+              onsubmit="checker(event)"
             >
               <div class="login__form-item">
                 <div class="form-item">
@@ -124,7 +125,7 @@
                 </div>
               </div>
               <div class="login__button-container">
-                <button type="submit" class="button" onclick="checker()">
+                <button type="submit" class="button" >
                   Login
                 </button>
               </div>

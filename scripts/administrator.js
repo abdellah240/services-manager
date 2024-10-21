@@ -2,8 +2,8 @@ let ID = "paul@hoomail.com";
 let pass = "soen287";
 
 
-function checker(){
-
+function checker(event){
+  event.preventDefault();
   var inputId = document.getElementById("Email-administrator").value;
   var inputPass = document.getElementById("Password-administrator").value;
   
