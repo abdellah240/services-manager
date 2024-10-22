@@ -1,0 +1,28 @@
+[
+{
+    "id": 1,
+    "name": "Home Painting",
+    "price": 200
+},
+{
+    "id": 2,
+    "name": "Car Wash",
+    "price": 40
+},
+{
+    "id": 3,
+    "name": "Tire Change",
+    "price": 200
+},
+{
+    "id": 4,
+    "name": "Personal Investing Advising",
+    "price": 150
+},
+{
+    "id": 5,
+    "name": "Website development",
+    "price": 200
+}
+
+]
