@@ -1,0 +1,64 @@
+.cartTab{
+    width: 400px;
+    background-color:aliceblue;
+    color: rgb(7, 7, 7);
+    position: relative;
+    top: 0;
+    inset: 0 0 0 auto;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+  }
+
+  .cartTab h1{
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .btn {
+    display: grid;
+    grid-template-columns: repeat(2.1fr);
+  }
+  
+  .checkOut{
+    background-color: rgb(231, 231, 108);
+   font-family: Poppins;
+   font-weight: 500;
+   cursor: pointer;
+  }
+
+  .cartTab .service-item{
+    display: grid;
+    grid-template-columns: 200px 300px 400px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+
+  }
+    
+  .service-quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(208, 208, 208);
+    color: black;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .service-quantity span:nth-child(2){
+    background-color: transparent;
+    color: black;
+  }
+
+  .service-item:nth-child(even){
+    background-color: azure;
+  }
+
+  .listCart{
+    overflow: auto;
+  }
+
+  .listCart::-webkit-scrollbar{
+    width: 0;
+  }

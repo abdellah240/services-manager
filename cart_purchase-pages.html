@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Services Manager - Home</title>
+    <title>Services Manager - cart_purchase-pages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -47,6 +47,12 @@
       media="screen"
       href="styles/header.css"
     />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="styles/cart.css"
+  />
     <script src="scripts/main.js"></script>
   </head>
   <body>
@@ -70,6 +76,13 @@
                 Bills
               </a>
             </li>
+            
+            <li class="nav-element__item">
+              <a class="nav-element__link" href="#" onclick="">
+                Cart 
+              </a>
+            </li>
+
           </div>
           <div class="nav-element__section">
             <li class="nav-element__item" id="authLink">
@@ -80,29 +93,33 @@
       </nav>
     </header>
   <body>
-    <div class="container">
-      <carthead>
-        <h1>Cart</h1>
-        <div class="Shopping"></div>
-        <ion-icon name="cart-outline"></ion-icon>
-        <span class="quantity">0</span>
-      </carthead>
-    </div>
+<div class="cartTab">
+  <h1>Shopping Cart</h1>
+  <div class="listcart">
+    <div class="service-item">
+      <div class="service-name">
+        SERVICE NAME
+      </div>
 
-    <div class="listProduct">
-      <div class="item"></div>
-    </div>
+      <div class="service-totalPrice">
+        $200
+      </div>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-  </body>
-</html>
+      <div class="service-quantity">
+        <span class="minus"><</span>
+        <span>1</span>
+        <span class="plus">></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btn">
+<button class="checkOut">Checkout</button>
+
+</div>
+
+</html> 
 
 <body>
 
