@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Services Manager - Services(Admin)</title>
+    <title>Service management - Services(Admin)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="scripts/administrator.js"></script>
     <link
@@ -79,45 +79,46 @@
           </li>
         </ul>
       </nav>
-    </header>
-
-    <main class="app">
-      <div class="app__container">
-        <div class="services" id="add-service-div">
-          <h3 class="services__title">Add New Service</h3>
-          <form action="" class="services__form">
-            <div class="services__form-item">
-              <div class="form-item">
-                <label class="form-item__label"> Title </label>
-                <input type="text" id="title" required />
-              </div>
-            </div>
-            <div class="services__form-item">
-              <div class="form-item">
-                <label class="form-item__label">Description</label>
-                <input type="text" id="description" required />
-              </div>
-            </div>
-            <div class="services__form-item">
-              <div class="form-item">
-                <label class="form-item__label">Price</label>
-                <input type="text" id="price" required />
-              </div>
-            </div>
-            <div class="services__button">
-              <button type="submit" id="confirm-service-button" class="button">
-                Confirm
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <h2 class="services__title">Services list</h2>
-        <div class="services__service-container" id="services-list-div"></div>
-
-        <script src="scripts/services.js"></script>
-        <script src="scripts/main.js"></script>
-      </div>
-    </main>
   </body>
+
+  <main class="app">
+    <div class="app__container">
+      <div class="services" id="add-service-div">
+        <h3 class="services__title">Add New Service</h3>
+        <form action="" class="services__form">
+          <div class="services__form-item">
+            <div class="form-item">
+              <label class="form-item__label"> Title </label>
+              <input type="text" id="title" required />
+            </div>
+          </div>
+          <div class="services__form-item">
+            <div class="form-item">
+              <label class="form-item__label">Description</label>
+              <input type="text" id="description" required />
+            </div>
+          </div>
+          <div class="services__form-item">
+            <div class="form-item">
+              <label class="form-item__label">Price</label>
+              <input type="text" id="price" required />
+            </div>
+          </div>
+          <div class="services__button">
+            <button type="submit" id="confirm-service-button" class="button">
+              Confirm
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <h2 class="services__title">Services list</h2>
+      <div class="services__service-container" id="services-list-div"></div>
+
+      <script src="scripts/services.js"></script>
+      <script src="scripts/main.js"></script>
+    </div>
+  </main>
+</body>
 </html>
+ 
