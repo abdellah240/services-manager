@@ -6,6 +6,12 @@
     <title>Customer management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="Admin.css"
+    />
     <script src="scripts/administrator.js"></script>
   </head>
   <body>
@@ -28,5 +34,19 @@
           </li>
         </ul>
       </nav>
+      <div class = "menu">
+        <a  id = "showContent" class="menu-link">
+            <span>Track Bills </span>
+        </a>
+          <a href="#" class="menu-link">
+            <span>Customer service</span>
+          </a>
+          <a href="#" class="menu-link">
+            <span>Confirm services </span>
+          </a>
+          <div id="hiddenContent">
+            <p>This is the hidden content that will be displayed when the button is clicked.</p>
+          </div>
+    </div>
   </body>
   </html>

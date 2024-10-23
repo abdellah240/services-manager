@@ -1,0 +1,101 @@
+.menu {
+    margin: 0 20px;
+  }
+  
+  .menu-link {
+    display: block;
+    text-decoration: none;
+    color: #768499;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+  
+  .menu-icon {
+    margin-right: 10px;
+  }
+  
+  .menu-link:first-child {
+    color: #fff;
+    background-color: gray;
+  }
+  
+  .menu-link:hover {
+    background-color: rgb(235, 221, 204);
+    color: black;
+  }
+  
+  .menu-link:first-child:hover {
+    background-color: gray;
+    color: #fff;
+  }
+
+  #hiddenContent {
+    display: none; 
+  }
+  #hidden {
+    display: none; 
+  }
+  #hidden2 {
+    display: none; 
+  }
+
+  select{
+    width: 150px; /* Adjust the width */
+    height: 40px; /* Adjust the height */
+    font-size: 16px; /* Text size */
+    padding: 5px;
+    background-color: #f0f0f0; /* Background color of the dropdown */
+    border: 2px solid #333; /* Border style */
+    border-radius: 8px; /* Rounded corners */
+    color: #333; /* Text color */
+    outline: none;
+    cursor: pointer;
+  }
+
+  option{
+    background-color: #ffffff; /* Background color of options */
+    color: #000000; /* Text color of options */
+    font-size: 16px; /* Option text size */
+    padding: 5px;
+  }
+
+  select:hover {
+    background-color: #e0e0e0;
+  }
+  option:checked {
+    background-color: beige; /* Background when selected */
+    color: #000000; /* Text color when selected */
+  }
+
+  .colored-square {
+    width: 100px;  
+    height: 100px; 
+    background-color: blue;
+  }
+
+  textarea {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    min-height: 80px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: vertical;
+  }
+
+  textarea:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+
+  textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
