@@ -1,88 +1,80 @@
-// Declare Array of services
-const servicesArray = [];
+const cart = [];
 
-let isEditing = false;
-let indexOfEdit = null;
+async function loadServices()
+{
+  //try{
+  
+    const response = await fetch('services.json');
+    const servicesArray = await response.json();
+    
+    displayServices(servicesArray); // servicesArray: Defined in manage-services
+  
+    //} catch (error)
+  
+ }
 
-// On click, create or edit service object
-document
-  .getElementById("confirm-service-button")
-  .addEventListener("click", () => {
-    const newService = {
-      title: document.getElementById("title").value,
-      description: document.getElementById("description").value,
-      price: document.getElementById("price").value,
-    };
-
-    if (isEditing === false) servicesArray.push(newService);
-
-    if (isEditing === true) {
-      servicesArray[indexOfEdit] = newService;
-
-      // Reset state and index after editing
-      isEditing = false;
-      indexOfEdit = null;
-    }
-
-    displayServices();
-  });
-
-function displayServices() {
+function displayServices(servicesArray)
+{
   const servicesListDiv = document.getElementById("services-list-div");
-  servicesListDiv.innerHTML = "";
 
-  servicesArray.forEach((service, index) => {
+  servicesArray.forEach((service, index) =>
+  {
     const serviceDiv = document.createElement("div");
     const buttonContainerDiv = document.createElement("div");
+    const addToCartButton = document.createElement("button");
 
     // Set text and buttons for each service
-    const deleteServiceButton = document.createElement("button");
-    const editServiceButton = document.createElement("button");
-    serviceDiv.appendChild(buttonContainerDiv);
-
     serviceDiv.innerHTML = `Title: ${service.title} <br>
-                                    Description: ${service.description} <br>
-                                    Price: ${service.price}`;
+                            Description: ${service.description} <br>
+                            Price: ${service.price}`;
 
-    deleteServiceButton.innerHTML = "Delete";
-    editServiceButton.innerHTML = "Edit";
+    addToCartButton.innerHTML = "Add to Cart";
 
     // Set classnames
     serviceDiv.className = "services__service";
-    deleteServiceButton.className = "button";
-    editServiceButton.className = "button";
     buttonContainerDiv.className = "services__button-container";
+    addToCartButton.className = "button";
 
-    // When clicked, delete or edit service
-    deleteServiceButton.addEventListener("click", () => deleteService(index));
-    editServiceButton.addEventListener("click", () => editService(index));
+    // When clicked, add to cart
+    addToCartButton.addEventListener("click", () => addToCart(service));
 
+    buttonContainerDiv.appendChild(addToCartButton);
     serviceDiv.appendChild(buttonContainerDiv);
-    buttonContainerDiv.appendChild(deleteServiceButton);
-    buttonContainerDiv.appendChild(editServiceButton);
+    servicesListDiv.appendChild(serviceDiv);
+
     // Add each service to the service list
     servicesListDiv.appendChild(serviceDiv);
   });
-
-  // Clear textboxes
-  document.getElementById("title").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("price").value = "";
 }
 
-function deleteService(index) {
-  servicesArray.splice(index, 1);
-  displayServices();
+function addToCart(service)
+{
+  let serviceInCart = false;
+
+  // Increment service quantity if already in cart
+  for (let i = 0; i < cart.length; i++)
+  {
+    if (cart[i].id === service.id)
+    {
+      cart[i].quantity += 1;
+      serviceInCart = true;
+      break;
+    }
+  }
+
+  // Add service if not in cart
+  if (serviceInCart === false)
+  {
+    cart.push({
+      id: service.id,
+      title: service.title,
+      price: service.price,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert("Added to cart."); // Temporary, need better styling
 }
 
-function editService(index) {
-  // Set state and store index
-  isEditing = true;
-  indexOfEdit = index;
-
-  // Fill textboxes with service information
-  document.getElementById("title").value = servicesArray[index].title;
-  document.getElementById("description").value =
-    servicesArray[index].description;
-  document.getElementById("price").value = servicesArray[index].price;
-}
+loadServices();
