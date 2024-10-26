@@ -12,6 +12,18 @@
       media="screen"
       href="Admin.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/services.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="services.css"
+    />
     <script src="scripts/administrator.js"></script>
   </head>
   <body>
@@ -35,18 +47,22 @@
         </ul>
       </nav>
       <div class = "menu">
-        <a  id = "showContent" class="menu-link">
+        <a href="#" class="menu-link">
             <span>Track Bills </span>
         </a>
-          <a href="#" class="menu-link">
-            <span>Customer service</span>
+          <a href="#" id ="show" onclick="confirm1()" class="menu-link">
+            <span>Confirm services</span>
           </a>
-          <a href="#" class="menu-link">
-            <span>Confirm services </span>
+          <a href="Customer-service.html" class="menu-link">
+            <span> Customer service </span>
           </a>
-          <div id="hiddenContent">
-            <p>This is the hidden content that will be displayed when the button is clicked.</p>
-          </div>
+
+            <main class="app">
+                <div id = "hide" class="app__container">
+                  <div class="services__service-container" id="services-list-div"></div>
+                </div>
+              </main>
+          
     </div>
   </body>
   </html>

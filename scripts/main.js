@@ -68,3 +68,16 @@ function logout() {
 window.onload = function() {
     updateAuthLink();
 }
+
+function validateForm() {
+    const password = document.getElementById("Password-customer").value;
+    const confirmPassword = document.getElementById("ConfirmPassword-customer").value;
+    
+    if (password !== confirmPassword) {
+      alert("Passwords do not match. Please try again.");
+      return false; 
+    }
+    localStorage.setItem("isSigned", "true");
+    window.location.href = "home.html";
+    return true; 
+  }

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "Home Painting",
+        "client": "client1",
+        "lefttopay": 200
+    },
+    {
+        "id": 2,
+        "title": "Car Wash",
+        "client": "client2",
+        "lefttopay": 0
+    },
+    {
+        "id": 3,
+        "title": "Tire change",
+        "client": "client3",
+        "lefttopay": 100
+    }
+]

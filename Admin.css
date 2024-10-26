@@ -99,3 +99,7 @@
     color: #aaa;
     font-style: italic;
   }
+
+#hide{
+    display: none;
+}

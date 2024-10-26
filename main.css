@@ -284,6 +284,17 @@ input {
   box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.2);
 }
 
+.login__container2 {
+    padding: 20px;
+    width: 400px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.2);
+  }
+
 .login__title {
   font-size: 21px;
   margin-bottom: 20px;

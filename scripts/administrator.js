@@ -106,3 +106,68 @@ function saveChanges(){
   });
     }
 
+    function confirm1(){
+      document.getElementById("show").addEventListener("click", function() {
+        const content = document.getElementById("hide");
+        if (content.style.display === "none") {
+          content.style.display = "block"; // Show the content
+          
+    
+        } else {
+         
+          content.style.display = "none"; // Hide the content if clicked again
+        }
+      });
+    }
+                    async function loadServices()
+                        {
+                          //try{
+                          
+                            const response = await fetch('service-to-confirm.json');
+                            const servicesArray = await response.json();
+                            
+                            displayServices(servicesArray); // servicesArray: Defined in manage-services
+                          
+                            //} catch (error)
+                          
+                         }
+                        
+                        function displayServices(servicesArray)
+                        {
+                          const servicesListDiv = document.getElementById("services-list-div");
+                        
+                          servicesArray.forEach((service, index) =>
+                          {
+                            const serviceDiv = document.createElement("div");
+                            const buttonContainerDiv = document.createElement("div");
+                            const confirm = document.createElement("button");
+                        
+                            serviceDiv.innerHTML = `Title: ${service.title} <br>
+                                                    client: ${service.client} <br>
+                                                    left to pay: ${service.lefttopay}`;
+                        
+                            confirm.innerHTML = "confirm service";
+                        
+                            serviceDiv.className = "services__service";
+                            buttonContainerDiv.className = "services__button-container";
+                            confirm.className = "button";
+                            confirm.addEventListener("click", () => confirmed(confirm,service));
+                        
+                            buttonContainerDiv.appendChild(confirm);
+                            serviceDiv.appendChild(buttonContainerDiv);
+                            servicesListDiv.appendChild(serviceDiv);
+                            
+                            servicesListDiv.appendChild(serviceDiv);
+                          });
+                          
+                        }
+                        function confirmed(button,service){
+                             if(button.textContent == "confirm service" ){
+                                button.textContent = "cancel X";
+                             }
+                             else{
+                                button.textContent = "confirm service";
+                             }
+                        }
+                        loadServices();
+                       
