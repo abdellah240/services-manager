@@ -30,7 +30,7 @@ function checksign1(){
 function checksign2(){
     var isSigned = localStorage.getItem("isSigned") === "true"   
     if(isSigned){
-        window.location.href = "bills.html";}
+        window.location.href = "cart_purchase-pages.html";}
     else {
     alert("Sign in first");
     window.location.href = "index.html";}
@@ -42,7 +42,7 @@ function updateAuthLink() {
     var linkElement = authLink.getElementsByTagName('a')[0]; 
 
     if (isSigned === "true") {
-        linkElement.textContent = "your Account";
+        linkElement.textContent = "Your Account";
         linkElement.href = "customer-mainpage.html"; 
     } else {
         linkElement.textContent = "Sign In";

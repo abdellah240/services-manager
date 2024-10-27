@@ -34,7 +34,7 @@ function logout() {
 }
 
 function logoclicked(){
-  document.getElementById("showButton").addEventListener("click", function() {
+  document.getElementById("showButton")
     const content = document.getElementById("hiddenContent");
     const content2 = document.getElementById("hidden");
     const content3 = document.getElementById("hidden2");
@@ -47,10 +47,10 @@ function logoclicked(){
       content3.style.display = "none";
       content.style.display = "none"; // Hide the content if clicked again
     }
-  });
+  
 }
 function Appclicked(){
-  document.getElementById("showButton1").addEventListener("click", function() {
+  document.getElementById("showButton1")
     const content = document.getElementById("hidden");
     const content2 = document.getElementById("hiddenContent");
     const content3 = document.getElementById("hidden2");
@@ -63,10 +63,10 @@ function Appclicked(){
       content3.style.display = "none";
       content.style.display = "none"; // Hide the content if clicked again
     }
-  });
+  
 }
 function Homeclicked(){
-  document.getElementById("showButton2").addEventListener("click", function() {
+  
     const content = document.getElementById("hidden2");
     const content2 = document.getElementById("hiddenContent");
     const content3 = document.getElementById("hidden");
@@ -80,7 +80,7 @@ function Homeclicked(){
       content3.style.display = "none";
       content.style.display = "none"; // Hide the content if clicked again
     }
-  });
+  
 }
 
 function saveChanges(){
@@ -164,8 +164,10 @@ function saveChanges(){
                         function confirmed(button,service){
                              if(button.textContent == "confirm service" ){
                                 button.textContent = "cancel X";
+                                
                              }
                              else{
+                              
                                 button.textContent = "confirm service";
                              }
                         }
