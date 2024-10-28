@@ -3,15 +3,15 @@ const cart = [];
 async function loadServices()
 {
   //try{
-  
-    const response = await fetch('services.json');
-    const servicesArray = await response.json();
-    
-    displayServices(servicesArray); // servicesArray: Defined in manage-services
-  
-    //} catch (error)
-  
- }
+
+  const response = await fetch('../data/services.json');
+  const servicesArray = await response.json();
+
+  displayServices(servicesArray); // servicesArray: Defined in manage-services.js
+
+  //} catch (error)
+
+}
 
 function displayServices(servicesArray)
 {
