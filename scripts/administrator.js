@@ -128,8 +128,6 @@ function saveChanges()
 
 function confirm1()
 {
-  document.getElementById("show").addEventListener("click", function ()
-  {
     const content = document.getElementById("hide");
     if (content.style.display === "none")
     {
@@ -141,7 +139,6 @@ function confirm1()
 
       content.style.display = "none"; // Hide the content if clicked again
     }
-  });
 }
 async function loadServices()
 {
