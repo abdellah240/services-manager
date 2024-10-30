@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Services Manager - Home</title>
+  <title>Services Manager - Contact Us</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/nav-element.css" />
@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/announcement.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/app.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/header.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="../styles/contact.css" />
   <script src="../scripts/main.js"></script>
 </head>
 
@@ -44,45 +45,47 @@
       </ul>
     </nav>
   </header>
- <center> <h1>Contact Service Manager</h1></center>
-  <div id = "safety">
+  
+ <Section class = "contact">
+  <div class = "container">
+    <h2>Contact Us</h2>
+    <div class = "contact-wrapper">
 
-    <div>
-        <h2>General inquiries <span style="color: #a00000;">514-000-0001</span></h2>
-        <p>Normal business hours: <strong>Monday to Friday, 9 a.m. – 5 p.m.</strong></p>
-    </div>
 
-    <div>
-        <h3>Safety and Prevention Services</h3>
-        <p><span style="color: #a00000;">514-000-0002</span> or <span style="color: #a00000;">514-000-0003</span></p>
+      <div class = "contact-form">
+        <h3>Send us a message</h3>
+        <form>
+          <div class="form-group">
+            <input type="text" name = "name" placeholder = "Name"></input>
+          </div>
+          <div class="form-group">
+            <input type="email" name = "email" placeholder = "Email"></input>
+          </div>
+          <div class="form-group">
+            <textarea name = "message" placeholder = "message"> </textarea>
+          </div>
+          <button type ="submit"> Send Message </button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p><ion-icon name="call-outline"></ion-icon> +1 (514)-123-4567</p>
+        <p><ion-icon name="mail-outline"></ion-icon> info@servicesmanager.com</p>
+        <p><ion-icon name="map-outline"></ion-icon> 454 name Blvd, Montreal, QC GGG GGG</p>
+        <h3><br>Opening Hours</h3>
+        <p><ion-icon name="time-outline"></ion-icon> Monday to Friday: 9 a.m. – 5 p.m.</p>
+
+        </div>
+
+      
+        
+        
+
+    
+
     </div>
-  </div>
-  <div id = "ITsupport">
-    <div>
-        <h2>Technical support <span style="color: #a00000;">514-000-0003</span></h2>
-        <p>Normal business hours: <strong>Monday to Friday, 9 a.m. – 5 p.m.</strong></p>
-    </div>
-  </div>
-  <div id = "Concerns">
-    <div>
-        <h2>Complaints and Concerns</h2>
-        <p><span style="color: #a00000;">514-000-0004</span> or <span style="color: #a00000;">514-000-0005</span></p>
-        <p>Normal business hours: <strong>Monday to Friday, 9 a.m. – 5 p.m.</strong></p>
-    </div>
-  </div>
-  <div id = "Address">
-    <div>
-        <h2>Our Addresses</h2>
-        <strong><h3 style="color: #a00000;">*Business* HQ</h3></strong>
-        <p>454 name Blvd<br>
-           Montreal, QC GGG GGG<br>
-           CANADA</p>
-       <strong><h3 style="color: #a00000;">Service Manager HQ</h3></strong> 
-        <p>460 name Blvd<br>
-            Montreal, QC GGG GGG<br>
-            CANADA</p>
-    </div>
-  </div>
+  </body>
+
   <footer class="footer">
     <div class="footer__container">
       <a class="footer__link" href="../pages/index.html">Home</a>
@@ -91,6 +94,8 @@
       <a class="footer__link" href="../pages/Contact.html">Contact</a>
     </div>
   </footer>
-</body>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </html>
