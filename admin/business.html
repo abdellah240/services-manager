@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/other.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/admin.css" />
   <script src="../scripts/administrator.js"></script>
+  <script src="../scripts/Server.js"></script>
 </head>
 
 <body>
@@ -40,10 +41,14 @@
     </a>
   </div>
   <div id="hiddenContent">
-    <input type="file" id="input" accept="image/jpeg, image/png">
     <h2>current logo :</h2>
-    <img src="images/Gemini_Generated_Image_f3crpuf3crpuf3cr.jpeg" alt="logo" id="logo" height="250" width="250" />
-    <button id="saveButton" onclick="saveChanges()">Save Changes</button>
+    <img src="../Upload/logo/current.jpeg" alt="logo" id="logo" height="250" width="250" />
+
+    <form id="uploadForm" action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+      <label for="input">Upload New Logo:</label>
+      <input type="file" id="input" name="logo" accept="image/jpeg, image/png" />
+      <button id="saveButton" type="submit">Save Changes</button>
+  </form>
   </div>
   <div id="hidden">
     <p>What color do you want for the website?</p><br>
