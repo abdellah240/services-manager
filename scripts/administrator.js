@@ -137,14 +137,17 @@ function confirm1()
 }
 async function loadServices()
 {
-  //try{
 
+  try{
+  
   const response = await fetch('../data/services-to-confirm.json');
   const servicesArray = await response.json();
 
   displayServices(servicesArray); // servicesArray: Defined in manage-services.js
-
-  //} catch (error)
+}
+   catch (error){
+    alert("Error loading services. Please try again.");
+  }
 
 }
 
@@ -190,4 +193,3 @@ function confirmed(button, service)
     button.textContent = "confirm service";
   }
 }
-loadServices();

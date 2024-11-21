@@ -11,7 +11,7 @@ app.use('/styles', express.static(path.join(__dirname, 'styles')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/Upload/logo', express.static(path.join(__dirname, 'Upload/logo')));
-
+app.use('/data', express.static(path.join(__dirname, 'data')));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
