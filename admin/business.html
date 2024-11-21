@@ -16,6 +16,9 @@
   <nav>
     <ul class="nav-element">
       <li class="nav-element__item">
+        <a class="nav-element__link" href="../pages/index.html">Preview Client side</a>
+      </li>
+      <li class="nav-element__item">
         <a class="nav-element__link" href="business.html">Business management</a>
       </li>
       <li class="nav-element__item">
@@ -77,19 +80,20 @@
   </script>
 
   <div id="hidden2">
+    <form id = "Info-form" action = "http://localhost:3000/save" method="post" onsubmit="save(event)">
     <label>
       <h3> In this section you will be able to change the description of the business that will be visible to the
         client:</h3> <br>
-      <textarea name="aspirations" rows="3" cols="40">
+      <textarea id= "description"name="aspirations" rows="3" cols="40" required>
        Provide a new description for client home page (Be brief and concise)
         </textarea>
     </label>
     <label>
       <h3> In this section you will be able to change the name of your business:</h3> <br>
-      <input type="text" name="Title" rows="3" cols="40">
+      <input type="text" name="Title" id="title" rows="3" cols="40" required>
       </input>
-    </label>
-    <button id="saveButton">Save Changes</button>
+      <button id="saveButton" type = "submit">Save Changes</button>
+    </label></form>
   </div>
 </body>
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
@@ -78,15 +79,57 @@ app.post('/upload', upload.single('logo'), (req, res) => {
                 return res.status(500).send('Failed to save the logo.');
             }
 
-            res.send(`
-                <p>Logo uploaded successfully!</p>
-                <p><a href="../admin/business.html">Go back to the home page</a></p>
-            `);
+            res.redirect('../admin/business.html');
         });
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred during the file upload.');
     }
+});
+
+app.use(bodyParser.json()); // Parse JSON data from the client
+
+// Serve static files (like HTML)
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.post('/save', (req, res) => {
+    const { textInput, textareaInput } = req.body;
+
+    const dirPath = path.join(__dirname, 'Upload/Webinfo');
+    if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath, { recursive: true });
+    }
+
+    const filePath = path.join(dirPath, 'Title.txt');
+    const filePath2 = path.join(dirPath, 'Webinfo.txt');
+
+    Promise.all([
+        fs.promises.writeFile(filePath, textInput),
+        fs.promises.writeFile(filePath2, textareaInput)
+    ])
+        .then(() => res.send('Data saved successfully!'))
+        .catch((err) => {
+            console.error('Error writing to files:', err);
+            res.status(500).send('Failed to save data.');
+        });
+});
+
+app.get('/load', (req, res) => {
+    const titlePath = path.join(__dirname, 'Upload/Webinfo/Title.txt');
+    const descriptionPath = path.join(__dirname, 'Upload/Webinfo/Webinfo.txt');
+
+    // Read both files and send the data as JSON
+    Promise.all([
+        fs.promises.readFile(titlePath, 'utf-8'),
+        fs.promises.readFile(descriptionPath, 'utf-8'),
+    ])
+        .then(([title, description]) => {
+            res.json({ title: title.trim(), description: description.trim() });
+        })
+        .catch((err) => {
+            console.error('Error reading files:', err);
+            res.status(500).send('Failed to load data.');
+        });
 });
 
 // Start the server

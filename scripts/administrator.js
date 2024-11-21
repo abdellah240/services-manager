@@ -98,32 +98,27 @@ function Homeclicked()
 
 }
 
-function saveChanges()
-{
-  const logo = document.getElementById("logo");
-  const saveButton = document.getElementById("saveButton");
-  const input = document.getElementById("input");
-  saveButton.addEventListener('click', function ()
-  {
-    const selectedFile = input.files[0];
+async function save(event){
+  document.getElementById('Info-form')
+    event.preventDefault(); // Prevent default form submission behavior
 
-    if (selectedFile)
-    {
-      const reader = new FileReader();
+    // Collect input values
+    const textInput = document.getElementById('title').value;
+    const textareaInput = document.getElementById('description').value;
 
-      reader.onload = function (e)
-      {
-        logo.src = e.target.result;
-      };
+    // Send data to the server
+    const response = await fetch('/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ textInput, textareaInput }),
+    });
 
-      reader.readAsDataURL(selectedFile);
-    } else
-    {
-      // No file is selected
-      messageDiv.innerHTML = "Please select a file before saving changes.";
-      messageDiv.style.color = "red";
+    if (response.ok) {
+        alert('Data saved successfully!');
+    } else {
+        alert('Failed to save data.');
     }
-  });
+
 }
 
 function confirm1()

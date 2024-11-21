@@ -19,7 +19,7 @@
 <body>
   <header class="header">
     <div class="header__logo">
-      <div class="header__logo-item">Services Manager</div>
+      <div class="header__logo-item" id ="business-title" >Services Manager</div>
     </div>
     <nav class="header__nav">
       <ul class="nav-element">
@@ -28,10 +28,10 @@
             <a class="nav-element__link" href="../pages/index.html">Home</a>
           </li>
           <li class="nav-element__item">
-            <a class="nav-element__link" href="#" onclick="checksign1()">Services</a>
+            <a class="nav-element__link" href="#" id="authLink1" onclick="checksign1()">Services</a>
           </li>
           <li class="nav-element__item">
-            <a class="nav-element__link" href="#" onclick="checksign2()">
+            <a class="nav-element__link" href="#" id="authLink2" onclick="checksign2()">
               Cart
             </a>
           </li>
@@ -48,16 +48,14 @@
     <div class="app__container">
       <div class="welcome">
         <div class="welcome__container">
-          <div class="welcome__title">Welcome to Service Manager</div>
-          <div class="welcome__text">
+          <div class="welcome__title">Welcome to <span id ="business-title1"> Service Manager</span></div>
+          <div class="welcome__text" id ="business-description">
             Requesting a service has never has never been easier.
-          </div>
-          <div class="welcome__text">
             Create an account and be served in no time!
           </div>
         </div>
         <div class="welcome__logo-container">
-          <img src="../images/Gemini_Generated_Image_f3crpuf3crpuf3cr.jpeg" alt="logo" class="welcome__logo" />
+          <img src="../Upload/logo/current.jpeg" alt="logo" class="welcome__logo" />
         </div>
       </div>
     </div>
