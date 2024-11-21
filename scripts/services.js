@@ -2,15 +2,17 @@ const cart = [];
 
 async function loadServices()
 {
-  //try{
+  try
+  {
+    const response = await fetch('../api/services', {method:"GET"});
+    const servicesArray = await response.json();
 
-  const response = await fetch('../data/services.json');
-  const servicesArray = await response.json();
+    displayServices(servicesArray); // servicesArray: Defined in manage-services.js
 
-  displayServices(servicesArray); // servicesArray: Defined in manage-services.js
-
-  //} catch (error)
-
+  } catch (error)
+  {
+    console.log("error");
+  }
 }
 
 function displayServices(servicesArray)
@@ -40,7 +42,6 @@ function displayServices(servicesArray)
 
     buttonContainerDiv.appendChild(addToCartButton);
     serviceDiv.appendChild(buttonContainerDiv);
-    servicesListDiv.appendChild(serviceDiv);
 
     // Add each service to the service list
     servicesListDiv.appendChild(serviceDiv);

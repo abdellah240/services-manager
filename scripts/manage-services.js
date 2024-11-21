@@ -5,34 +5,41 @@ let isEditing = false; // Current State
 let indexOfEdit = null; // Current Edit
 
 
-// Confirm button: On click, create or edit service object
-document.getElementById("confirm-service-button").addEventListener("click", (event) =>
+// Confirm button: On click, create/edit service object
+document.getElementById("confirm-service-button").addEventListener("click", async (event) =>
 {
   event.preventDefault();
-  
+
   const newService = {
     title: document.getElementById("title").value,
     description: document.getElementById("description").value,
-    price: document.getElementById("price").value,
+    price: Number(document.getElementById("price").value),
   };
 
-  if (isEditing === false) servicesArray.push(newService);
+  const response = await fetch("/api/services",
+    {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(newService)
+    }
+  );
 
-  if (isEditing === true)
-  {
-    servicesArray[indexOfEdit] = newService;
-
-    // Reset state and index after editing
-    isEditing = false;
-    indexOfEdit = null;
-  }
-
-  displayServices();
+  if (response.ok)
+    displayServices();
+  else
+    console.log("Error");
 });
 
 // Display services (refresh service list)
-function displayServices()
+async function displayServices()
 {
+  servicesArray.length = 0;
+
+  const response = await fetch("/api/services", { method: "GET" });
+  const services = await response.json();
+
+  servicesArray.push(...services);
+
   const servicesListDiv = document.getElementById("services-list-div");
   servicesListDiv.innerHTML = "";
 
@@ -75,17 +82,29 @@ function displayServices()
   document.getElementById("price").value = "";
 }
 
-function deleteService(index)
+async function deleteService(index)
 {
-  servicesArray.splice(index, 1);
-  displayServices();
+  const response = await fetch("/api/services", { method: "DELETE" });
+  if (response.ok)
+    displayServices();
+  else
+    console.log("Error.");
 }
 
-function editService(index)
+async function editService(index)
 {
-  // Set state and store index
-  isEditing = true;
-  indexOfEdit = index;
+  const response = await fetch("/api/services", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      body: JSON.stringify(servicesArray[index]) // **IMPORTANT** use id not index
+    }
+  });
+
+  if (response.ok)
+    displayServices();
+  else
+    console.log("Error.");
 
   // Fill textboxes with service information
   document.getElementById("title").value = servicesArray[index].title;
