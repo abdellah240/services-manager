@@ -6,6 +6,11 @@
 
 */
 
+:root{
+  --shade1: rgb(7,7,98);
+  --shade2: rgb(12,12,143);
+  --shade3: rgb(23,23,192);
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -52,7 +57,7 @@ header {
   background-color: rgb(57, 64, 80);
   color: white;
   padding: 20px;
-  border: 2px solid rgb(7, 7, 98);
+  border: 2px solid var(--shade1);
 }
 
 .app__container {
@@ -74,9 +79,9 @@ header {
 }
 
 .app__login-type {
-  background-color: rgb(12, 12, 143);
+  background-color: var(--shade2);
   color: white;
-  border: 1px solid rgb(7, 7, 98);
+  border: 1px solid var(--shade1);
   border-radius: 10px;
 }
 
@@ -86,7 +91,7 @@ header {
 }
 
 .app__login-type:hover {
-  background-color: rgb(23, 23, 192);
+  background-color: var(--shade3);
 }
 
 .footer {
@@ -144,7 +149,7 @@ nav {
 }
 
 .nav-element {
-  background-color: rgb(12, 12, 143);
+  background-color: var(--shade2);
   display: flex;
 }
 
@@ -159,7 +164,7 @@ nav {
 }
 
 .nav-element__item:hover {
-  background-color: rgb(23, 23, 192);
+  background-color: var(--shade3);
 }
 
 form label {
@@ -319,7 +324,7 @@ input {
 .button {
   width: 100%;
   padding: 10px;
-  background-color: rgb(12, 12, 143);
+  background-color: var(--shade2);
   color: #fff;
   font-size: 14px;
   border: 0;
@@ -332,7 +337,7 @@ input {
 }
 
 .login__link {
-  color: rgb(12, 12, 143);
+  color: var(--shade2);
   text-decoration: underline;
 }
 

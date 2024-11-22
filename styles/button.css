@@ -1,7 +1,12 @@
+:root{
+  --shade1: rgb(7,7,98);
+  --shade2: rgb(12,12,143);
+  --shade3: rgb(23,23,192);
+}
 .button {
   width: 100%;
   padding: 15px;
-  background-color: rgb(12, 12, 143);
+  background-color: var(--shade2);
   color: #fff;
   font-size: 14px;
   border: 0;
@@ -10,7 +15,7 @@
 }
 
 .button:hover {
-  background-color: rgb(23, 23, 192);
+  background-color: var(--shade3);
 }
 
 
