@@ -59,12 +59,12 @@
     <select id="colorSelect" name="Color" size="1">
       <option>blue</option>
       <option>red</option>
-      <option>black</option>
+      <option>brown</option>
       <option>green</option>
     </select>
     <br><br>
     <div class="colored-square" id="square"></div>
-    <button id="saveButton">Save Changes</button>
+    <button id="saveButton1" onclick="color()">Save Changes</button>
 
   </div>
 
@@ -77,6 +77,8 @@
       const selectedColor = colorSelect.value; // Get selected option value
       square.style.backgroundColor = selectedColor; // Change square color
     });
+
+   
   </script>
 
   <div id="hidden2">

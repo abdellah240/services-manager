@@ -193,3 +193,25 @@ function confirmed(button, service)
     button.textContent = "confirm service";
   }
 }
+
+function color(){
+  const colorSelect = document.getElementById('colorSelect');
+  const selectedColor = colorSelect.value;
+    fetch('/update-css', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ color: selectedColor }),
+    })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload();
+          
+        } else {
+          alert('Error updating CSS files.');
+        }
+      })
+      .catch(() => alert('Server error.'));
+  
+}

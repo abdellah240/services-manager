@@ -1,5 +1,11 @@
+:root{
+  --shade1: rgb(7,7,98);
+  --shade2: rgb(12,12,143);
+  --shade3: rgb(23,23,192);
+}
+
 .header {
-  background-color: rgb(12, 12, 143);
+  background-color: var(--shade2);;
   display: flex;
   gap: 20px;
   height: 90px;

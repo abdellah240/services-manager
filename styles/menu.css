@@ -1,3 +1,9 @@
+:root{
+  --shade1: rgb(7,7,98);
+  --shade2: rgb(12,12,143);
+  --shade3: rgb(23,23,192);
+}
+
 .menu {
   display: flex;
   flex-direction: column;
@@ -10,5 +16,5 @@
 }
 
 .menu__link:hover {
-  color: rgb(23, 23, 192);
+  color: var(--shade3);
 }

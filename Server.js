@@ -20,12 +20,8 @@ app.use(express.json());
 const servicesRouter = require('./routes/services');
 app.use('/api/services', servicesRouter); // Router will be used when this path is specified
 
-
-// Middleware
-app.use(bodyParser.json());
-
-const signUpRouter = require("./routes/account-signup");
-app.use('/api/signup', signUpRouter); // Router will be used when this path is specified
+//const signUpRouter = require("./routes/account-signup");
+//app.use('/api/signup', signUpRouter); // Router will be used when this path is specified
 
 
 // Serve HTML pages from the 'pages' folder
@@ -81,6 +77,7 @@ app.get('/admin/*', (req, res) =>
 const upload = multer({ dest: 'Upload/' });
 
 // Route to handle logo uploads
+//------------------------------------------------------------------------------------------
 app.post('/upload', upload.single('logo'), (req, res) =>
 {
     try
@@ -119,6 +116,7 @@ app.post('/upload', upload.single('logo'), (req, res) =>
         res.status(500).send('An error occurred during the file upload.');
     }
 });
+//---------------------------------------------------------------------------------------------------
 
 app.use(bodyParser.json()); // Parse JSON data from the client
 
@@ -146,7 +144,7 @@ app.post('/save', (req, res) => {
             res.status(500).send('Failed to save data.');
         });
 });
-
+//------------------------------------------------------------------------------------------------------------------------
 app.get('/load', (req, res) => {
     const titlePath = path.join(__dirname, 'Upload/Webinfo/Title.txt');
     const descriptionPath = path.join(__dirname, 'Upload/Webinfo/Webinfo.txt');
@@ -164,7 +162,105 @@ app.get('/load', (req, res) => {
             res.status(500).send('Failed to load data.');
         });
 });
+//-----------------------------------------------------------------------------------------------------------
 
+const cssFiles = [
+    'button.css',
+    'header.css',
+    'login.css',
+    'menu.css',
+    'nav-element.css',
+    'admin.css',
+    'other.css'
+  ];
+  
+  // Route to update the CSS files
+  app.post('/update-css', (req, res) => {
+    const { color } = req.body;
+    if (!color) {
+      return res.status(400).send('No color provided.');
+    }
+  
+    // Define the placeholder or variable to replace in the CSS files
+    const placeholder = '--shade1';
+    const placeholder1 = '--shade2';
+    const placeholder2 = '--shade3';
+  
+    Promise.all(
+      cssFiles.map((file) =>
+        new Promise((resolve, reject) => {
+          const filePath = path.join(__dirname, 'styles', file); // Adjusted for the 'styles' folder
+  
+          // Read the CSS file
+          fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) return reject(err);
+  
+            let updatedCSS;
+            if (color === 'red') {
+              updatedCSS = data.replace(
+                new RegExp(`${placeholder}:\\s*[^;]+;`, 'g'),
+                `${placeholder}: rgb(80,16,16);`
+              ).replace(
+                new RegExp(`${placeholder1}:\\s*[^;]+;`, 'g'),
+                `${placeholder1}: rgb(119,24,24);`
+              ).replace(
+                new RegExp(`${placeholder2}:\\s*[^;]+;`, 'g'),
+                `${placeholder2}: rgb(170,34,34);`
+              );
+            } else if (color === 'green') {
+              updatedCSS = data.replace(
+                new RegExp(`${placeholder}:\\s*[^;]+;`, 'g'),
+                `${placeholder}: rgb(16,80,16);`
+              ).replace(
+                new RegExp(`${placeholder1}:\\s*[^;]+;`, 'g'),
+                `${placeholder1}: rgb(24,119,24);`
+              ).replace(
+                new RegExp(`${placeholder2}:\\s*[^;]+;`, 'g'),
+                `${placeholder2}: rgb(34,170,34);`
+              );
+            } else if (color === 'brown') {
+              updatedCSS = data.replace(
+                new RegExp(`${placeholder}:\\s*[^;]+;`, 'g'),
+                `${placeholder}: rgb(56,37,19);`
+              ).replace(
+                new RegExp(`${placeholder1}:\\s*[^;]+;`, 'g'),
+                `${placeholder1}: rgb(84,56,28);`
+              ).replace(
+                new RegExp(`${placeholder2}:\\s*[^;]+;`, 'g'),
+                `${placeholder2}: rgb(119,79,40);`
+              );
+            } 
+            else if (color === 'blue') {
+                updatedCSS = data.replace(
+                  new RegExp(`${placeholder}:\\s*[^;]+;`, 'g'),
+                  `${placeholder}: rgb(7,7,98);`
+                ).replace(
+                  new RegExp(`${placeholder1}:\\s*[^;]+;`, 'g'),
+                  `${placeholder1}: rgb(12,12,143);`
+                ).replace(
+                  new RegExp(`${placeholder2}:\\s*[^;]+;`, 'g'),
+                  `${placeholder2}: rgb(23,23,192);`
+                );
+              }
+            else {
+              return reject('Invalid color selection');
+            }
+            // Write the updated CSS back to the file
+            fs.writeFile(filePath, updatedCSS, 'utf8', (err) => {
+              if (err) return reject(err);
+              resolve();
+            });
+          });
+        })
+      )
+    )
+      .then(() => res.send('CSS files updated successfully.'))
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error updating CSS files.');
+      });
+  });
+//----------------------------------------------------------------------------------------
 // Start the server
 app.listen(port, () =>
 {
