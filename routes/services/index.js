@@ -12,7 +12,7 @@ const router = express.Router(); // Similar to "const app=express()". Does not s
 //Setup routes, pass db to functions
 router.get("/", getServices(db));
 router.post("/", addService(db));
-router.delete("/", deleteService(db));
-router.put('/', editService(db));
+router.delete("/:id", deleteService(db));
+router.put('/:id', editService(db));
 
 module.exports = router;
