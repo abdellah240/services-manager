@@ -20,6 +20,10 @@ app.use(express.json());
 const servicesRouter = require('./routes/services');
 app.use('/api/services', servicesRouter); // Router will be used when this path is specified
 
+
+// Middleware
+app.use(bodyParser.json());
+
 const signUpRouter = require("./routes/account-signup");
 app.use('/api/signup', signUpRouter); // Router will be used when this path is specified
 

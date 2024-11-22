@@ -7,7 +7,6 @@
   <title>Services Manager - Create account</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" media="screen" href=../styles/other.css />
-  <script src="../scripts/main.js"></script>
 </head>
 
 <body>
@@ -34,7 +33,8 @@
       <div class="login">
         <div class="login__container2">
           <h2 class="login__title">Sign up for a customer account</h2>
-          <form class="login__form" action="login.html" onsubmit="return validateForm()">
+          <form id="signupForm" class="login__form">
+
 
             <div class="login__input-container">
               <label class="login__input-label" for="FirstName">First Name</label>
@@ -54,8 +54,7 @@
 
             <div class="login__input-container">
               <label class="login__input-label" for="Phone">Phone Number</label>
-              <input class="login__input" type="tel" id="Phone" name="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                placeholder="123-456-7890" required />
+              <input class="login__input" type="tel" id="Phone" name="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required />
             </div>
 
 
@@ -70,32 +69,14 @@
               <input class="login__input" type="date" id="Birthdate-customer" name="Birthdate" required />
             </div>
 
-
-            <div class="login__input-container">
-              <label class="login__input-label">Gender</label>
-              <div>
-                <label><input type="radio" name="Gender" value="Male" required /> Male</label>
-                <label><input type="radio" name="Gender" value="Female" /> Female</label>
-                <label><input type="radio" name="Gender" value="Other" /> Other</label>
-              </div>
-            </div>
-
-
             <div class="login__input-container">
               <label class="login__input-label" for="Password">Password</label>
               <input class="login__input" type="password" id="Password-customer" name="Password" required
                 minlength="8" />
             </div>
 
-
-            <div class="login__input-container">
-              <label class="login__input-label" for="ConfirmPassword">Confirm Password</label>
-              <input class="login__input" type="password" id="ConfirmPassword-customer" name="ConfirmPassword" required
-                minlength="8" />
-            </div>
-
             <div class="login__button-container">
-              <button class="button" type="submit" onclick="validateForm()">Sign Up</button>
+              <input type="submit" id = "signupForm" >Sign Up</input>
             </div>
 
             <h4 class="login__message">
@@ -115,6 +96,7 @@
       <a class="footer__link" href="../pages/Contact.html">Contact</a>
     </div>
   </footer>
+  <script src="../scripts/signup.js"></script>
 </body>
 
 </html>
