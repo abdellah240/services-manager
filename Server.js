@@ -346,7 +346,42 @@ app.post("/change-credentials", async (req, res) => {
   );
 });
 //----------------------------------------------------------------------------------------------------------
+const messagesFilePath = path.join(__dirname, './Upload/Client Q&A/ClientQ.json');
+app.post('/api/append-message', (req, res) => {
+  const newMessage = req.body;
 
+  // Read the existing messages from the JSON file
+  fs.readFile(messagesFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading messages file:', err);
+      return res.status(500).json({ success: false, error: 'Error reading file' });
+    }
+
+    // Parse the existing data or start with an empty array if no data exists
+    let messages = [];
+    try {
+      messages = JSON.parse(data);
+    } catch (e) {
+      // If the file is empty or invalid, we use an empty array
+      messages = [];
+    }
+
+    // Append the new message to the messages array
+    messages.push(newMessage);
+
+    // Write the updated messages back to the JSON file
+    fs.writeFile(messagesFilePath, JSON.stringify(messages, null, 2), 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to messages file:', err);
+        return res.status(500).json({ success: false, error: 'Error writing file' });
+      }
+
+      res.status(200).json({ success: true });
+    });
+  });
+});
+
+//--------------------------------------------------------------------------------------------------------------------
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

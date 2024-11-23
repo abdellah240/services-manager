@@ -2,11 +2,10 @@ const bcrypt = require("bcryptjs");
 
 const loginCustomer = (db) => async (req, res) => {
   const { Email, Password } = req.body; // Extract email and password from the request body
-  console.log("Received user data: ", { Email, Password });
 
   try {
     // Query the database to get the user by email
-    const query = `SELECT Password FROM users WHERE Email = ?`;
+    const query = `SELECT FirstName,Id, LastName, Email, Password FROM users WHERE Email = ?`;
 
     db.query(query, [Email], async (err, results) => {
       if (err) {
@@ -21,7 +20,7 @@ const loginCustomer = (db) => async (req, res) => {
 
       console.log("results ", results);
 
-      const storedHashedPassword = results[0].Password;
+      const { FirstName,Id, LastName, Email: userEmail, Password: storedHashedPassword } = results[0];
 
       // Compare the provided password with the stored hashed password
       const isPasswordMatch = await bcrypt.compare(
@@ -30,11 +29,15 @@ const loginCustomer = (db) => async (req, res) => {
       );
 
       if (!isPasswordMatch) {
-        return res.status(401).json({ error: "Invalid credentials" });
+        return res.status(401).json({ error: "Invalid credentials"  , user: { FirstName, LastName, Email: userEmail }});
       }
 
+      const user = { FirstName : FirstName, Id : Id, LastName : LastName, Email: userEmail };
+      console.log("User authenticated:", user);
       // Successful login
-      res.status(200).json({ message: "Login successful!" });
+      res.status(200).json({ message: "Login successful!", 
+       FirstName : FirstName, LastName : LastName, Id : Id, Email: userEmail 
+       });
     });
   } catch (error) {
     console.error("Error processing login:", error);
