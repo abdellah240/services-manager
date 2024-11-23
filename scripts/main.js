@@ -30,36 +30,47 @@ function updateAuthLink() {
   var isSigned = localStorage.getItem("isSigned");
   var isSigned1 = localStorage.getItem("isSigned1");
 
-  // Get DOM elements
+  // Get DOM elements (check existence to avoid errors)
   var authLink = document.getElementById("authLink");
-  var linkElement = authLink.getElementsByTagName("a")[0];
+  var linkElement = authLink ? authLink.getElementsByTagName('a')[0] : null;
   var authLink1 = document.getElementById("authLink1");
-  var linkElement1 = authLink1.getElementsByTagName("a")[0];
+  var linkElement1 = authLink1 ? authLink1.getElementsByTagName('a')[0] : null;
   var authLink2 = document.getElementById("authLink2");
-  var linkElement2 = authLink2.getElementsByTagName("a")[0];
+  var linkElement2 = authLink2 ? authLink2.getElementsByTagName('a')[0] : null;
 
   // Update links based on sign-in state
-  if (isSigned === "true") {
-    linkElement.textContent = "Your Account";
-    linkElement.href = "../customer/index.html";
-  } else if (isSigned1 === "true") {
-    linkElement.textContent = "Go Back to Administrator side";
-    linkElement.href = "../admin/business.html";
-    // Hide other links
-    authLink1.style.display = "none";
-    authLink2.style.display = "none";
-  } else {
-    linkElement.textContent = "Sign In";
-    linkElement.href = "../pages/login.html";
-    // Restore other links
-    authLink1.style.display = "block";
-    linkElement1.textContent = "Services";
-    linkElement1.href = "../customer/services.html";
-    authLink2.style.display = "block";
-    linkElement2.textContent = "Cart";
-    linkElement2.href = "../customer/cart.html";
+  if (linkElement) {
+      if (isSigned === "true") {
+          linkElement.textContent = "Your Account";
+          linkElement.href = "../customer/index.html";
+      } else if (isSigned1 === "true") {
+          linkElement.textContent = "Go Back to Administrator side";
+          linkElement.href = "../admin/business.html";
+          // Hide other links if they exist
+          if (authLink1) authLink1.style.display = "none";
+          if (authLink2) authLink2.style.display = "none";
+      } else {
+          linkElement.textContent = "Sign In";
+          linkElement.href = "../pages/login.html";
+          // Restore other links if they exist
+          if (authLink1) {
+              authLink1.style.display = "block";
+              if (linkElement1) {
+                  linkElement1.textContent = "Services";
+                  linkElement1.href = "../customer/services.html";
+              }
+          }
+          if (authLink2) {
+              authLink2.style.display = "block";
+              if (linkElement2) {
+                  linkElement2.textContent = "Cart";
+                  linkElement2.href = "../customer/cart.html";
+              }
+          }
+      }
   }
 }
+
 function logout() {
   var confirmation = confirm("Are you sure you want to log out?");
 
@@ -112,4 +123,21 @@ function validateForm() {
   localStorage.setItem("isSigned", "true");
   window.location.href = "../pages/index.html";
   return true;
+}
+
+function sendMessage(){
+    const adminMessage = document.getElementById("adminMessage").value.trim();
+    if (!adminMessage) {
+        alert("Please fill in your message.");
+        return;
+      }
+
+      const message = {
+        clientId: clientId,
+        message: adminMessage,
+        timestamp: new Date().toISOString(), // Optional: Add a timestamp
+      };
+
+      console.log("Message Object:", message);
+      document.getElementById("adminMessage").value = "";
 }

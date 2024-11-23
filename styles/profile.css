@@ -32,3 +32,92 @@
   gap: 10px;
   margin-bottom: 40px;
 }
+
+/* Styling the container */
+.form-item {
+  margin-bottom: 1.5rem;
+}
+
+/* Styling the label */
+.form-item__label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* Styling the textarea */
+.form-item__textarea {
+  width: 100%;
+  min-height: 100px;
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allows resizing only vertically */
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-item__textarea:focus {
+  border-color: #007bff; /* Highlight border color */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Styling the button */
+.button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button--primary:hover {
+  background-color: #0056b3;
+}
+
+/* Guidelines container */
+.message-guidelines {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Guidelines title */
+.guidelines__title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Guidelines list */
+.guidelines__list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Guidelines items */
+.guidelines__item {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Highlighted or emphasized text */
+.guidelines__item strong {
+  color: #007bff;
+}
