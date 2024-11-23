@@ -105,9 +105,12 @@ async function displayServices()
 
 async function deleteService(service)
 {
-  const deletedServiceID = service.id;
+  const response = await fetch(`/api/services/${(service.id)}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify((service))
+  })
 
-  const response = await fetch(`/api/services/${deletedServiceID}`, { method: "DELETE" });
   if (response.ok)
     displayServices();
   else
