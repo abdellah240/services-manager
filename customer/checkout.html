@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Services Manager - cart/purchases page </title>
+  <title>Services Manager - Checkout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/nav-element.css" />
@@ -14,6 +14,8 @@
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/app.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/header.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/cart.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="../styles/checkout.css" />
+  
 </head>
 
 <body>
@@ -31,12 +33,34 @@
             <a class="nav-element__link" href="#" onclick="checksign1()">Services</a>
           </li>
           <li class="nav-element__item">
-            <a class="nav-element__link" href="#" onclick="checksign2()">
-              Cart
-            </a>
+            <a class="nav-element__link" href="#" onclick="checksign2()">Cart</a>
           </li>
         </div>
       </ul>
     </nav>
   </header>
+
+    <div class="checkout-container"> <h1>Checkout</h1>
+      <form id="checkout-form">
+        <label for="name"> Full Name</label>
+        <input type = "text" id="name" name="name" required>
+
+        <label for="card"> Card Number</label>
+        <input type = "text" id="card" name="card-number" placeholder="1234 1234 1234 1234" required>
+
+        <label for="expiration">Exp</label>
+        <input type = "text" id="expiration-date" name="expiration-date" placeholder="MM/YY" required>
+
+        <label for="csv">CSV</label>
+        <input type = "text" id="csv" name="csv-number" placeholder="000" required>
+
+        <button type="Place Order" id="checkout-form">Place Order</button>
+
+
+      </form>
+    </div>
+
+    <script src = "/scripts/checkout.js"></script>
+    <script src = "/scripts/main.js"></script>
+</body>
   

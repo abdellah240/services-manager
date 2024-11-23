@@ -16,15 +16,14 @@
   }
 
   .btn {
-    display: grid;
     grid-template-columns: repeat(2.1fr);
   }
   
   .checkOut{
-    background-color: rgb(231, 231, 108);
-   font-family: Poppins;
-   font-weight: 500;
-   cursor: pointer;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
   }
 
   .cartTab .service-item{
