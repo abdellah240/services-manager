@@ -18,8 +18,14 @@ document
       });
 
       if (response.ok) {
+        const responseData = await response.json();
+
         alert("Customer Logged in successfully");
         localStorage.setItem("isSigned", "true");
+        localStorage.setItem("FirstName", responseData.FirstName);
+        localStorage.setItem("LastName", responseData.LastName);
+        localStorage.setItem("Email", responseData.Email);
+        localStorage.setItem("ID", responseData.Id);
         window.location.href = "index.html"; // Redirect to home page
       } else {
         const errorData = await response.json();
