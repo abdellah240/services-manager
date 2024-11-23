@@ -8,13 +8,11 @@ const signUpInfo = (db) => async (req, res) =>
     try
     {
         // Hash the password
-        // const hashedPassword = await bcrypt.hash(Password, 10);
-
+        const hashedPassword = await bcrypt.hash(user.Password, 10);
+        user.Password = hashedPassword;
         // Insert the user into the database
         const query =
             `INSERT INTO users SET ?`;
-
-        //const values = [firstName, lastName, email, phone, address, birthdate, password];
 
         db.query(query, user, (err) =>
         {
