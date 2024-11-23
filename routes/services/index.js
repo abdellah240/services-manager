@@ -5,7 +5,7 @@ const deleteService = require("./deleteService");
 const editService = require("./editService");
 
 // Import db (connection)
-const db = require("../db");  
+const db = require("../main-db");  
 
 const router = express.Router(); // Similar to "const app=express()". Does not start a server.
     

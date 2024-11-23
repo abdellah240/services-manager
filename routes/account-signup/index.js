@@ -2,7 +2,7 @@ const express = require("express");
 const signUpInfo = require("./signUpInfo"); 
 
 // Import db (connection)
-const db2 = require("../db2");  
+const db2 = require("../main-db");  
 
 const router = express.Router(); // Similar to "const app=express()". Does not start a server.
     

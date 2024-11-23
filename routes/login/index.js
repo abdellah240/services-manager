@@ -1,12 +1,12 @@
 const express = require("express");
-const storePayment = require("./storePayment"); 
+const loginCustomer = require("./login");
 
 // Import db (connection)
-const checkoutDB = require("../main-db");  
+const mainDatabase = require("../main-db");
 
 const router = express.Router(); // Similar to "const app=express()". Does not start a server.
-    
+
 //Setup routes, pass db to functions
-router.post('/', storePayment(checkoutDB));
+router.post("/", loginCustomer(mainDatabase));
 
 module.exports = router;

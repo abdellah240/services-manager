@@ -1,5 +1,5 @@
 document
-  .getElementById("signupForm")
+  .getElementById("customerLoginForm")
   .addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -7,15 +7,9 @@ document
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // Validate password and confirm password
-    //if (data.Password !== data.ConfirmPassword) {
-    //  alert("Passwords do not match!");
-    // return;
-    //}
-
     try {
       // Send a POST request to the server
-      const response = await fetch("/api/signup", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,16 +18,15 @@ document
       });
 
       if (response.ok) {
-        alert("Account created successfully!");
-        window.location.href = "login.html"; // Redirect to login page
+        alert("Customer Logged in successfully");
+        localStorage.setItem("isSigned", "true");
+        window.location.href = "index.html"; // Redirect to home page
       } else {
-        console.log("errorData ", response);
-
         const errorData = await response.json();
         alert(`Error: ${errorData.error}`);
       }
     } catch (error) {
-      console.error("Error during signup:", error);
+      console.error("Error during login:", error);
       alert("An error occurred. Please try again later.");
     }
   });

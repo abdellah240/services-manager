@@ -31,3 +31,8 @@
   flex-direction: column;
   gap: 40px;
 }
+
+.services__input {
+  margin-bottom: 30px;
+  width: 300px;
+}

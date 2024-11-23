@@ -1,60 +1,80 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Customer management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../styles/other.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../styles/admin.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../styles/services.css"
+    />
+    <script src="../scripts/administrator.js"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Customer management</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/other.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/admin.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/services.css" />
-  <script src="../scripts/administrator.js"></script>
-</head>
+  <body>
+    <nav>
+      <ul class="nav-element">
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="../pages/index.html"
+            >Preview Client side</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="business.html"
+            >Business management</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="services.html"
+            >Service management</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="customers.html"
+            >Customer management</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="#" onclick="logout()">Log out</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="menu">
+      <a href="#" class="menu-link">
+        <span>Track Bills </span>
+      </a>
+      <a href="#" id="show" onclick="confirm1()" class="menu-link">
+        <span>Service Requests</span>
+      </a>
+      <a href="#" class="menu-link">
+        <span> Customer service </span>
+      </a>
 
-<body>
-  <nav>
-    <ul class="nav-element">
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="../pages/index.html">Preview Client side</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="business.html">Business management</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="services.html">Service management</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="customers.html">Customer management</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="#" onclick="logout()">Log out</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="menu">
-    <a href="#" class="menu-link">
-      <span>Track Bills </span>
-    </a>
-    <a href="#" id="show" onclick="confirm1()" class="menu-link">
-      <span>Service Requests</span>
-    </a>
-    <a href="#" class="menu-link">
-      <span> Customer service </span>
-    </a>
-
-    <main class="app">
-      <div id="hide" class="app__container">
-        <div class="services__service-container" id="services-list-div"></div>
-        <script>
-          document.addEventListener('DOMContentLoaded', () => {
-  loadServices();
-});
-        </script>
-      </div>
-    </main>
-
-  </div>
-</body>
-
+      <main class="app">
+        <div id="hide" class="app__container">
+          <div class="services__service-container" id="services-list-div"></div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              loadServices();
+            });
+          </script>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
