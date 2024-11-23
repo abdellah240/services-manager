@@ -17,6 +17,8 @@
 .nav-element__item {
   list-style: none;
   display: flex;
+  align-items: center; 
+  justify-content: center;
 }
 
 .nav-element__link {
@@ -25,6 +27,8 @@
   text-decoration: none;
   color: white;
   padding: 20px;
+  margin: 0;
+  text-align: center;
 }
 
 .nav-element__item:hover {
