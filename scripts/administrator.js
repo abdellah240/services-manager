@@ -182,9 +182,9 @@ async function credentials(event){
 
 }
 
-function confirm1()
+function messages()
 {
-    const content = document.getElementById("hide");
+    const content = document.getElementById("hide2");
     if (content.style.display === "none")
     {
       content.style.display = "block"; // Show the content
@@ -196,64 +196,7 @@ function confirm1()
       content.style.display = "none"; // Hide the content if clicked again
     }
 }
-async function loadServices()
-{
 
-  try{
-  
-  const response = await fetch('../data/services-to-confirm.json');
-  const servicesArray = await response.json();
-
-  displayServices(servicesArray); // servicesArray: Defined in manage-services.js
-}
-   catch (error){
-    alert("Error loading services. Please try again.");
-  }
-
-}
-
-function displayServices(servicesArray)
-{
-  const servicesListDiv = document.getElementById("services-list-div");
-
-  servicesArray.forEach((service, index) =>
-  {
-    const serviceDiv = document.createElement("div");
-    const buttonContainerDiv = document.createElement("div");
-    const confirm = document.createElement("button");
-
-    serviceDiv.innerHTML = `Title: ${service.title} <br>
-                                                    client: ${service.client} <br>
-                                                    left to pay: ${service.lefttopay}`;
-
-    confirm.innerHTML = "confirm service";
-
-    serviceDiv.className = "services__service";
-    buttonContainerDiv.className = "services__button-container";
-    confirm.className = "button";
-    confirm.addEventListener("click", () => confirmed(confirm, service));
-
-    buttonContainerDiv.appendChild(confirm);
-    serviceDiv.appendChild(buttonContainerDiv);
-    servicesListDiv.appendChild(serviceDiv);
-
-    servicesListDiv.appendChild(serviceDiv);
-  });
-
-}
-function confirmed(button, service)
-{
-  if (button.textContent == "confirm service")
-  {
-    button.textContent = "cancel X";
-
-  }
-  else
-  {
-
-    button.textContent = "confirm service";
-  }
-}
 
 function color(){
   const colorSelect = document.getElementById('colorSelect');
@@ -275,4 +218,132 @@ function color(){
       })
       .catch(() => alert('Server error.'));
   
+}
+
+async function loadMessages() {
+  try {
+    const response = await fetch("/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const { messages } = await response.json();
+    displayMessages(messages); // Ensure this function is defined and working
+  } catch (error) {
+    console.error("Error loading messages:", error);
+    alert("Error loading messages. Please try again.");
+  }
+}
+
+
+function displayMessages(MessagesArray) {
+  const MessagesList = document.getElementById("Messages-list-div");
+
+  // Clear previous messages if any
+  MessagesList.innerHTML = "";
+
+  MessagesArray.forEach((Messages, index) => {
+    const messageDiv = document.createElement("div"); // Message container
+    const buttonContainerDiv = document.createElement("div"); // Button container
+    const Answer = document.createElement("textarea"); // Response textarea
+    const respondButton = document.createElement("button"); // Respond button
+
+    // Set content
+    messageDiv.innerHTML = `
+      <p>Name: ${Messages.Name}</p>
+      <p>Client: ${Messages.ID}</p>
+      <p>Message: ${Messages.message}</p>
+    `;
+
+    // Set attributes and classes
+    messageDiv.className = "services__service";
+    buttonContainerDiv.className = "services__button-container";
+    respondButton.className = "button";
+    Answer.className = "textarea";
+    respondButton.innerHTML = "Respond";
+
+    // Add event listener to the button
+    respondButton.addEventListener("click", () => send(respondButton, Messages, Answer));
+
+    // Append elements
+    buttonContainerDiv.appendChild(Answer);
+    buttonContainerDiv.appendChild(respondButton);
+    messageDiv.appendChild(buttonContainerDiv);
+    MessagesList.appendChild(messageDiv);
+  });
+}
+
+
+function send(respondButton, Messages, Answer) {
+  const confirmation = confirm("Are you sure you want to send this answer?");
+  
+  if (confirmation) {
+    const adminMessage = Answer.value.trim(); // Get the message from the textarea
+    
+    if (!adminMessage) {
+      alert("Please enter a response.");
+      return;
+    }
+
+    const AnswerData = {
+      Name: Messages.Name,
+      ID: Messages.ID,
+      message: adminMessage, // Use the message from the textarea
+      timestamp: new Date().toISOString(), // Optional: Add a timestamp
+    };
+
+    // Send the answer to the server
+    fetch("/api/append-message1", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(AnswerData),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // If the message is successfully sent, remove the message from the DOM
+        alert("Message sent successfully!");
+
+        // Now delete the message from ClientQ.json
+        fetch("/delete-message", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(Messages), // Send the message ID to delete
+        })
+        .then(deleteResponse => deleteResponse.json())
+        .then(deleteData => {
+          if (deleteData.success) {
+            // Remove the message element from the list
+            const messageDiv = respondButton.closest('.services__service');
+            messageDiv.remove(); // Remove the message div from the DOM
+            messageDiv.style.display = none;
+
+          } else {
+            alert("Failed to delete the message.");
+          }
+        })
+        .catch(error => {
+          console.error("Error deleting message:", error);
+        });
+
+      } else {
+        alert("Failed to send the message.");
+      }
+    })
+    .catch(error => {
+      console.error("Error sending message:", error);
+      alert("An error occurred. Please try again later.");
+    });
+
+  } else {
+    return; // Do nothing if the user cancels
+  }
 }

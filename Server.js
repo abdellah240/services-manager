@@ -346,7 +346,7 @@ app.post("/change-credentials", async (req, res) => {
   );
 });
 //----------------------------------------------------------------------------------------------------------
-const messagesFilePath = path.join(__dirname, './Upload/Client Q&A/ClientQ.json');
+const messagesFilePath = path.join(__dirname, './Upload/ClientQ&A/ClientQ.json');
 app.post('/api/append-message', (req, res) => {
   const newMessage = req.body;
 
@@ -375,13 +375,106 @@ app.post('/api/append-message', (req, res) => {
         console.error('Error writing to messages file:', err);
         return res.status(500).json({ success: false, error: 'Error writing file' });
       }
-
+      
       res.status(200).json({ success: true });
     });
   });
 });
 
 //--------------------------------------------------------------------------------------------------------------------
+
+app.post("/messages", (req, res) => {
+  try {
+    // Read the JSON file
+    fs.readFile(messagesFilePath, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading messages file:", err);
+        return res.status(500).json({ error: "Failed to load messages" });
+      }
+
+      // Parse the JSON data
+      const messages = JSON.parse(data);
+
+      // Send the messages back as a response
+      res.status(200).json({ messages });
+    });
+  } catch (error) {
+    console.error("Error handling request:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+//----------------------------------------------------------------------------------------------------
+const AnswerFilePath = path.join(__dirname, './Upload/ClientQ&A/AdminA.json');
+app.post('/api/append-message1', (req, res) => {
+  const newMessage = req.body;
+
+  // Read the existing messages from the JSON file
+  fs.readFile(AnswerFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading messages file:', err);
+      return res.status(500).json({ success: false, error: 'Error reading file' });
+    }
+
+    // Parse the existing data or start with an empty array if no data exists
+    let Answer = [];
+    try {
+      Answer = JSON.parse(data);
+    } catch (e) {
+      // If the file is empty or invalid, we use an empty array
+      Answer = [];
+    }
+
+    // Append the new message to the messages array
+    Answer.push(newMessage);
+
+    // Write the updated messages back to the JSON file
+    fs.writeFile(AnswerFilePath, JSON.stringify(Answer, null, 2), 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to messages file:', err);
+        return res.status(500).json({ success: false, error: 'Error writing file' });
+      }
+      
+      res.status(200).json({ success: true });
+    });
+  });
+});
+//------------------------------------------------------------------------------------------------------------------
+app.post('/delete-message', (req, res) => {
+  const messageToDelete = req.body; // Get the entire message object to delete
+
+  // Read the current messages
+  fs.readFile(messagesFilePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: 'Error reading messages.' });
+    }
+
+    let messagesArray = JSON.parse(data);
+
+    // Find and remove the message that matches the full message object
+    const messageIndex = messagesArray.findIndex(msg => 
+      msg.Name === messageToDelete.Name &&
+      msg.ID === messageToDelete.ID &&
+      msg.message === messageToDelete.message &&
+      msg.timestamp === messageToDelete.timestamp
+    );
+
+    if (messageIndex === -1) {
+      return res.status(404).json({ success: false, message: 'Message not found.' });
+    }
+
+    // Remove the message from the array
+    messagesArray.splice(messageIndex, 1);
+
+    // Write the updated messages back to the file
+    fs.writeFile(messagesFilePath, JSON.stringify(messagesArray, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: 'Error writing updated messages.' });
+      }
+      res.json({ success: true, message: 'Message deleted successfully.' });
+    });
+  });
+});
+//----------------------------------------------------------------------------------------------------------------
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

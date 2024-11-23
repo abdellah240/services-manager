@@ -107,6 +107,10 @@
     display: none;
 }
 
+#hide2{
+  display :none;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -118,4 +122,16 @@ label {
 input {
   padding: 10px;
   font-size: 1rem;
+}
+
+.textarea {
+  width: 300%;
+  min-height: 300px;
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allows resizing only vertically */
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }

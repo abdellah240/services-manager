@@ -91,9 +91,6 @@
     </div>
   </footer>
   <script>
-    const firstName = localStorage.getItem("FirstName");
-    const lastName = localStorage.getItem("LastName");
-    console.log(firstName);
     const profileTitle = document.getElementsByClassName("profile__title")[0];
     const profileMail = document.getElementsByClassName("profile__email")[0];
     profileTitle.textContent = localStorage.getItem("FirstName") + " " + localStorage.getItem("LastName");
