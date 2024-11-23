@@ -35,7 +35,7 @@
 
   }
     
-  .service-quantity span{
+ /*.service-quantity span{
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -48,7 +48,8 @@
   .service-quantity span:nth-child(2){
     background-color: transparent;
     color: black;
-  }
+  } 
+  */
 
   .service-item:nth-child(even){
     background-color: azure;

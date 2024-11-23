@@ -51,41 +51,47 @@
   <main class="app">
     <div class="app__container">
       <form class="account__form">
-        <h1 class="account__title">Account Settings</h1>
-        <div class="account__form-item">
-          <div class="form-item">
+        <h1 class="account__title">Edit Account</h1>
+        <form method="PUT" id="edit-account">
+
+        <!-- <div class="form-item">
             <label class="form-item__label"> First Name</label>
             <input class="form-item__input" type="text" placeholder="First Name" />
           </div>
         </div>
+
         <div class="account__form-item">
           <div class="form-item">
             <label class="form-item__label"> Last Name</label>
             <input class="form-item__input" type="text" placeholder="Last Name" />
           </div>
-        </div>
-        <div class="account__form-item">
-          <div class="form-item">
-            <label class="form-item__label"> Email</label>
-            <input class="form-item__input" type="email" placeholder="someone@gmail.com" />
+        </div> -->
+          <div class="account__form-item">
+            <div class="form-item">
+              <label class="form-item__label"> Email</label>
+              <input class="form-item__input" id="email" placeholder="someone@gmail.com" />
+            </div>
           </div>
-        </div>
-        <div class="account__form-item">
-          <div class="form-item">
-            <label class="form-item__label"> Phone Number</label>
-            <input class="form-item__input" type="textr" placeholder="(123)-456-7890" />
+
+          <div class="account__form-item">
+            <div class="form-item">
+              <label class="form-item__label"> Phone Number</label>
+              <input class="form-item__input" id="phone" placeholder="(123)-456-7890" />
+            </div>
           </div>
-        </div>
-        <div class="account__form-item">
-          <div class="form-item">
-            <label class="form-item__label"> Address</label>
-            <textarea placeholder="Address"></textarea>
+
+          <div class="account__form-item">
+            <div class="form-item">
+              <label class="form-item__label"> Address</label>
+              <input class="form-item__input" id="address" placeholder="Address"></textarea>
+            </div>
           </div>
-        </div>
-        <div class="account__button-container">
-          <button class="button button--secondary">Cancel</button>
-          <button class="button">save</button>
-        </div>
+
+          <div class="account__button-container">
+            <button class="button button--secondary" href = "/customer/pages/index.html">Cancel</button>
+            <input type="submit" id="Save Changes" value="Save Changes">
+          </div>
+       </form>
       </form>
     </div>
   </main>
@@ -97,6 +103,7 @@
       <a class="footer__link" href="../pages/Contact.html">Contact</a>
     </div>
   </footer>
+  <script src="../scripts/customer-edit-account.js"></script>
 </body>
 
 </html>
