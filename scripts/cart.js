@@ -55,21 +55,11 @@ function displayCartItem(service)
 
 const initApp = () =>
 {
-    /* 
-    fetch('cart.json')
-    .then (response => response.json()) 
-     */
-
     data = JSON.parse(localStorage.getItem('cart'));
-    Promise.resolve(data)
-        // Previous 2 lines of code are emulating a response
-        // (To be replaced with previous comment when back-end is up)
-
-        .then(data =>
+    Promise.resolve(data).then(data =>
         {
-            listServices = data;
+            listServices = data || [];
             addDataToHTML();
         })
 }
-
 initApp();

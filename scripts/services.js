@@ -1,39 +1,48 @@
-const cart = [];
-
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let isFetchingServices = false;
-
-async function searchServices(query) {
-  try {
+loadServices();
+async function searchServices(query)
+{
+  try
+  {
     const response = await fetch(
       `../api/services?name=${encodeURIComponent(query)}`
     );
-    if (!response.ok) {
+    if (!response.ok)
+    {
       throw new Error("Failed to fetch services");
     }
     const servicesArray = await response.json();
     displayServices(servicesArray);
-  } catch (error) {
+  } catch (error)
+  {
     console.error(error);
   }
 }
 
-async function loadServices() {
-  try {
+async function loadServices()
+{
+  try
+  {
     const response = await fetch("../api/services", { method: "GET" });
     const servicesArray = await response.json();
-    displayServices(servicesArray); // servicesArray: Defined in manage-services.js
-  } catch (error) {
+    displayServices(servicesArray);
+  } catch (error)
+  {
     console.log("error");
   }
 }
 
-function displayServices(servicesArray) {
+function displayServices(servicesArray)
+{
   const servicesListDiv = document.getElementById("services-list-div");
   servicesListDiv.innerHTML = "";
-  if (servicesArray.length === 0) {
+  if (servicesArray.length === 0)
+  {
     servicesListDiv.innerHTML = "No Services are available";
   }
-  servicesArray.forEach((service, index) => {
+  servicesArray.forEach((service, index) =>
+  {
     const serviceDiv = document.createElement("div");
     const buttonContainerDiv = document.createElement("div");
     const addToCartButton = document.createElement("button");
@@ -61,30 +70,21 @@ function displayServices(servicesArray) {
   });
 }
 
-function addToCart(service) {
-  let serviceInCart = false;
+function addToCart(service)
+{
+  const existingService = cart.find((cartService) => cartService.id === service.id);
 
-  // Increment service quantity if already in cart
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id === service.id) {
-      cart[i].quantity += 1;
-      serviceInCart = true;
-      break;
-    }
-  }
-
-  // Add service if not in cart
-  if (serviceInCart === false) {
+  if (existingService)
+  {
+    alert("Already in cart.");
+  } else
+  {
     cart.push({
       id: service.id,
       title: service.title,
       price: service.price,
-      quantity: 1,
     });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart.");
   }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("Added to cart."); // Temporary, need better styling
 }
-
-loadServices();

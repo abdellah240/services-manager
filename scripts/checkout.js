@@ -9,44 +9,56 @@ document.getElementById('checkout-form').addEventListener('submit', async (event
     const csv = document.getElementById('CSV').value;
 
     // Validate input
-    if (!fullname || !card || !exp || !CSV)
+    if (!fullname || !card || !exp || !csv)
     {
         alert('Please fill out all fields.');
         return;
     }
+    const listServices = JSON.parse(localStorage.getItem('cart')) || [];
+    let noErrors = true;
 
-    // Prepare data for the backend
-    const formData = {
-        fullname: fullname,
-        card: card,
-        exp: exp,
-        csv: csv
-    };
-
-    try
+    for (const service of listServices)
     {
-        // Send data to the server using fetch
-        const response = await fetch('/api/checkout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+        // Prepare data for the backend
+        const formData = {
+            fullname: fullname,
+            card: card,
+            exp: exp,
+            csv: csv,
+            service_id: service.id
+        };
 
-        if (response.ok)
+        try
         {
-            const result = await response.text();
-            alert(result); // Notify the user of success
-            document.getElementById('checkout-form').reset(); // Reset the form
-        } else
+            // Send data to the server using fetch
+            const response = await fetch('/api/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok)
+            {
+                noErrors = false;
+            }
+        } catch (err)
         {
-            const error = await response.text();
-            alert(`Error: ${error}`); // Show server error
+            console.error('Error:', err);
+            noErrors = false;
         }
-    } catch (err)
+    }
+
+
+    if (noErrors)
     {
-        console.error('Error:', err);
-        alert('An unexpected error occurred. Please try again.');
+        listServices.length = 0;
+        localStorage.removeItem('cart');
+        alert('Checkout completed successfully. [should redirect to bills]');
+
+    } else
+    {
+        alert('An error occurred during the checkout');
     }
 });
