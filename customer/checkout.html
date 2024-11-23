@@ -15,13 +15,13 @@
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/header.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/cart.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/checkout.css" />
-  
+
 </head>
 
 <body>
   <header class="header">
     <div class="header__logo">
-      <div class="header__logo-item"  id ="business-title" >Services Manager</div>
+      <div class="header__logo-item" id="business-title">Services Manager</div>
     </div>
     <nav class="header__nav">
       <ul class="nav-element">
@@ -40,27 +40,32 @@
     </nav>
   </header>
 
-    <div class="checkout-container"> <h1>Checkout</h1>
-      <form id="checkout-form">
-        <label for="name"> Full Name</label>
-        <input type = "text" id="name" name="name" required>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+    <form method="POST" id="checkout-form">
 
-        <label for="card"> Card Number</label>
-        <input type = "text" id="card" name="card-number" placeholder="1234 1234 1234 1234" required>
+      <label for="fullname"> Full Name</label>
+      <input type="text" id="fullname" name="name" required>
 
-        <label for="expiration">Exp</label>
-        <input type = "text" id="expiration-date" name="expiration-date" placeholder="MM/YY" required>
+      <label for="card"> Card Number</label>
+      <input type="text" id="card" name="card-number" placeholder="1234 1234 1234 1234" required>
 
-        <label for="csv">CSV</label>
-        <input type = "text" id="csv" name="csv-number" placeholder="000" required>
+      <label for="exp">Exp</label>
+      <input type="text" id="exp" name="expiration-date" placeholder="MM/YY" required>
 
-        <button type="Place Order" id="checkout-form">Place Order</button>
+      <label for="CSV">CSV</label>
+      <input type="text" id="CSV" name="csv-number" placeholder="000" required>
+
+      <input type="submit" id="submit-button" value="Submit">
+
+    </form>
 
 
-      </form>
-    </div>
+    </form>
+  </div>
 
-    <script src = "/scripts/checkout.js"></script>
-    <script src = "/scripts/main.js"></script>
+  <script src="/scripts/checkout.js"></script>
+  <script src="/scripts/main.js"></script>
 </body>
-  
+
+</html>

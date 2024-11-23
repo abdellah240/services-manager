@@ -1,14 +1,16 @@
-document.getElementById('checkout-form').addEventListener('Place Order', async (event) => {
-event.preventDefault(); // Prevent form from refreshing the page
+document.getElementById('checkout-form').addEventListener('submit', async (event) =>
+{
+    event.preventDefault(); // Prevent form from refreshing the page
 
     // Collect form data
     const fullname = document.getElementById('fullname').value;
     const card = document.getElementById('card').value;
     const exp = document.getElementById('exp').value;
-    const CSV = document.getElementById('CSV').value;
+    const csv = document.getElementById('CSV').value;
 
     // Validate input
-    if (!fullname || !card || !exp || !CSV) {
+    if (!fullname || !card || !exp || !CSV)
+    {
         alert('Please fill out all fields.');
         return;
     }
@@ -17,13 +19,14 @@ event.preventDefault(); // Prevent form from refreshing the page
     const formData = {
         fullname: fullname,
         card: card,
-        expiration: exp,
-        csv: CSV
+        exp: exp,
+        csv: csv
     };
 
-    try {
+    try
+    {
         // Send data to the server using fetch
-        const response = await fetch('/checkout', {
+        const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,15 +34,18 @@ event.preventDefault(); // Prevent form from refreshing the page
             body: JSON.stringify(formData),
         });
 
-        if (response.ok) {
+        if (response.ok)
+        {
             const result = await response.text();
             alert(result); // Notify the user of success
             document.getElementById('checkout-form').reset(); // Reset the form
-        } else {
+        } else
+        {
             const error = await response.text();
             alert(`Error: ${error}`); // Show server error
         }
-    } catch (err) {
+    } catch (err)
+    {
         console.error('Error:', err);
         alert('An unexpected error occurred. Please try again.');
     }

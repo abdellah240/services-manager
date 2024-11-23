@@ -1,24 +1,27 @@
-const stripe = require('stripe')('your-stripe-secret-key');
-
-const storePayment = (checkoutDB) => async (req, res) => {
-    const payment = req.body;
-
-    try {
-        const paymentInt = await stripe.paymentIntents.create({
-            amount, 
-            currency: 'cad',
-            payment_method_types: ['card'],
-        });
-
+const storePayment = (checkoutDB) => async (req, res) =>
+{
+    try
+    {
+        const order = req.body;
+        console.log(order);
         // Save order to the database
-        const query = 'INSERT INTO orders SET ?)';
-
-        res.status(200).send('Payment successful and order placed!');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Payment failed.');
+        const query = 'INSERT INTO orders SET ?';
+        checkoutDB.query(query, order, (err) =>
+        {
+            if (!err)
+            {
+                res.status(200).send('Payment successful and order placed!');
+            }
+            else
+            {
+                res.status(500).send('Payment failed.');
+            }
+        })
+    } catch (e)
+    {
+        const errorMessage = e.message;
+        res.status(500).send("Error in payment: " + errorMessage)
     }
 };
-
 module.exports = storePayment;
 
