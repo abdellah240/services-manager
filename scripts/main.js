@@ -133,11 +133,31 @@ function sendMessage(){
       }
 
       const message = {
-        clientId: clientId,
+        Name : localStorage.getItem("FirstName") + " " + localStorage.getItem("LastName"),
+        ID : localStorage.getItem("ID"),
         message: adminMessage,
         timestamp: new Date().toISOString(), // Optional: Add a timestamp
       };
 
-      console.log("Message Object:", message);
+
+      fetch("/api/append-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert("Message sent successfully!");
+        } else {
+          alert("Failed to send the message.");
+        }
+      })
+      .catch(error => {
+        console.error("Error sending message:", error);
+        alert("An error occurred. Please try again later.");
+      });
       document.getElementById("adminMessage").value = "";
 }
