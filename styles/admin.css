@@ -39,6 +39,9 @@
   #hidden2 {
     display: none; 
   }
+  #hidden3 {
+    display: none; 
+  }
 
   select{
     width: 150px; /* Adjust the width */
@@ -102,4 +105,17 @@
 
 #hide{
     display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+label {
+  font-weight: bold;
+}
+input {
+  padding: 10px;
+  font-size: 1rem;
 }

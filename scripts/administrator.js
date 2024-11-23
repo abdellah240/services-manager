@@ -1,14 +1,20 @@
-let ID = "paul@hoomail.com";
-let pass = "soen287";
 
 
-function checker(event)
+async function checker(event)
 {
+  
   event.preventDefault();
-  var inputId = document.getElementById("Email-administrator").value;
-  var inputPass = document.getElementById("Password-administrator").value;
+  var username = document.getElementById("Email-administrator").value;
+  var password = document.getElementById("Password-administrator").value;
+  const response = await fetch('/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, password }),
+});
 
-  if (inputId == ID && inputPass == pass)
+  if (response.ok)
   {
     localStorage.setItem("isSigned1", "true");
     window.location.href = "../admin/business.html";
@@ -41,39 +47,45 @@ function logout()
 
 function logoclicked()
 {
-  document.getElementById("showButton")
+  
   const content = document.getElementById("hiddenContent");
   const content2 = document.getElementById("hidden");
   const content3 = document.getElementById("hidden2");
+  const content4 = document.getElementById("hidden3");
   if (content.style.display === "none")
   {
     content.style.display = "block"; // Show the content
     content2.style.display = "none";
     content3.style.display = "none";
+    content4.style.display = "none";
   } else
   {
     content2.style.display = "none";
     content3.style.display = "none";
     content.style.display = "none"; // Hide the content if clicked again
+    content4.style.display = "none";
   }
 
 }
 function Appclicked()
 {
-  document.getElementById("showButton1")
+
   const content = document.getElementById("hidden");
   const content2 = document.getElementById("hiddenContent");
   const content3 = document.getElementById("hidden2");
+  const content4 = document.getElementById("hidden3");
   if (content.style.display === "none")
   {
     content.style.display = "block"; // Show the content
     content2.style.display = "none";
     content3.style.display = "none";
+    content4.style.display = "none";
   } else
   {
     content2.style.display = "none";
     content3.style.display = "none";
     content.style.display = "none"; // Hide the content if clicked again
+    content4.style.display = "none";
   }
 
 }
@@ -83,17 +95,42 @@ function Homeclicked()
   const content = document.getElementById("hidden2");
   const content2 = document.getElementById("hiddenContent");
   const content3 = document.getElementById("hidden");
+  const content4 = document.getElementById("hidden3");
   if (content.style.display === "none")
   {
     content.style.display = "block"; // Show the content
     content2.style.display = "none";
     content3.style.display = "none";
+    content4.style.display = "none";
 
   } else
   {
     content2.style.display = "none";
     content3.style.display = "none";
     content.style.display = "none"; // Hide the content if clicked again
+    content4.style.display = "none";
+  }
+
+}
+
+function IDclicked()
+{
+  const content = document.getElementById("hidden3");
+  const content2 = document.getElementById("hidden");
+  const content3 = document.getElementById("hidden2");
+  const content4 = document.getElementById("hiddenContent");
+  if (content.style.display === "none")
+  {
+    content.style.display = "block"; // Show the content
+    content2.style.display = "none";
+    content3.style.display = "none";
+    content4.style.display = "none";
+  } else
+  {
+    content2.style.display = "none";
+    content3.style.display = "none";
+    content.style.display = "none"; // Hide the content if clicked again
+    content4.style.display = "none";
   }
 
 }
@@ -111,6 +148,30 @@ async function save(event){
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ textInput, textareaInput }),
+    });
+
+    if (response.ok) {
+        alert('Data saved successfully!');
+    } else {
+        alert('Failed to save data.');
+    }
+
+}
+
+async function credentials(event){
+  document.getElementById('change-form')
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Collect input values
+    const currentPass = document.getElementById('current-password').value;
+    const newEmail = document.getElementById('new-email').value;
+    const newPass = document.getElementById("new-Password").value;
+
+    // Send data to the server
+    const response = await fetch('/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currentPass, newEmail,newPass }),
     });
 
     if (response.ok) {

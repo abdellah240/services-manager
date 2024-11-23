@@ -282,6 +282,74 @@ app.post('/update-css', (req, res) =>
     });
 });
 //----------------------------------------------------------------------------------------
+const configPath = './Config.json';
+const bcrypt = require('bcryptjs');
+function loadConfig() {
+    try {
+        const rawData = fs.readFileSync(configPath, 'utf8');
+        return JSON.parse(rawData);
+    } catch (err) {
+        console.error("Error reading configuration file:", err);
+        return null;
+    }
+}
+
+const config = loadConfig();
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+ 
+  storedHashedPassword = config.admin.passwordHash;
+  UserName = config.admin.username;
+  const isMatch = await bcrypt.compare(password, storedHashedPassword) && username === UserName;
+
+  if (isMatch) {
+      res.send("Login successful");
+  } else {
+      res.status(401).send("Invalid credentials");
+  }
+});
+//-----------------------------------------------------------------------
+
+app.post('/change-credentials', async (req, res) => {
+  const { currentPassword, newEmail, newPassword } = req.body;
+
+  // Fetch the current email and password hash from the database
+  const storedEmail = config.admin.username; // Example: Fetch current email from config or DB
+  const storedHashedPassword = config.admin.passwordHash; // Example: Fetch current password hash
+
+  // Check if the new email is the same as the current email
+  if (newEmail === storedEmail) {
+      return res.status(400).send("New email cannot be the same as the current email.");
+  }
+
+  // Check if the new password is the same as the current password
+  const isMatch = await bcrypt.compare(currentPassword, storedHashedPassword);
+  if (!isMatch) {
+      return res.status(401).send("Current password is incorrect.");
+  }
+
+  if (newPassword === currentPassword) {
+      return res.status(400).send("New password cannot be the same as the current password.");
+  }
+
+  // Hash the new password if it's different from the current one
+  const newHashedPassword = await bcrypt.hash(newPassword, 12);
+
+  // Update the database with new email and hashed password (you can implement your own logic)
+
+  config.admin.username = newEmail;
+  config.admin.passwordHash = newHashedPassword;
+
+  fs.writeFile(configPath, JSON.stringify(config, null, 2), 'utf8', (writeErr) => {
+    if (writeErr) {
+        return res.status(500).send("Error writing data to file.");
+    }
+
+    res.send("Credentials updated successfully.");
+});
+});
+//----------------------------------------------------------------------------------------------------------
 // Start the server
 app.listen(port, () =>
 {

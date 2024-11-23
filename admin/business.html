@@ -42,6 +42,9 @@
     <a href="#" id="showButton2" class="menu-link" onclick="Homeclicked()">
       <span>Edit Home page </span>
     </a>
+    <a href="#" id="showButton3" class="menu-link" onclick="IDclicked()">
+      <span>Change Email and Password </span>
+    </a>
   </div>
   <div id="hiddenContent">
     <h2>current logo :</h2>
@@ -97,6 +100,43 @@
       <button id="saveButton" type = "submit">Save Changes</button>
     </label></form>
   </div>
+  <div id ="hidden3"><center><div class="login__container">
+    <h2>Change Email and Password</h2>
+    <form id="change-form" method="POST" action="http://localhost:3000/change-credentials" onsubmit="Creditentials(event)">
+        <!-- Current Password -->
+        <label for="current-password">Current Password:</label>
+        <input 
+            type="password" 
+            id="current-password" 
+            name="currentPassword" 
+            required 
+            placeholder="Enter current password"
+        >
+
+        <!-- New Email -->
+        <label for="new-email">New Email:</label>
+        <input 
+            type="email" 
+            id="new-email" 
+            name="newEmail" 
+            required 
+            placeholder="Enter new email"
+        >
+
+        <!-- New Password -->
+        <label for="new-password">New Password:</label>
+        <input 
+            type="password" 
+            id="new-password" 
+            name="newPassword" 
+            required 
+            placeholder="Enter new password"
+        >
+
+        <!-- Submit Button -->
+        <button type="submit" class = "button">Update</button>
+    </form>
+  </div></center></div>
 </body>
 
 </html>
