@@ -1,29 +1,21 @@
-document.getElementById('Save Changes').addEventListener('submit',async (event)=>{
-
+document.getElementById('edit-account').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    // Collect form data
-    const email = document.getElementById('email').value;
-    const phone= document.getElementById('phone').value;
+    const previousEmail = document.getElementById('previous-email').value;
+    const email = document.getElementById('new-email').value;
+    const phone = document.getElementById('phone').value;
     const password = document.getElementById('password').value;
-    
+    const address = document.getElementById('address').value;
 
-    // Validate input
-    if (!email || !phone || !password ){
-            alert('Please fill out all fields.');
-            return;
-        }
-
-       // Prepare data for the backend
-       const formData = {
-        email: email,
-        phone: phone,
-        password: password,
+    const formData = {
+        previousEmail,
+        email,
+        phone,
+        password,
+        address
     };
 
-    try
-    {
-        // Send data to the server using fetch
+    try {
         const response = await fetch('/api/account', {
             method: 'PUT',
             headers: {
@@ -32,19 +24,13 @@ document.getElementById('Save Changes').addEventListener('submit',async (event)=
             body: JSON.stringify(formData),
         });
 
-        if (response.ok)
-        {
-            const result = await response.text();
-            alert(result); // Notify the user of success
-            document.getElementById('edit-account').reset(); // Reset the form
-        } else
-        {
-            const error = await response.text();
-            alert(`Error: ${error}`); // Show server error
+        if (response.ok) {
+            alert(await response.text());
+            document.getElementById('edit-account').reset();
+        } else {
+            alert(`Error: ${await response.text()}`);
         }
-    } catch (err)
-    {
-        console.error('Error:', err);
+    } catch {
         alert('An unexpected error occurred. Please try again.');
     }
-}) 
+});

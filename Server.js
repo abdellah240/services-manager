@@ -19,7 +19,8 @@ app.use(express.json());
 // Import services router
 const servicesRouter = require("./routes/services");
 app.use("/api/services", servicesRouter); // Router will be used when this path is specified
-
+const accountRouter = require("./routes/customer-account-edit");
+app.use("/api/account", accountRouter); // Router will be used when this path is specified
 //import signup router
 const signUpRouter = require("./routes/account-signup");
 app.use("/api/signup", signUpRouter); // Router will be used when this path is specified
@@ -33,43 +34,53 @@ const loginRouter = require("./routes/login");
 app.use("/api/login", loginRouter); // Router will be used when this path is specified
 
 // Serve HTML pages from the 'pages' folder
-app.get("/", (req, res) => {
+app.get("/", (req, res) =>
+{
   // Serve index.html when accessing the root URL
   res.sendFile(path.join(__dirname, "pages", "index.html"));
 });
 
 // Serve any other HTML files from the 'pages' folder based on the URL
-app.get("/pages/*", (req, res) => {
+app.get("/pages/*", (req, res) =>
+{
   const filePath = path.join(__dirname, "pages", req.url.replace("/pages", "")); // Strip '/pages' prefix from the URL
 
-  res.sendFile(filePath, (err) => {
-    if (err) {
+  res.sendFile(filePath, (err) =>
+  {
+    if (err)
+    {
       console.error(`Error serving file: ${filePath}`);
       res.status(404).send("Error: Page not found");
     }
   });
 });
 
-app.get("/customer/*", (req, res) => {
+app.get("/customer/*", (req, res) =>
+{
   const filePath = path.join(
     __dirname,
     "customer",
     req.url.replace("/customer", "")
   ); // Strip '/pages' prefix from the URL
 
-  res.sendFile(filePath, (err) => {
-    if (err) {
+  res.sendFile(filePath, (err) =>
+  {
+    if (err)
+    {
       console.error(`Error serving file: ${filePath}`);
       res.status(404).send("Error: Page not found");
     }
   });
 });
 
-app.get("/admin/*", (req, res) => {
+app.get("/admin/*", (req, res) =>
+{
   const filePath = path.join(__dirname, "admin", req.url.replace("/admin", "")); // Strip '/pages' prefix from the URL
 
-  res.sendFile(filePath, (err) => {
-    if (err) {
+  res.sendFile(filePath, (err) =>
+  {
+    if (err)
+    {
       console.error(`Error serving file: ${filePath}`);
       res.status(404).send("Error: Page not found");
     }
@@ -80,11 +91,14 @@ const upload = multer({ dest: "Upload/" });
 
 // Route to handle logo uploads
 //------------------------------------------------------------------------------------------
-app.post("/upload", upload.single("logo"), (req, res) => {
-  try {
+app.post("/upload", upload.single("logo"), (req, res) =>
+{
+  try
+  {
     const file = req.file;
 
-    if (!file) {
+    if (!file)
+    {
       return res.status(400).send("No file uploaded.");
     }
 
@@ -93,20 +107,24 @@ app.post("/upload", upload.single("logo"), (req, res) => {
 
     // Check if the directory exists, create if it doesn't
     const logoDir = path.dirname(targetPath);
-    if (!fs.existsSync(logoDir)) {
+    if (!fs.existsSync(logoDir))
+    {
       fs.mkdirSync(logoDir, { recursive: true });
     }
 
     // Move and rename the uploaded file to overwrite `current.jpeg`
-    fs.rename(file.path, targetPath, (err) => {
-      if (err) {
+    fs.rename(file.path, targetPath, (err) =>
+    {
+      if (err)
+      {
         console.error(err);
         return res.status(500).send("Failed to save the logo.");
       }
 
       res.redirect("../admin/business.html");
     });
-  } catch (error) {
+  } catch (error)
+  {
     console.error(error);
     res.status(500).send("An error occurred during the file upload.");
   }
@@ -118,11 +136,13 @@ app.use(bodyParser.json()); // Parse JSON data from the client
 // Serve static files (like HTML)
 app.use(express.static(path.join(__dirname, "public")));
 
-app.post("/save", (req, res) => {
+app.post("/save", (req, res) =>
+{
   const { textInput, textareaInput } = req.body;
 
   const dirPath = path.join(__dirname, "Upload/Webinfo");
-  if (!fs.existsSync(dirPath)) {
+  if (!fs.existsSync(dirPath))
+  {
     fs.mkdirSync(dirPath, { recursive: true });
   }
 
@@ -134,13 +154,15 @@ app.post("/save", (req, res) => {
     fs.promises.writeFile(filePath2, textareaInput),
   ])
     .then(() => res.send("Data saved successfully!"))
-    .catch((err) => {
+    .catch((err) =>
+    {
       console.error("Error writing to files:", err);
       res.status(500).send("Failed to save data.");
     });
 });
 //------------------------------------------------------------------------------------------------------------------------
-app.get("/load", (req, res) => {
+app.get("/load", (req, res) =>
+{
   const titlePath = path.join(__dirname, "Upload/Webinfo/Title.txt");
   const descriptionPath = path.join(__dirname, "Upload/Webinfo/Webinfo.txt");
 
@@ -149,10 +171,12 @@ app.get("/load", (req, res) => {
     fs.promises.readFile(titlePath, "utf-8"),
     fs.promises.readFile(descriptionPath, "utf-8"),
   ])
-    .then(([title, description]) => {
+    .then(([title, description]) =>
+    {
       res.json({ title: title.trim(), description: description.trim() });
     })
-    .catch((err) => {
+    .catch((err) =>
+    {
       console.error("Error reading files:", err);
       res.status(500).send("Failed to load data.");
     });
@@ -170,9 +194,11 @@ const cssFiles = [
 ];
 
 // Route to update the CSS files
-app.post("/update-css", (req, res) => {
+app.post("/update-css", (req, res) =>
+{
   const { color } = req.body;
-  if (!color) {
+  if (!color)
+  {
     return res.status(400).send("No color provided.");
   }
 
@@ -184,15 +210,18 @@ app.post("/update-css", (req, res) => {
   Promise.all(
     cssFiles.map(
       (file) =>
-        new Promise((resolve, reject) => {
+        new Promise((resolve, reject) =>
+        {
           const filePath = path.join(__dirname, "styles", file); // Adjusted for the 'styles' folder
 
           // Read the CSS file
-          fs.readFile(filePath, "utf8", (err, data) => {
+          fs.readFile(filePath, "utf8", (err, data) =>
+          {
             if (err) return reject(err);
 
             let updatedCSS;
-            if (color === "red") {
+            if (color === "red")
+            {
               updatedCSS = data
                 .replace(
                   new RegExp(`${placeholder}:\\s*[^;]+;`, "g"),
@@ -206,7 +235,8 @@ app.post("/update-css", (req, res) => {
                   new RegExp(`${placeholder2}:\\s*[^;]+;`, "g"),
                   `${placeholder2}: rgb(170,34,34);`
                 );
-            } else if (color === "green") {
+            } else if (color === "green")
+            {
               updatedCSS = data
                 .replace(
                   new RegExp(`${placeholder}:\\s*[^;]+;`, "g"),
@@ -220,7 +250,8 @@ app.post("/update-css", (req, res) => {
                   new RegExp(`${placeholder2}:\\s*[^;]+;`, "g"),
                   `${placeholder2}: rgb(34,170,34);`
                 );
-            } else if (color === "brown") {
+            } else if (color === "brown")
+            {
               updatedCSS = data
                 .replace(
                   new RegExp(`${placeholder}:\\s*[^;]+;`, "g"),
@@ -234,7 +265,8 @@ app.post("/update-css", (req, res) => {
                   new RegExp(`${placeholder2}:\\s*[^;]+;`, "g"),
                   `${placeholder2}: rgb(119,79,40);`
                 );
-            } else if (color === "blue") {
+            } else if (color === "blue")
+            {
               updatedCSS = data
                 .replace(
                   new RegExp(`${placeholder}:\\s*[^;]+;`, "g"),
@@ -248,11 +280,13 @@ app.post("/update-css", (req, res) => {
                   new RegExp(`${placeholder2}:\\s*[^;]+;`, "g"),
                   `${placeholder2}: rgb(23,23,192);`
                 );
-            } else {
+            } else
+            {
               return reject("Invalid color selection");
             }
             // Write the updated CSS back to the file
-            fs.writeFile(filePath, updatedCSS, "utf8", (err) => {
+            fs.writeFile(filePath, updatedCSS, "utf8", (err) =>
+            {
               if (err) return reject(err);
               resolve();
             });
@@ -261,7 +295,8 @@ app.post("/update-css", (req, res) => {
     )
   )
     .then(() => res.send("CSS files updated successfully."))
-    .catch((err) => {
+    .catch((err) =>
+    {
       console.error(err);
       res.status(500).send("Error updating CSS files.");
     });
@@ -269,11 +304,14 @@ app.post("/update-css", (req, res) => {
 //----------------------------------------------------------------------------------------
 const configPath = "./Config.json";
 const bcrypt = require("bcryptjs");
-function loadConfig() {
-  try {
+function loadConfig()
+{
+  try
+  {
     const rawData = fs.readFileSync(configPath, "utf8");
     return JSON.parse(rawData);
-  } catch (err) {
+  } catch (err)
+  {
     console.error("Error reading configuration file:", err);
     return null;
   }
@@ -281,7 +319,8 @@ function loadConfig() {
 
 const config = loadConfig();
 
-app.post("/login", async (req, res) => {
+app.post("/login", async (req, res) =>
+{
   const { username, password } = req.body;
 
   storedHashedPassword = config.admin.passwordHash;
@@ -290,15 +329,18 @@ app.post("/login", async (req, res) => {
     (await bcrypt.compare(password, storedHashedPassword)) &&
     username === UserName;
 
-  if (isMatch) {
+  if (isMatch)
+  {
     res.send("Login successful");
-  } else {
+  } else
+  {
     res.status(401).send("Invalid credentials");
   }
 });
 //-----------------------------------------------------------------------
 
-app.post("/change-credentials", async (req, res) => {
+app.post("/change-credentials", async (req, res) =>
+{
   const { currentPassword, newEmail, newPassword } = req.body;
 
   // Fetch the current email and password hash from the database
@@ -306,7 +348,8 @@ app.post("/change-credentials", async (req, res) => {
   const storedHashedPassword = config.admin.passwordHash; // Example: Fetch current password hash
 
   // Check if the new email is the same as the current email
-  if (newEmail === storedEmail) {
+  if (newEmail === storedEmail)
+  {
     return res
       .status(400)
       .send("New email cannot be the same as the current email.");
@@ -314,11 +357,13 @@ app.post("/change-credentials", async (req, res) => {
 
   // Check if the new password is the same as the current password
   const isMatch = await bcrypt.compare(currentPassword, storedHashedPassword);
-  if (!isMatch) {
+  if (!isMatch)
+  {
     return res.status(401).send("Current password is incorrect.");
   }
 
-  if (newPassword === currentPassword) {
+  if (newPassword === currentPassword)
+  {
     return res
       .status(400)
       .send("New password cannot be the same as the current password.");
@@ -336,8 +381,10 @@ app.post("/change-credentials", async (req, res) => {
     configPath,
     JSON.stringify(config, null, 2),
     "utf8",
-    (writeErr) => {
-      if (writeErr) {
+    (writeErr) =>
+    {
+      if (writeErr)
+      {
         return res.status(500).send("Error writing data to file.");
       }
 
@@ -347,21 +394,26 @@ app.post("/change-credentials", async (req, res) => {
 });
 //----------------------------------------------------------------------------------------------------------
 const messagesFilePath = path.join(__dirname, './Upload/ClientQ&A/ClientQ.json');
-app.post('/api/append-message', (req, res) => {
+app.post('/api/append-message', (req, res) =>
+{
   const newMessage = req.body;
 
   // Read the existing messages from the JSON file
-  fs.readFile(messagesFilePath, 'utf8', (err, data) => {
-    if (err) {
+  fs.readFile(messagesFilePath, 'utf8', (err, data) =>
+  {
+    if (err)
+    {
       console.error('Error reading messages file:', err);
       return res.status(500).json({ success: false, error: 'Error reading file' });
     }
 
     // Parse the existing data or start with an empty array if no data exists
     let messages = [];
-    try {
+    try
+    {
       messages = JSON.parse(data);
-    } catch (e) {
+    } catch (e)
+    {
       // If the file is empty or invalid, we use an empty array
       messages = [];
     }
@@ -370,12 +422,14 @@ app.post('/api/append-message', (req, res) => {
     messages.push(newMessage);
 
     // Write the updated messages back to the JSON file
-    fs.writeFile(messagesFilePath, JSON.stringify(messages, null, 2), 'utf8', (err) => {
-      if (err) {
+    fs.writeFile(messagesFilePath, JSON.stringify(messages, null, 2), 'utf8', (err) =>
+    {
+      if (err)
+      {
         console.error('Error writing to messages file:', err);
         return res.status(500).json({ success: false, error: 'Error writing file' });
       }
-      
+
       res.status(200).json({ success: true });
     });
   });
@@ -383,11 +437,15 @@ app.post('/api/append-message', (req, res) => {
 
 //--------------------------------------------------------------------------------------------------------------------
 
-app.post("/messages", (req, res) => {
-  try {
+app.post("/messages", (req, res) =>
+{
+  try
+  {
     // Read the JSON file
-    fs.readFile(messagesFilePath, "utf8", (err, data) => {
-      if (err) {
+    fs.readFile(messagesFilePath, "utf8", (err, data) =>
+    {
+      if (err)
+      {
         console.error("Error reading messages file:", err);
         return res.status(500).json({ error: "Failed to load messages" });
       }
@@ -398,28 +456,34 @@ app.post("/messages", (req, res) => {
       // Send the messages back as a response
       res.status(200).json({ messages });
     });
-  } catch (error) {
+  } catch (error)
+  {
     console.error("Error handling request:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 //----------------------------------------------------------------------------------------------------
 const AnswerFilePath = path.join(__dirname, './Upload/ClientQ&A/AdminA.json');
-app.post('/api/append-message1', (req, res) => {
+app.post('/api/append-message1', (req, res) =>
+{
   const newMessage = req.body;
 
   // Read the existing messages from the JSON file
-  fs.readFile(AnswerFilePath, 'utf8', (err, data) => {
-    if (err) {
+  fs.readFile(AnswerFilePath, 'utf8', (err, data) =>
+  {
+    if (err)
+    {
       console.error('Error reading messages file:', err);
       return res.status(500).json({ success: false, error: 'Error reading file' });
     }
 
     // Parse the existing data or start with an empty array if no data exists
     let Answer = [];
-    try {
+    try
+    {
       Answer = JSON.parse(data);
-    } catch (e) {
+    } catch (e)
+    {
       // If the file is empty or invalid, we use an empty array
       Answer = [];
     }
@@ -428,37 +492,43 @@ app.post('/api/append-message1', (req, res) => {
     Answer.push(newMessage);
 
     // Write the updated messages back to the JSON file
-    fs.writeFile(AnswerFilePath, JSON.stringify(Answer, null, 2), 'utf8', (err) => {
-      if (err) {
+    fs.writeFile(AnswerFilePath, JSON.stringify(Answer, null, 2), 'utf8', (err) =>
+    {
+      if (err)
+      {
         console.error('Error writing to messages file:', err);
         return res.status(500).json({ success: false, error: 'Error writing file' });
       }
-      
+
       res.status(200).json({ success: true });
     });
   });
 });
 //------------------------------------------------------------------------------------------------------------------
-app.post('/delete-message', (req, res) => {
+app.post('/delete-message', (req, res) =>
+{
   const messageToDelete = req.body; // Get the entire message object to delete
 
   // Read the current messages
-  fs.readFile(messagesFilePath, 'utf8', (err, data) => {
-    if (err) {
+  fs.readFile(messagesFilePath, 'utf8', (err, data) =>
+  {
+    if (err)
+    {
       return res.status(500).json({ success: false, message: 'Error reading messages.' });
     }
 
     let messagesArray = JSON.parse(data);
 
     // Find and remove the message that matches the full message object
-    const messageIndex = messagesArray.findIndex(msg => 
+    const messageIndex = messagesArray.findIndex(msg =>
       msg.Name === messageToDelete.Name &&
       msg.ID === messageToDelete.ID &&
       msg.message === messageToDelete.message &&
       msg.timestamp === messageToDelete.timestamp
     );
 
-    if (messageIndex === -1) {
+    if (messageIndex === -1)
+    {
       return res.status(404).json({ success: false, message: 'Message not found.' });
     }
 
@@ -466,8 +536,10 @@ app.post('/delete-message', (req, res) => {
     messagesArray.splice(messageIndex, 1);
 
     // Write the updated messages back to the file
-    fs.writeFile(messagesFilePath, JSON.stringify(messagesArray, null, 2), (err) => {
-      if (err) {
+    fs.writeFile(messagesFilePath, JSON.stringify(messagesArray, null, 2), (err) =>
+    {
+      if (err)
+      {
         return res.status(500).json({ success: false, message: 'Error writing updated messages.' });
       }
       res.json({ success: true, message: 'Message deleted successfully.' });
@@ -476,6 +548,7 @@ app.post('/delete-message', (req, res) => {
 });
 //----------------------------------------------------------------------------------------------------------------
 // Start the server
-app.listen(port, () => {
+app.listen(port, () =>
+{
   console.log(`Server is running on http://localhost:${port}`);
 });

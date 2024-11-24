@@ -23,7 +23,7 @@
 <body>
   <header class="header">
     <div class="header__logo">
-      <div class="header__logo-item"  id ="business-title" >Services Manager</div>
+      <div class="header__logo-item" id="business-title">Services Manager</div>
     </div>
     <nav class="header__nav">
       <ul class="nav-element">
@@ -50,48 +50,51 @@
   </header>
   <main class="app">
     <div class="app__container">
-      <form class="account__form">
-        <h1 class="account__title">Edit Account</h1>
-        <form method="PUT" id="edit-account">
 
-        <!-- <div class="form-item">
-            <label class="form-item__label"> First Name</label>
-            <input class="form-item__input" type="text" placeholder="First Name" />
+      <h1 class="account__title">Edit Account</h1>
+
+      <form id="edit-account" class="account__form">
+        <div class="account__form-item">
+          <div class="form-item">
+            <label class="form-item__label">Previous Email</label>
+            <input class="form-item__input" id="previous-email" name="previous-email"
+              placeholder="Enter your current email" />
           </div>
         </div>
 
         <div class="account__form-item">
           <div class="form-item">
-            <label class="form-item__label"> Last Name</label>
-            <input class="form-item__input" type="text" placeholder="Last Name" />
+            <label class="form-item__label">New Email</label>
+            <input class="form-item__input" id="new-email" name="new-email" placeholder="Enter your new email" />
           </div>
-        </div> -->
-          <div class="account__form-item">
-            <div class="form-item">
-              <label class="form-item__label"> Email</label>
-              <input class="form-item__input" id="email" placeholder="someone@gmail.com" />
-            </div>
-          </div>
+        </div>
 
-          <div class="account__form-item">
-            <div class="form-item">
-              <label class="form-item__label"> Phone Number</label>
-              <input class="form-item__input" id="phone" placeholder="(123)-456-7890" />
-            </div>
+        <div class="account__form-item">
+          <div class="form-item">
+            <label class="form-item__label">Password</label>
+            <input class="form-item__input" id="password" name="password" type="password"
+              placeholder="Enter password" />
           </div>
+        </div>
 
-          <div class="account__form-item">
-            <div class="form-item">
-              <label class="form-item__label"> Address</label>
-              <input class="form-item__input" id="address" placeholder="Address"></textarea>
-            </div>
+        <div class="account__form-item">
+          <div class="form-item">
+            <label class="form-item__label">Phone Number</label>
+            <input class="form-item__input" id="phone" name="phone" placeholder="(123)-456-7890" />
           </div>
+        </div>
 
-          <div class="account__button-container">
-            <button class="button button--secondary" href = "/customer/pages/index.html">Cancel</button>
-            <input type="submit" id="Save Changes" value="Save Changes">
+        <div class="account__form-item">
+          <div class="form-item">
+            <label class="form-item__label">Address</label>
+            <input class="form-item__input" id="address" name="address" placeholder="Enter your address" />
           </div>
-       </form>
+        </div>
+
+        <div class="account__button-container">
+          <button class="button button--secondary"> Cancel </button>
+          <input type="submit" id="Save Changes" value="Save Changes">
+        </div>
       </form>
     </div>
   </main>
