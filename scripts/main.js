@@ -78,6 +78,10 @@ function logout() {
   if (confirmation) {
     // If confirmed, log the user out (clear sign-in status)
     localStorage.setItem("isSigned", "false");
+    localStorage.setItem("FirstName", "");
+    localStorage.setItem("LastName","");
+    localStorage.setItem("ID", "");
+    localStorage.setItem("Email","");
     window.location.href = "../pages/index.html"; // Redirect to login page
   } else {
     // If canceled, do nothing (stay on the current page)

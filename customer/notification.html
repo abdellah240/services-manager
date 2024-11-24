@@ -53,29 +53,26 @@
     <main class="app">
         <div class="app__container">
             <div class="container">
-                <div class="notification">
-                    <h2>Payment Pending</h2>
-                    <p>You have a pending payment of <strong>$120.00</strong></p>
-                    <div class="actions">
-                        <button class="accept" onclick="acceptPayment()">Accept</button>
-                        <button class="dismiss" onclick="dismissNotification()">Dismiss</button>
-                    </div>
-                </div>
-                <div class="notification">
-                    <h2>Payment Received</h2>
-                    <p>Your payment of <strong>$50.00</strong> has been successfully processed.</p>
-                    <div class="actions">
-                        <button class="dismiss" onclick="dismissNotification(this)">Dismiss</button>
-                    </div>
-              
-            </div>
-            </div>
+                <div id="notifications-container"></div>
           </div>
         </div>
       </main>
     
-    
+      <footer class="footer">
+        <div class="footer__container">
+          <a class="footer__link" href="../pages/index.html">Home</a>
+          <a class="footer__link" href="../pages/About-us.html">About Us</a>
+          <a class="footer__link" href="#" onclick="checksign1()">Services</a>
+          <a class="footer__link" href="../pages/Contact.html">Contact</a>
+        </div>
+      </footer>
     <script src="../scripts/notification.js"></script>
+    <script>
+         document.addEventListener("DOMContentLoaded", () =>
+        {
+            loadNotifications(localStorage.getItem("ID"));
+        });
+    </script>
 </body>
 
 </html>

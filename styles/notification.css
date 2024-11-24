@@ -12,7 +12,15 @@
     border: 1px solid #ddd;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, opacity 0.3s ease;
+    overflow: hidden; /* Ensure content doesn't overflow */
+  word-wrap: break-word; /* Break long words */
 }
+
+#notifications-container {
+    width: 100%; /* or set a specific width like 80% */
+    max-width: 600px; /* Adjust based on your design */
+    margin: 0 auto;
+  }
 
 .notification:hover {
     transform: scale(1.02);
