@@ -19,7 +19,7 @@ app.use(express.json());
 // Import services router
 const servicesRouter = require("./routes/services");
 app.use("/api/services", servicesRouter); // Router will be used when this path is specified
-const accountRouter = require("./routes/customer-account-edit");
+const accountRouter = require("./routes/account");
 app.use("/api/account", accountRouter); // Router will be used when this path is specified
 //import signup router
 const signUpRouter = require("./routes/account-signup");
@@ -548,72 +548,72 @@ app.post('/delete-message', (req, res) =>
 });
 //----------------------------------------------------------------------------------------------------------------
 app.post("/Answers", (req, res) =>
+{
+  try
   {
-    try
-    {
-      // Read the JSON file
-      fs.readFile(AnswerFilePath, "utf8", (err, data) =>
-      {
-        if (err)
-        {
-          console.error("Error reading messages file:", err);
-          return res.status(500).json({ error: "Failed to load messages" });
-        }
-  
-        // Parse the JSON data
-        const Answers = JSON.parse(data);
-  
-        // Send the messages back as a response
-        res.status(200).json({ Answers });
-      });
-    } catch (error)
-    {
-      console.error("Error handling request:", error);
-      res.status(500).json({ error: "Internal server error" });
-    }
-  });
-//---------------------------------------------------------------------------------------------------
-app.post('/delete-message1', (req, res) =>
-  {
-    const messageToDelete = req.body; // Get the entire message object to delete
-  
-    // Read the current messages
-    fs.readFile(AnswerFilePath, 'utf8', (err, data) =>
+    // Read the JSON file
+    fs.readFile(AnswerFilePath, "utf8", (err, data) =>
     {
       if (err)
       {
-        return res.status(500).json({ success: false, message: 'Error reading messages.' });
+        console.error("Error reading messages file:", err);
+        return res.status(500).json({ error: "Failed to load messages" });
       }
-  
-      let messagesArray = JSON.parse(data);
-  
-      // Find and remove the message that matches the full message object
-      const messageIndex = messagesArray.findIndex(msg =>
-        msg.Name === messageToDelete.Name &&
-        msg.ID === messageToDelete.ID &&
-        msg.message === messageToDelete.message &&
-        msg.timestamp === messageToDelete.timestamp
-      );
-  
-      if (messageIndex === -1)
+
+      // Parse the JSON data
+      const Answers = JSON.parse(data);
+
+      // Send the messages back as a response
+      res.status(200).json({ Answers });
+    });
+  } catch (error)
+  {
+    console.error("Error handling request:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+//---------------------------------------------------------------------------------------------------
+app.post('/delete-message1', (req, res) =>
+{
+  const messageToDelete = req.body; // Get the entire message object to delete
+
+  // Read the current messages
+  fs.readFile(AnswerFilePath, 'utf8', (err, data) =>
+  {
+    if (err)
+    {
+      return res.status(500).json({ success: false, message: 'Error reading messages.' });
+    }
+
+    let messagesArray = JSON.parse(data);
+
+    // Find and remove the message that matches the full message object
+    const messageIndex = messagesArray.findIndex(msg =>
+      msg.Name === messageToDelete.Name &&
+      msg.ID === messageToDelete.ID &&
+      msg.message === messageToDelete.message &&
+      msg.timestamp === messageToDelete.timestamp
+    );
+
+    if (messageIndex === -1)
+    {
+      return res.status(404).json({ success: false, message: 'Message not found.' });
+    }
+
+    // Remove the message from the array
+    messagesArray.splice(messageIndex, 1);
+
+    // Write the updated messages back to the file
+    fs.writeFile(AnswerFilePath, JSON.stringify(messagesArray, null, 2), (err) =>
+    {
+      if (err)
       {
-        return res.status(404).json({ success: false, message: 'Message not found.' });
+        return res.status(500).json({ success: false, message: 'Error writing updated messages.' });
       }
-  
-      // Remove the message from the array
-      messagesArray.splice(messageIndex, 1);
-  
-      // Write the updated messages back to the file
-      fs.writeFile(AnswerFilePath, JSON.stringify(messagesArray, null, 2), (err) =>
-      {
-        if (err)
-        {
-          return res.status(500).json({ success: false, message: 'Error writing updated messages.' });
-        }
-        res.json({ success: true, message: 'Message deleted successfully.' });
-      });
+      res.json({ success: true, message: 'Message deleted successfully.' });
     });
   });
+});
 //---------------------------------------------------------------------------------------------------
 // Start the server
 app.listen(port, () =>

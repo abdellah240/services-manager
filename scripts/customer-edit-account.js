@@ -1,4 +1,5 @@
-document.getElementById('edit-account').addEventListener('submit', async (event) => {
+document.getElementById('edit-account').addEventListener('submit', async (event) =>
+{
     event.preventDefault();
 
     const previousEmail = document.getElementById('previous-email').value;
@@ -7,30 +8,33 @@ document.getElementById('edit-account').addEventListener('submit', async (event)
     const password = document.getElementById('password').value;
     const address = document.getElementById('address').value;
 
-    const formData = {
+    const acctUpdatedInfo = {
         previousEmail,
         email,
         phone,
         password,
-        address
+        address,
     };
 
-    try {
+    try
+    {
         const response = await fetch('/api/account', {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(acctUpdatedInfo),
         });
-
-        if (response.ok) {
-            alert(await response.text());
+        if (response.ok)
+        {
+            alert('Success.');
             document.getElementById('edit-account').reset();
-        } else {
-            alert(`Error: ${await response.text()}`);
+            localStorage.setItem('Email', email || previousEmail);
         }
-    } catch {
-        alert('An unexpected error occurred. Please try again.');
+        if (response.status === 404)
+            alert('Email does not exist.');
+        ;
+    } catch (error)
+    {
+        console.error('Error: ', error);
+        alert('Error editing account');
     }
 });

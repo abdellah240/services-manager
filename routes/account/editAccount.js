@@ -13,16 +13,22 @@ const editAccount = (db) => async (req, res) =>
 
   const sqlCode = "UPDATE users SET ? WHERE email = ?";
 
-  db.query(sqlCode, [account, previousEmail], (err) =>
+  db.query(sqlCode, [account, previousEmail], (err, results) =>
   {
-    if (!err)
+    if (err)
     {
-      res.status(202).send('Success editing account');
-    } else
-    {
-      console.error(err); // Log the error for debugging
-      res.status(500).send('Failure editing account');
+      console.error("Database error:", err);
+      return res.status(500).send("Failure editing account");
     }
+
+    if (results.affectedRows === 0)
+    {
+      console.error("Email not found");
+      return res.status(404).send("Email not found");
+    }
+
+    res.status(202).send("Success editing account");
   });
+
 };
 module.exports = editAccount;
