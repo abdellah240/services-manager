@@ -61,19 +61,23 @@
       <a href="#" id="show" onclick="confirm1()" class="menu-link">
         <span>Service Requests</span>
       </a>
-      <a href="#" class="menu-link">
+      <a href="#" id = "show2" class="menu-link" onclick="messages()">
         <span> Customer service </span>
       </a>
 
       <main class="app">
         <div id="hide" class="app__container">
           <div class="services__service-container" id="services-list-div"></div>
-          <script>
-            document.addEventListener("DOMContentLoaded", () => {
-              loadServices();
-            });
-          </script>
         </div>
+
+        <div id ="hide2" class="app__container">
+          <div class="services__service-container" id="Messages-list-div"></div>
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+  loadMessages();
+});
+        </script>
       </main>
     </div>
   </body>
