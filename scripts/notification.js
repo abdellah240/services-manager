@@ -60,8 +60,17 @@ class AlertBills extends Notification{
 let notificationArr  = [];
 
 function display(Notifications) {
+  
   const container = document.getElementById("notifications-container"); // Assuming this is your target container
   container.innerHTML = ""; // Clear previous notifications
+
+  if(Notifications.length === 0){
+    const emptyMessage = document.createElement("h1");
+    emptyMessage.textContent = "No more Notifications";
+    emptyMessage.className = "empty-message";
+    container.appendChild(emptyMessage);  // Append the message to the container
+    return;
+  }
 
   Notifications.forEach(notification => {
       // Create the notification container
