@@ -1,69 +1,48 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Services Manager - cart/purchases page </title>
+  <title>Services Manager - Cart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/nav-element.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/footer.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/welcome.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/announcement.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/app.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/header.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="../styles/cart.css" />
 </head>
-
 <body>
   <header class="header">
     <div class="header__logo">
-      <div class="header__logo-item"  id ="business-title" >Services Manager</div>
+      <div class="header__logo-item" id="business-title">Services Manager</div>
     </div>
     <nav class="header__nav">
       <ul class="nav-element">
         <div class="nav-element__section">
-          <li class="nav-element__item">
-            <a class="nav-element__link" href="../pages/index.html">Home</a>
-          </li>
-          <li class="nav-element__item">
-            <a class="nav-element__link" href="#" onclick="checksign1()">Services</a>
-          </li>
-          <li class="nav-element__item">
-            <a class="nav-element__link" href="#" onclick="checksign2()">
-              Cart
-            </a>
-          </li>
-
-          <li class="nav-element__item">
-            <a class="nav-element__link" href="notification.html" onclick="checksign2()">
-             Notifications
-            </a>
-          </li>
-
+          <li class="nav-element__item"><a class="nav-element__link" href="../pages/index.html">Home</a></li>
+          <li class="nav-element__item"><a class="nav-element__link" href="#" onclick="checksign1()">Services</a></li>
+          <li class="nav-element__item"><a class="nav-element__link" href="cart.html">Cart</a></li>
+          <li class="nav-element__item"><a class="nav-element__link" href="notification.html">Notifications</a></li>
         </div>
         <div class="nav-element__section">
-          <li class="nav-element__item" id="authLink">
-            <a class="nav-element__link" href="../pages/login.html">Sign In</a>
-          </li>
+          <li class="nav-element__item" id="authLink"><a class="nav-element__link" href="../pages/login.html">Your Account</a></li>
         </div>
       </ul>
     </nav>
   </header>
 
   <main>
-    <div class="cartTab">
+    <div class="cart-container">
       <h1>Shopping Cart</h1>
       <div class="listcart"></div>
-    </div>
-    <div class="btn">
-      <button><a class="checkOut" href="checkout.html">Checkout</a></div></button>
+      <div class="checkout-button">
+        <a href="checkout.html" id="checkout-btn">Checkout</a>
+      </div>
+      <div class="total-amount" id="cart-total">Total: $0.00</div>
     </div>
   </main>
 
   <script src="../scripts/main.js"></script>
   <script src="../scripts/cart.js"></script>
 </body>
-
 </html>

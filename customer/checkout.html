@@ -44,25 +44,31 @@
     <h1>Checkout</h1>
     <form method="POST" id="checkout-form">
 
-      <label for="fullname"> Full Name</label>
-      <input type="text" id="fullname" name="name" required>
+        <div class="input-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="name" placeholder="John Doe" required>
+        </div>
 
-      <label for="card"> Card Number</label>
-      <input type="text" id="card" name="card-number" placeholder="1234 1234 1234 1234" required>
+        <div class="input-group">
+            <label for="card">Card Number</label>
+            <input type="text" id="card" name="card-number" placeholder="1234 1234 1234 1234" required>
+        </div>
 
-      <label for="exp">Exp</label>
-      <input type="text" id="exp" name="expiration-date" placeholder="MM/YY" required>
+        <div class="input-group">
+            <label for="exp">Exp</label>
+            <input type="text" id="exp" name="expiration-date" placeholder="MM/YY" required>
+        </div>
 
-      <label for="CSV">CSV</label>
-      <input type="text" id="CSV" name="csv-number" placeholder="000" required>
+        <div class="input-group">
+            <label for="CSV">CSV</label>
+            <input type="text" id="CSV" name="csv-number" placeholder="000" required>
+        </div>
 
-      <input type="submit" id="submit-button" value="Submit">
+        <input type="submit" id="submit-button" value="Submit">
 
     </form>
+</div>
 
-
-    </form>
-  </div>
 
   <script src="/scripts/checkout.js"></script>
   <script src="/scripts/main.js"></script>

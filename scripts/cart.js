@@ -1,22 +1,23 @@
+// Get the cart container
 let listServicesHTML = document.querySelector('.listcart');
+let totalAmount = document.getElementById('cart-total');
+let listServices = []; 
 
-let listServices = [];
-
-const addDataToHTML = () =>
-{
+// Render items in the cart
+const addDataToHTML = () => {
     listServicesHTML.innerHTML = '';
-    if (listServices.length > 0)
-    {
-        listServices.forEach(service =>
-        {
-            displayCartItem(service);
+    if (listServices.length > 0) {
+        listServices.forEach((service, index) => {
+            displayCartItem(service, index);
         });
+        calculateTotal();
+    } else {
+        listServicesHTML.innerHTML = '<p>Your cart is empty.</p>';
     }
-}
+};
 
-function displayCartItem(service)
-{
-    // Create structure
+// Display a single cart item
+function displayCartItem(service, index) {
     const cartItemDiv = document.createElement("div");
     const serviceNameDiv = document.createElement("div");
     const servicePriceDiv = document.createElement("div");
@@ -28,38 +29,63 @@ function displayCartItem(service)
     // Set classnames
     cartItemDiv.className = "service-item";
     serviceNameDiv.className = "service-name";
-    servicePriceDiv.className = "service-totalPrice";
+    servicePriceDiv.className = "service-price";
     serviceQuantityDiv.className = "service-quantity";
     minusButton.className = "minus";
     plusButton.className = "plus";
 
-    // Add text, buttons (button logic to be added)
-    serviceNameDiv.innerHTML = service.title;
-    servicePriceDiv.innerHTML = `$${service.price}`;
-    quantityDisplay.innerHTML = `${service.quantity}`;
-    minusButton.innerHTML = "<";
-    plusButton.innerHTML = ">";
+    // Set content
+    serviceNameDiv.textContent = service.title;
+    servicePriceDiv.textContent = `$${service.price}`;
+    quantityDisplay.textContent = service.quantity;
+    minusButton.textContent = "−";
+    plusButton.textContent = "+";
 
+    // Add event listeners for quantity buttons
+    minusButton.addEventListener("click", () => {
+        if (service.quantity > 0) {
+            service.quantity--;
+            quantityDisplay.textContent = service.quantity;
+            updateLocalStorage();
+            calculateTotal();
+        }
+    });
+
+    plusButton.addEventListener("click", () => {
+        service.quantity++;
+        quantityDisplay.textContent = service.quantity;
+        updateLocalStorage();
+        calculateTotal();
+    });
+
+    // Append elements to the cart item
     serviceQuantityDiv.appendChild(minusButton);
     serviceQuantityDiv.appendChild(quantityDisplay);
     serviceQuantityDiv.appendChild(plusButton);
-
     cartItemDiv.appendChild(serviceNameDiv);
     cartItemDiv.appendChild(servicePriceDiv);
     cartItemDiv.appendChild(serviceQuantityDiv);
 
-    // Add cart item to list
+    // Add cart item to the list
     listServicesHTML.appendChild(cartItemDiv);
 }
 
-
-const initApp = () =>
-{
-    data = JSON.parse(localStorage.getItem('cart'));
-    Promise.resolve(data).then(data =>
-        {
-            listServices = data || [];
-            addDataToHTML();
-        })
+// Calculate and display total
+function calculateTotal() {
+    const total = listServices.reduce((sum, service) => sum + service.price * service.quantity, 0);
+    totalAmount.textContent = `Total: $${total.toFixed(2)}`;
 }
+
+// Save the updated cart data back to localStorage
+function updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(listServices));
+}
+
+// Initialize the cart
+const initApp = () => {
+    const data = JSON.parse(localStorage.getItem('cart')) || [];
+    listServices = data;
+    addDataToHTML();
+};
+
 initApp();

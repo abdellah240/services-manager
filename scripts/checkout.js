@@ -15,6 +15,7 @@ document.getElementById('checkout-form').addEventListener('submit', async (event
         return;
     }
     const listServices = JSON.parse(localStorage.getItem('cart')) || [];
+
     let noErrors = true;
 
     for (const service of listServices)
@@ -38,6 +39,8 @@ document.getElementById('checkout-form').addEventListener('submit', async (event
                 },
                 body: JSON.stringify(formData),
             });
+
+            console.log(formData);
 
             if (!response.ok)
             {
