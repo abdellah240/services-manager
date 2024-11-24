@@ -185,15 +185,19 @@ async function credentials(event){
 function messages()
 {
     const content = document.getElementById("hide2");
+    const content1 = document.getElementById("hide");
+
     if (content.style.display === "none")
     {
       content.style.display = "block"; // Show the content
+      content1.style.display = "none";
 
 
     } else
     {
 
       content.style.display = "none"; // Hide the content if clicked again
+      content1.style.display = "none";
     }
 }
 
@@ -540,15 +544,18 @@ async function credentials(event)
 function confirm1()
 {
   const content = document.getElementById("hide");
+  const content1 = document.getElementById("hide2")
   if (content.style.display === "none")
   {
     content.style.display = "block"; // Show the content
+    content1.style.display = "none";
 
 
   } else
   {
 
     content.style.display = "none"; // Hide the content if clicked again
+    content1.style.display = "none";
   }
 }
 
