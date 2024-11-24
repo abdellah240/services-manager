@@ -246,16 +246,17 @@ async function loadMessages() {
 
 function displayMessages(MessagesArray) {
   const MessagesList = document.getElementById("Messages-list-div");
+  MessagesList.innerHTML = "";
 
-  if(Notifications.length === 0){
+  if(MessagesArray.length === 0){
     const emptyMessage = document.createElement("h1");
     emptyMessage.textContent = "No more Messages";
     emptyMessage.className = "empty-message";
-    container.appendChild(emptyMessage);  // Append the message to the container
+    MessagesList.appendChild(emptyMessage);  // Append the message to the container
     return;
   }
   // Clear previous messages if any
-  MessagesList.innerHTML = "";
+  
 
   MessagesArray.forEach((Messages, index) => {
     const messageDiv = document.createElement("div"); // Message container
