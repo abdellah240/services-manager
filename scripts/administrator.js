@@ -602,7 +602,6 @@ function confirmed(button)
   }
 }
 
-
 function color()
 {
   const colorSelect = document.getElementById('colorSelect');
