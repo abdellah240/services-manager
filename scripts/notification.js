@@ -1,0 +1,7 @@
+function acceptPayment(){
+
+}
+
+function dismissNotification(){
+    
+}
