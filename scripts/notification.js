@@ -18,6 +18,7 @@ function dismissNotification(notification, notificationDiv){
           // Remove the message element from the list
           notificationDiv.remove();
           notificationDiv.style.display = "none";
+          location.reload();
 
         } else {
           alert("Failed to delete the message.");
