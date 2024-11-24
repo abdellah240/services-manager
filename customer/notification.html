@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Services Manager - Notification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/nav-element.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/footer.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/welcome.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/announcement.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/app.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/header.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/notification.css" />
+    <script src="../scripts/main.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header__logo">
+            <div class="header__logo-item"  id ="business-title" >Services Manager</div>
+        </div>
+        <nav class="header__nav">
+            <ul class="nav-element">
+            <div class="nav-element__section">
+                <li class="nav-element__item">
+                <a class="nav-element__link" href="../pages/index.html">Home</a>
+                </li>
+                <li class="nav-element__item">
+                <a class="nav-element__link" href="#" onclick="checksign1()">Services</a>
+                </li>
+                <li class="nav-element__item">
+                <a class="nav-element__link" href="#" onclick="checksign2()">
+                    Cart
+                </a>
+                </li>
+
+                <li class="nav-element__item">
+                    <a class="nav-element__link" href="notification.html" onclick="checksign2()">
+                     Notifications
+                    </a>
+                </li>
+            </div>
+            <div class="nav-element__section">
+                <li class="nav-element__item" id="authLink">
+                <a class="nav-element__link" href="../pages/login.html">Sign In</a>
+                </li>
+            </div>
+            </ul>
+        </nav>
+    </header>
+        
+    
+    <div class="container">
+        <div class="notification">
+            <h2>Payment Pending</h2>
+            <p>You have a pending payment of <strong>$120.00</strong></p>
+            <div class="actions">
+                <button class="accept" onclick="acceptPayment()">Accept</button>
+                <button class="dismiss" onclick="dismissNotification()">Dismiss</button>
+            </div>
+        </div>
+        <div class="notification">
+            <h2>Payment Received</h2>
+            <p>Your payment of <strong>$50.00</strong> has been successfully processed.</p>
+            <div class="actions">
+                <button class="dismiss" onclick="dismissNotification(this)">Dismiss</button>
+            </div>
+        </div>
+    </div>
+    <script src="notification.js"></script>
+</body>
+
+</html>
