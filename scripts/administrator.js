@@ -2,17 +2,17 @@
 
 async function checker(event)
 {
-  
+
   event.preventDefault();
   var username = document.getElementById("Email-administrator").value;
   var password = document.getElementById("Password-administrator").value;
   const response = await fetch('/login', {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ username, password }),
-});
+  });
 
   if (response.ok)
   {
@@ -47,7 +47,7 @@ function logout()
 
 function logoclicked()
 {
-  
+
   const content = document.getElementById("hiddenContent");
   const content2 = document.getElementById("hidden");
   const content3 = document.getElementById("hidden2");
@@ -135,144 +135,147 @@ function IDclicked()
 
 }
 
-async function save(event){
+async function save(event)
+{
   document.getElementById('Info-form')
-    event.preventDefault(); // Prevent default form submission behavior
+  event.preventDefault(); // Prevent default form submission behavior
 
-    // Collect input values
-    const textInput = document.getElementById('title').value;
-    const textareaInput = document.getElementById('description').value;
+  // Collect input values
+  const textInput = document.getElementById('title').value;
+  const textareaInput = document.getElementById('description').value;
 
-    // Send data to the server
-    const response = await fetch('/save', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ textInput, textareaInput }),
-    });
+  // Send data to the server
+  const response = await fetch('/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ textInput, textareaInput }),
+  });
 
-    if (response.ok) {
-        alert('Data saved successfully!');
-    } else {
-        alert('Failed to save data.');
-    }
+  if (response.ok)
+  {
+    alert('Data saved successfully!');
+  } else
+  {
+    alert('Failed to save data.');
+  }
 
 }
 
-async function credentials(event){
+async function credentials(event)
+{
   document.getElementById('change-form')
-    event.preventDefault(); // Prevent default form submission behavior
+  event.preventDefault(); // Prevent default form submission behavior
 
-    // Collect input values
-    const currentPass = document.getElementById('current-password').value;
-    const newEmail = document.getElementById('new-email').value;
-    const newPass = document.getElementById("new-Password").value;
+  // Collect input values
+  const currentPass = document.getElementById('current-password').value;
+  const newEmail = document.getElementById('new-email').value;
+  const newPass = document.getElementById("new-Password").value;
 
-    // Send data to the server
-    const response = await fetch('/save', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ currentPass, newEmail,newPass }),
-    });
+  // Send data to the server
+  const response = await fetch('/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ currentPass, newEmail, newPass }),
+  });
 
-    if (response.ok) {
-        alert('Data saved successfully!');
-    } else {
-        alert('Failed to save data.');
-    }
+  if (response.ok)
+  {
+    alert('Data saved successfully!');
+  } else
+  {
+    alert('Failed to save data.');
+  }
 
 }
 
 function confirm1()
 {
-    const content = document.getElementById("hide");
-    if (content.style.display === "none")
-    {
-      content.style.display = "block"; // Show the content
+  const content = document.getElementById("hide");
+  if (content.style.display === "none")
+  {
+    content.style.display = "block"; // Show the content
 
 
-    } else
-    {
+  } else
+  {
 
-      content.style.display = "none"; // Hide the content if clicked again
-    }
+    content.style.display = "none"; // Hide the content if clicked again
+  }
 }
+
 async function loadServices()
 {
-
-  try{
-  
-  const response = await fetch('../data/services-to-confirm.json');
-  const servicesArray = await response.json();
-
-  displayServices(servicesArray); // servicesArray: Defined in manage-services.js
-}
-   catch (error){
-    alert("Error loading services. Please try again.");
+  try
+  {
+    const response = await fetch('/api/checkout', { method: 'GET' });
+    const services = await response.json();
+    displayServices(services); // Pass services object
+  } catch (error)
+  {
+    alert("Error loading services.");
   }
-
 }
 
-function displayServices(servicesArray)
+function displayServices(services)
 {
   const servicesListDiv = document.getElementById("services-list-div");
+  servicesListDiv.innerHTML = ""; // Clear previous content
 
-  servicesArray.forEach((service, index) =>
+  Object.entries(services).forEach(([fullname, { services, total }]) =>
   {
     const serviceDiv = document.createElement("div");
-    const buttonContainerDiv = document.createElement("div");
-    const confirm = document.createElement("button");
+    const confirmButton = document.createElement("button");
 
-    serviceDiv.innerHTML = `Title: ${service.title} <br>
-                                                    client: ${service.client} <br>
-                                                    left to pay: ${service.lefttopay}`;
+    serviceDiv.innerHTML = `Client: ${fullname} <br>
+                            Total: $${total} <br>
+                            Services: ${services.join(" - ")}`;
 
-    confirm.innerHTML = "confirm service";
+    confirmButton.innerHTML = "Confirm services order";
+    confirmButton.className = "button";
+    confirmButton.addEventListener("click", () => confirmed(confirmButton));
 
     serviceDiv.className = "services__service";
-    buttonContainerDiv.className = "services__button-container";
-    confirm.className = "button";
-    confirm.addEventListener("click", () => confirmed(confirm, service));
-
-    buttonContainerDiv.appendChild(confirm);
-    serviceDiv.appendChild(buttonContainerDiv);
-    servicesListDiv.appendChild(serviceDiv);
-
+    serviceDiv.appendChild(confirmButton);
     servicesListDiv.appendChild(serviceDiv);
   });
-
 }
-function confirmed(button, service)
+
+function confirmed(button)
 {
-  if (button.textContent == "confirm service")
+  if (button.textContent === "Confirm services order")
   {
-    button.textContent = "cancel X";
-
-  }
-  else
+    button.textContent = "Cancel order";
+    alert("Order confirmed.");
+  } else
   {
-
-    button.textContent = "confirm service";
+    button.textContent = "Confirm services order";
+    alert("Order canceled.");
   }
 }
 
-function color(){
+
+function color()
+{
   const colorSelect = document.getElementById('colorSelect');
   const selectedColor = colorSelect.value;
-    fetch('/update-css', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ color: selectedColor }),
+  fetch('/update-css', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ color: selectedColor }),
+  })
+    .then(response =>
+    {
+      if (response.ok)
+      {
+        window.location.reload();
+
+      } else
+      {
+        alert('Error updating CSS files.');
+      }
     })
-      .then(response => {
-        if (response.ok) {
-          window.location.reload();
-          
-        } else {
-          alert('Error updating CSS files.');
-        }
-      })
-      .catch(() => alert('Server error.'));
-  
+    .catch(() => alert('Server error.'));
+
 }
