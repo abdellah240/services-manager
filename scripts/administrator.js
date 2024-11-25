@@ -642,3 +642,15 @@ function color()
     .catch(() => alert('Server error.'));
 
 }
+
+document.querySelectorAll('.menu-link').forEach((button, index) => {
+
+  button.addEventListener('click', () => {
+
+      const popups = document.querySelectorAll('.popup');
+      popups.forEach((popup) => popup.classList.remove('active')); 
+      popups[index].classList.add('active'); 
+      
+  });
+});
+
