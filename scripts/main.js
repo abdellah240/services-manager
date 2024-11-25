@@ -76,6 +76,10 @@ function logout() {
 
   // Check if the user clicked "OK"
   if (confirmation) {
+    
+    //clear cart
+    clearCart();
+
     // If confirmed, log the user out (clear sign-in status)
     localStorage.setItem("isSigned", "false");
     localStorage.setItem("FirstName", "");
@@ -87,6 +91,12 @@ function logout() {
     // If canceled, do nothing (stay on the current page)
     console.log("User canceled logout.");
   }
+}
+
+//clear the cart data
+function clearCart(){
+  listServices = [];
+  localStorage.setItem('cart', JSON.stringify(listServices))
 }
 
 async function loadData() {
