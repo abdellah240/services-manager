@@ -1,142 +1,181 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Business management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../styles/other.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../styles/admin.css"
+    />
+    <script src="../scripts/administrator.js"></script>
+    <script src="../scripts/Server.js"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Business management</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/other.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="../styles/admin.css" />
-  <script src="../scripts/administrator.js"></script>
-  <script src="../scripts/Server.js"></script>
-</head>
+  <body>
+    <nav>
+      <ul class="nav-element">
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="../pages/index.html"
+            >Preview Client side</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="business.html"
+            >Business management</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="services.html"
+            >Service management</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="customers.html"
+            >Customer management</a
+          >
+        </li>
+        <li class="nav-element__item">
+          <a class="nav-element__link" href="#" onclick="logout()">Log out</a>
+        </li>
+      </ul>
+    </nav>
 
-<body>
-  <nav>
-    <ul class="nav-element">
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="../pages/index.html">Preview Client side</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="business.html">Business management</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="services.html">Service management</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="customers.html">Customer management</a>
-      </li>
-      <li class="nav-element__item">
-        <a class="nav-element__link" href="#" onclick="logout()">Log out</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="menu">
-    <a href="#" id="showButton" class="menu-link" onclick="logoclicked()">
-      <span>Edit Business logo </span>
-    </a>
-    <a href="#" id="showButton1" class="menu-link" onclick="Appclicked()">
-      <span>Edit website appearance</span>
-    </a>
-    <a href="#" id="showButton2" class="menu-link" onclick="Homeclicked()">
-      <span>Edit Home page </span>
-    </a>
-    <a href="#" id="showButton3" class="menu-link" onclick="IDclicked()">
-      <span>Change Email and Password </span>
-    </a>
-  </div>
-  <div id="hiddenContent">
-    <h2>current logo :</h2>
-    <img src="../Upload/logo/current.jpeg" alt="logo" id="logo" height="250" width="250" />
+    <div class="menu">
+      <a href="#" id="showButton" class="menu-link" onclick="logoclicked()"
+        >Edit Business Logo</a
+      >
+      <a href="#" id="showButton1" class="menu-link" onclick="Appclicked()"
+        >Edit Website Appearance</a
+      >
+      <a href="#" id="showButton2" class="menu-link" onclick="Homeclicked()"
+        >Edit Home Page</a
+      >
+      <a href="#" id="showButton3" class="menu-link" onclick="IDclicked()"
+        >Change Email and Password</a
+      >
+    </div>
 
-    <form id="uploadForm" action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
-      <label for="input">Upload New Logo:</label>
-      <input type="file" id="input" name="logo" accept="image/jpeg, image/png" />
-      <button id="saveButton" type="submit">Save Changes</button>
-  </form>
-  </div>
-  <div id="hidden">
-    <p>What color do you want for the website?</p><br>
-    <label for="colorSelect">Choose a color:</label>
-    <select id="colorSelect" name="Color" size="1">
-      <option>blue</option>
-      <option>red</option>
-      <option>brown</option>
-      <option>green</option>
-    </select>
-    <br><br>
-    <div class="colored-square" id="square"></div>
-    <button id="saveButton1" onclick="color()">Save Changes</button>
+    <div id="hiddenContent" class="popup">
+      <h2>Current Logo:</h2>
+      <img
+        src="../Upload/logo/current.jpeg"
+        alt="Current Logo"
+        id="logo"
+        height="250"
+        width="250"
+      />
+      <form
+        id="uploadForm"
+        action="http://localhost:3000/upload"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <label for="input">Upload New Logo:</label>
+        <input
+          type="file"
+          id="input"
+          name="logo"
+          accept="image/jpeg, image/png"
+          required
+        />
+        <button id="saveButton" type="submit">Save Changes</button>
+      </form>
+    </div>
 
-  </div>
+    <div id="hidden" class="popup">
+      <p>What color do you want for the website?</p>
+      <label for="colorSelect">Choose a color:</label>
+      <select id="colorSelect" name="Color" size="1" required>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="brown">Brown</option>
+        <option value="green">Green</option>
+      </select>
+      <div class="colored-square" id="square"></div>
+      <button id="saveButton1" onclick="color()">Save Changes</button>
+    </div>
 
-  <script>
-    const colorSelect = document.getElementById('colorSelect');
-    const square = document.getElementById('square');
+    <div id="hidden2" class="popup">
+      <form
+        id="Info-form"
+        action="http://localhost:3000/save"
+        method="POST"
+        onsubmit="save(event)"
+      >
+        <h3>Change the business description:</h3>
+        <textarea
+          id="description"
+          name="aspirations"
+          rows="3"
+          required
+          placeholder="Enter a description"
+        ></textarea>
+        <h3>Change the business name:</h3>
+        <input
+          type="text"
+          id="title"
+          name="Title"
+          placeholder="Enter new business name"
+          required
+        />
+        <button id="saveButton2" type="submit">Save Changes</button>
+      </form>
+    </div>
 
-    colorSelect.addEventListener('change', function ()
-    {
-      const selectedColor = colorSelect.value; // Get selected option value
-      square.style.backgroundColor = selectedColor; // Change square color
-    });
-
-   
-  </script>
-
-  <div id="hidden2">
-    <form id = "Info-form" action = "http://localhost:3000/save" method="post" onsubmit="save(event)">
-    <label>
-      <h3> In this section you will be able to change the description of the business that will be visible to the
-        client:</h3> <br>
-      <textarea id= "description"name="aspirations" rows="3" cols="40" required>
-       Provide a new description for client home page (Be brief and concise)
-        </textarea>
-    </label>
-    <label>
-      <h3> In this section you will be able to change the name of your business:</h3> <br>
-      <input type="text" name="Title" id="title" rows="3" cols="40" required>
-      </input>
-      <button id="saveButton" type = "submit">Save Changes</button>
-    </label></form>
-  </div>
-  <div id ="hidden3"><center><div class="login__container">
-    <h2>Change Email and Password</h2>
-    <form id="change-form" method="POST" action="http://localhost:3000/change-credentials" onsubmit="Creditentials(event)">
-        <!-- Current Password -->
+    <div id="hidden3" class="popup">
+      <h2>Change Email and Password</h2>
+      <form
+        id="change-form"
+        action="http://localhost:3000/change-credentials"
+        method="POST"
+        onsubmit="Creditentials(event)"
+      >
         <label for="current-password">Current Password:</label>
-        <input 
-            type="password" 
-            id="current-password" 
-            name="currentPassword" 
-            required 
-            placeholder="Enter current password"
-        >
-
-        <!-- New Email -->
+        <input
+          type="password"
+          id="current-password"
+          name="currentPassword"
+          required
+          placeholder="Enter current password"
+        />
         <label for="new-email">New Email:</label>
-        <input 
-            type="email" 
-            id="new-email" 
-            name="newEmail" 
-            required 
-            placeholder="Enter new email"
-        >
-
-        <!-- New Password -->
+        <input
+          type="email"
+          id="new-email"
+          name="newEmail"
+          required
+          placeholder="Enter new email"
+        />
         <label for="new-password">New Password:</label>
-        <input 
-            type="password" 
-            id="new-password" 
-            name="newPassword" 
-            required 
-            placeholder="Enter new password"
-        >
+        <input
+          type="password"
+          id="new-password"
+          name="newPassword"
+          required
+          placeholder="Enter new password"
+        />
+        <button id="saveButton3" type="submit">Update</button>
+      </form>
+    </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class = "button">Update</button>
-    </form>
-  </div></center></div>
-</body>
+    <script>
+      const colorSelect = document.getElementById("colorSelect");
+      const square = document.getElementById("square");
 
+      colorSelect.addEventListener("change", function () {
+        const selectedColor = colorSelect.value;
+        square.style.backgroundColor = selectedColor;
+      });
+    </script>
+  </body>
 </html>
