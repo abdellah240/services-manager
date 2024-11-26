@@ -572,7 +572,8 @@ async function loadServices()
   try
   {
     const response = await fetch('/api/checkout', { method: 'GET' });
-    const services = await response.json();
+    const data = await response.json();
+    const services = data.orders;
     displayServices(services); // Pass services object
   } catch (error)
   {

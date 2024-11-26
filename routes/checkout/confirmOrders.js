@@ -1,7 +1,7 @@
 const confirmOrders = (checkoutDB) => (req, res) =>
 {
   const query = `
-    SELECT   orders.fullname, services.title, SUM(services.price) AS total
+    SELECT   orders.fullname, orders.client_id, services.title, SUM(services.price) AS total
     FROM     orders
     JOIN     services ON orders.service_id = services.id
     GROUP BY orders.fullname, services.title;`;
@@ -11,6 +11,7 @@ const confirmOrders = (checkoutDB) => (req, res) =>
     if (!err)
     {
       const orders = {};
+      const result = results;
 
       results.forEach((order) =>
       {
@@ -21,7 +22,7 @@ const confirmOrders = (checkoutDB) => (req, res) =>
         orders[order.fullname].services.push(order.title);
         orders[order.fullname].total += order.total;
       });
-      res.status(200).json(orders);
+      res.status(200).json({orders,result});
     } else
     {
       res.status(500).send("Error loading orders from database.");

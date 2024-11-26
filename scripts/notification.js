@@ -1,8 +1,14 @@
-function acceptPayment(){
+function accept(notification, notificationDiv){
+  const a = confirm("You might want to print this page first");
+  if(a){
+    notificationDiv.remove();
+    notificationDiv.style.display = "none";
+  }
+  else{ return;}
 }
 
 function dismissNotification(notification, notificationDiv){
-  const a = confirm("Are you sure? You won't be able to read it again if you dismiss. do you still want to delete this notification");
+  const a = confirm("Are you sure? You won't be able to read it again if you dismiss. do you still want to delete this notification?");
   if(a){
     try{
       fetch("/delete-message1", {
@@ -53,8 +59,9 @@ class Answer extends Notification{
 }
 
 class AlertBills extends Notification{
-    constructor(content, date){
-        super("Payment Pending", content,date);
+    constructor(content, date, message){
+        super("Payment received!", content,date);
+        this.message = message;
     }
 }
 
@@ -102,8 +109,8 @@ function display(Notifications) {
           // Add "Accept" button for AlertBills
           const acceptButton = document.createElement("button");
           acceptButton.className = "accept";
-          acceptButton.textContent = "Proceed to payment";
-          // acceptButton.onclick = () => proceedToPayment(notification);
+          acceptButton.textContent = "Mark as read";
+          acceptButton.onclick = () => accept(notification,notificationDiv);
           actionsDiv.appendChild(acceptButton);
       } else if (notification instanceof Answer) { // Updated here
           // Add "Dismiss" button for Answer
@@ -148,7 +155,21 @@ function display(Notifications) {
           notificationArr.push(new Answer(match.message, match.timestamp,match));
         }
       });
-  
+
+      const response2 = await fetch('/api/checkout', { method: 'GET' });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const confirmation = await response2.json();
+      const Data = confirmation.result;
+      console.log(Data);
+      const MatchingData = Data.filter(data => String(data.client_id) === String(targetID));
+      MatchingData.forEach(match => {
+        console.log(notificationArr);
+        if (match && match.client_id) {
+        notificationArr.push(new AlertBills(`Your service request is waiting for confirmation for the following service : <b> ${match.title} </b>`,  new Date().toISOString(), match));
+        }
+      });  
       // Update UI
       display(notificationArr);
   

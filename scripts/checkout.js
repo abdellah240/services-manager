@@ -23,6 +23,7 @@ document.getElementById('checkout-form').addEventListener('submit', async (event
         // Prepare data for the backend
         const formData = {
             fullname: fullname,
+            client_id: parseInt(localStorage.getItem("ID")),
             card: card,
             exp: exp,
             csv: csv,
