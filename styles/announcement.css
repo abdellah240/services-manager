@@ -1,5 +1,10 @@
+:root{
+  --shade1: rgb(16,80,16);
+  --shade2: rgb(24,119,24);
+  --shade3: rgb(34,170,34);
+}
 .announcement__container {
-  background-color: rgb(19, 19, 174);
+  background-color: var(--shade2);
   color: #fff;
   padding: 40px;
 }
