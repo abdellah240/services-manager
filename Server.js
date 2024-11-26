@@ -24,7 +24,6 @@ app.use("/api/account", accountRouter); // Router will be used when this path is
 //import signup router
 const signUpRouter = require("./routes/account-signup");
 app.use("/api/signup", signUpRouter); // Router will be used when this path is specified
-
 //import checkout router
 const checkoutRouter = require("./routes/checkout");
 app.use("/api/checkout", checkoutRouter); // Router will be used when this path is specified
@@ -614,6 +613,7 @@ app.post('/delete-message1', (req, res) =>
     });
   });
 });
+//---------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
 // Start the server
 app.listen(port, () =>

@@ -1,3 +1,9 @@
+:root{
+  --shade1: rgb(7,7,98);
+  --shade2: rgb(12,12,143);
+  --shade3: rgb(23,23,192);
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
@@ -6,7 +12,7 @@ body {
 }
 
 header {
-  background-color: #001f7f;
+  background-color: var(--shade2);
   color: white;
   padding: 10px 20px;
   text-align: left;
@@ -17,7 +23,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #001f7f;
+  background-color: var(--shade2);
 }
 
 nav a {
@@ -29,7 +35,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #0039cc;
+  background-color: var(--shade3);
   color: #fff;
 }
 
@@ -57,12 +63,12 @@ nav a:hover {
 }
 
 .menu-link:first-child {
-  background-color: #0039cc;
+  background-color: var(--shade3);
   color: white;
 }
 
 .menu-link:hover {
-  background-color: #001f7f;
+  background-color: var(--shade2);
   color: white;
 }
 
@@ -81,7 +87,7 @@ nav a:hover {
 
 button {
   display: inline-block;
-  background-color: #001f7f;
+  background-color: var(--shade2);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -93,7 +99,7 @@ button {
 }
 
 button:hover {
-  background-color: #0039cc;
+  background-color: var(--shade3);
 }
 /* Updated menu button styles */
 .menu-link {
@@ -110,7 +116,7 @@ button:hover {
 }
 
 .menu-link:hover {
-  background-color: #001f7f;
+  background-color: var(--shade1);
   color: white;
 }
 
@@ -132,7 +138,7 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 15px;
-  color: #001f7f;
+  color: var(--shade1);
 }
 
 .popup input,
@@ -148,7 +154,7 @@ button:hover {
 }
 
 .popup button {
-  background-color: #001f7f;
+  background-color: var(--shade1);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -159,9 +165,17 @@ button:hover {
 }
 
 .popup button:hover {
-  background-color: #0039cc;
+  background-color: var(--shade1);
 }
 
 .popup.active {
   display: block;
+}
+
+#hide2{
+  display: none;
+}
+
+#hide{
+  display: none;
 }

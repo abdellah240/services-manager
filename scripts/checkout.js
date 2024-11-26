@@ -24,6 +24,8 @@ document.getElementById('checkout-form').addEventListener('submit', async (event
         const formData = {
             fullname: fullname,
             client_id: parseInt(localStorage.getItem("ID")),
+            date : new Date().toISOString(),
+            paid: false,
             card: card,
             exp: exp,
             csv: csv,

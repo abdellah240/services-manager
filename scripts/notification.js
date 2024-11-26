@@ -49,6 +49,11 @@ class Notification {
         this.content = content;
         this.date = date;
     }
+
+    set change(newTitle){
+      this._Title = newTitle;
+    }
+    
 }
 
 class Answer extends Notification{
@@ -60,7 +65,7 @@ class Answer extends Notification{
 
 class AlertBills extends Notification{
     constructor(content, date, message){
-        super("Payment received!", content,date);
+        super("New!", content,date);
         this.message = message;
     }
 }
@@ -167,7 +172,11 @@ function display(Notifications) {
       MatchingData.forEach(match => {
         console.log(notificationArr);
         if (match && match.client_id) {
-        notificationArr.push(new AlertBills(`Your service request is waiting for confirmation for the following service : <b> ${match.title} </b>`,  new Date().toISOString(), match));
+          if(!match.paid){
+        notificationArr.push(new AlertBills(`A request has been sent for the following service : <b> ${match.title} </b>`,  match.date, match));}
+      else{
+        notificationArr.push(new AlertBills(`The following service has been confirmed : <b> ${match.title} </b>`,  match.date, match));
+      }
         }
       });  
       // Update UI

@@ -586,18 +586,19 @@ function displayServices(services)
   const servicesListDiv = document.getElementById("services-list-div");
   servicesListDiv.innerHTML = ""; // Clear previous content
 
-  Object.entries(services).forEach(([fullname, { services, total }]) =>
+  Object.entries(services).forEach(([fullname, { services, total, id}]) =>
   {
     const serviceDiv = document.createElement("div");
     const confirmButton = document.createElement("button");
 
     serviceDiv.innerHTML = `Client: ${fullname} <br>
                             Total: $${total} <br>
-                            Services: ${services.join(" - ")}`;
+                            Services: ${services.join(" - ")}
+                      `;
 
     confirmButton.innerHTML = "Confirm services order";
     confirmButton.className = "button";
-    confirmButton.addEventListener("click", () => confirmed(confirmButton));
+    confirmButton.addEventListener("click", () => confirmed(confirmButton, id));
 
     serviceDiv.className = "services__service";
     serviceDiv.appendChild(confirmButton);
@@ -605,18 +606,37 @@ function displayServices(services)
   });
 }
 
-function confirmed(button)
-{
-  if (button.textContent === "Confirm services order")
-  {
-    button.textContent = "Cancel order";
-    alert("Order confirmed.");
-  } else
-  {
-    button.textContent = "Confirm services order";
-    alert("Order canceled.");
+async function confirmed(button, ClientId) {
+  // Determine the new paid status
+  const isConfirming = button.textContent === "Confirm services order";
+  const newStatus = isConfirming; // `true` if confirming, `false` if canceling
+
+  try {
+    // Send a request to the backend to update the order status
+    const response = await fetch(`/api/checkout`, {
+      method: "PUT", // Using PUT for update operation
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ client_id: ClientId, paid: newStatus }), // Pass the ID and new boolean status
+    });
+
+    if (response.ok) {
+      // Update button text and show confirmation
+      button.textContent = isConfirming ? "Cancel order" : "Confirm services order";
+      alert(`Order ${isConfirming ? "confirmed" : "canceled"}.`);
+    } else {
+      // Handle server error
+      const error = await response.text();
+      alert(`Failed to update order: ${error}`);
+    }
+  } catch (err) {
+    // Handle network errors
+    alert(`Error: ${err.message}`);
   }
 }
+
+
 
 function color()
 {
