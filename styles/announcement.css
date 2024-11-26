@@ -1,7 +1,7 @@
 :root{
-  --shade1: rgb(16,80,16);
-  --shade2: rgb(24,119,24);
-  --shade3: rgb(34,170,34);
+  --shade1: rgb(7,7,98);
+  --shade2: rgb(12,12,143);
+  --shade3: rgb(23,23,192);
 }
 .announcement__container {
   background-color: var(--shade2);

@@ -1,10 +1,15 @@
 function accept(notification, notificationDiv){
-  const a = confirm("You might want to print this page first");
+if(notification.message.paid == "1"){
+  return;
+}
+else{
+  const a = confirm("are you sure you want to cancel this ?")
   if(a){
-    notificationDiv.remove();
     notificationDiv.style.display = "none";
+    notificationDiv.remove();
   }
-  else{ return;}
+  else{return;}
+}
 }
 
 function dismissNotification(notification, notificationDiv){
@@ -112,11 +117,16 @@ function display(Notifications) {
 
       if (notification instanceof AlertBills) {
           // Add "Accept" button for AlertBills
-          const acceptButton = document.createElement("button");
-          acceptButton.className = "accept";
-          acceptButton.textContent = "Mark as read";
-          acceptButton.onclick = () => accept(notification,notificationDiv);
-          actionsDiv.appendChild(acceptButton);
+          
+         console.log(notification.message.paid)
+          if(notification.message.paid != "1"){
+            const acceptButton = document.createElement("button");
+            acceptButton.className = "dismiss";
+            acceptButton.textContent = "Cancel this service";
+            acceptButton.onclick = () => accept(notification,notificationDiv);
+            actionsDiv.appendChild(acceptButton);}
+          else{}
+          
       } else if (notification instanceof Answer) { // Updated here
           // Add "Dismiss" button for Answer
           const dismissButton = document.createElement("button");
@@ -172,7 +182,7 @@ function display(Notifications) {
       MatchingData.forEach(match => {
         console.log(notificationArr);
         if (match && match.client_id) {
-          if(!match.paid){
+          if(match.paid != "1"){
         notificationArr.push(new AlertBills(`A request has been sent for the following service : <b> ${match.title} </b>`,  match.date, match));}
       else{
         notificationArr.push(new AlertBills(`The following service has been confirmed : <b> ${match.title} </b>`,  match.date, match));
