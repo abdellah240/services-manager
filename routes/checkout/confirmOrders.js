@@ -1,35 +1,30 @@
-const confirmOrders = (checkoutDB) => (req, res) =>
-{
+const confirmOrders = (checkoutDB) => (req, res) => {
   const query = `
-    SELECT   orders.fullname, orders.client_id, services.title, orders.paid, orders.date, SUM(services.price) AS total
-    FROM     orders
-    JOIN     services ON orders.service_id = services.id
-    GROUP BY orders.fullname, services.title;`;
+    SELECT orders.fullname, orders.client_id, services.title, orders.paid, orders.date, SUM(services.price) AS total
+    FROM orders
+    JOIN services ON orders.service_id = services.id
+    GROUP BY orders.client_id, services.title;`;
 
-  checkoutDB.query(query, (err, results) => // where results is an array of orders
-  {
-    if (!err)
-    {
+  checkoutDB.query(query, (err, results) => {
+    if (!err) {
       const orders = {};
-      const result = results;
 
-      results.forEach((order) =>
-      {
-        if (!orders[order.fullname])
-        {
-          orders[order.fullname] = { services: [], total: 0, id: 0};
+      results.forEach((order) => {
+        if (!orders[order.client_id]) {
+          orders[order.client_id] = { services: [], total: 0 };
         }
-        orders[order.fullname].services.push(order.title);
-        orders[order.fullname].total += order.total;
-        orders[order.fullname].id = order.client_id;
+        orders[order.client_id].fullname = order.fullname;
+        orders[order.client_id].services.push(order.title);
+        orders[order.client_id].total += order.total;
+        orders[order.client_id].client_id = order.client_id;
+        orders[order.client_id].paid = order.paid;
+        orders[order.client_id].date = order.date;
       });
-      res.status(200).json({orders,result});
-    } else
-    {
+      res.status(200).json({ orders });
+    } else {
       res.status(500).send("Error loading orders from database.");
-    }
-    {
     }
   });
 };
+
 module.exports = confirmOrders;

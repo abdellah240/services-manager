@@ -97,7 +97,12 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
+button:disabled{
+  background-color: gray;
+}
+button:disabled:hover{
+  background-color: gray;
+}
 button:hover {
   background-color: var(--shade3);
 }
@@ -179,3 +184,16 @@ button:hover {
 #hide{
   display: none;
 }
+
+#filter-container {
+  display: flex;
+  justify-content: center;
+}
+#filter-container button {
+  padding: 8px 16px;
+  margin: 4px;
+  font-size: 14px;
+  border: 1px solid black;
+}
+
+#filter-container button.active { background: white; color: blue; }
