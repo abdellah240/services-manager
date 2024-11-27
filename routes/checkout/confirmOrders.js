@@ -8,6 +8,7 @@ const confirmOrders = (checkoutDB) => (req, res) => {
   checkoutDB.query(query, (err, results) => {
     if (!err) {
       const orders = {};
+      const result = results;
 
       results.forEach((order) => {
         if (!orders[order.client_id]) {
@@ -20,7 +21,7 @@ const confirmOrders = (checkoutDB) => (req, res) => {
         orders[order.client_id].paid = order.paid;
         orders[order.client_id].date = order.date;
       });
-      res.status(200).json({ orders });
+      res.status(200).json({ orders,result });
     } else {
       res.status(500).send("Error loading orders from database.");
     }
