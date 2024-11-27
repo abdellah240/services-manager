@@ -61,7 +61,7 @@ document.getElementById('checkout-form').addEventListener('submit', async (event
     {
         listServices.length = 0;
         localStorage.removeItem('cart');
-        alert('Checkout completed successfully. [should redirect to bills]');
+        alert('Checkout completed successfully.');
 
     } else
     {
